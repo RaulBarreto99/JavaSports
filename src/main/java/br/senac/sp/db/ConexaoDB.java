@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.senac.sp.db;
 
 import java.sql.Connection;
@@ -13,7 +9,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author tiago.bscarton
+ * @author Ederson_Souza
  */
 public class ConexaoDB {
 
@@ -26,9 +22,9 @@ public class ConexaoDB {
     }
 
     public static Connection getConexao() throws SQLException {
-        String dbURL = "jdbc:derby://localhost:3306/javasports;create=true";
+        String dbURL = "jdbc:derby://localhost:1527/javasports;create=true";
         String user = "root";
-        String password = "";
+        String password = "root";
         return DriverManager.getConnection(dbURL, user, password);
     }
 

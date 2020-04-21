@@ -5,21 +5,24 @@
  */
 package br.senac.sp.entidade;
 
-import java.util.Date;
 
 /**
  *
- * @author tiago.bscarton
+ * @author Ederson_Souza
  */
 public class Cliente {
+
+    
     
     private int id;
     private String nome;
     private String sobrenome;
-    private Date dataNascimento;
+    private String dataNascimento;
     private String cpf;
     private String telefone;
     private String sexo;
+
+   
 
     /**
      * @return the id
@@ -66,14 +69,14 @@ public class Cliente {
     /**
      * @return the dataNascimento
      */
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
     /**
      * @param dataNascimento the dataNascimento to set
      */
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
