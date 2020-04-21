@@ -6,16 +6,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+//@WebServlet(name = "CadastroClienteServlet", urlPatterns = {"/CadastroClienteServlet"})
 public class CadastroClienteServlet extends HttpServlet {
 
     @Override
@@ -24,38 +27,38 @@ public class CadastroClienteServlet extends HttpServlet {
         //Empty
     }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        //Esse metódo será chamado já que você usou o Post para o formulário. Aqui você deve passar todos os parametros de seu Model. 
+        // Importante resaltar que aqui só aceita String
+        
+        //--------------Aqui é apenas teste
+        //response.setContentType("text/html; charset=UTF=8");
+        //response.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String dataNascimento = request.getParameter("dataNascimento");
-        try {
-            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimento);
-        } catch (ParseException ex) {
-            Logger.getLogger(CadastroClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
         String cpf = request.getParameter("cpf");
         String telefone = request.getParameter("telefone");
         String sexo = request.getParameter("sexo");
-        
-        
+
         Cliente cliente = new Cliente();
+        
+        //Aqui já vai chamar o DAO para cadastrar
         boolean ok = ClienteDAO.cadastrarCliente(cliente);
         PrintWriter out = response.getWriter();
 
         String url = "";
         if (ok) {
-            url = "/sucesso.jsp";
+            url = "deu bom";
         } else {
-            url = "/erro.jsp";
+            url = "deu ruim";
         }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-            dispatcher.forward(request,response);
-       
+        dispatcher.forward(request, response);
 
     }
 
