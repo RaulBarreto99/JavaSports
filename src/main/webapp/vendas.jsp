@@ -98,7 +98,7 @@
                                 <ul class="submenu-angle" aria-expanded="true">
                                     <li><a title="Cadastrar Clientes" href="cadastrarCliente.html"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
                                     <li><a title="Cadastrar Produto" href="cadastrarProdutos.html"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="cadastrarVendas.html"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                    <li><a title="Cadastrar Vendas" href="vendas.jsp"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
                                     <li><a title="Cadastrar Funcionário" href="cadastrarFuncionarios.html"><span class="mini-sub-pro">Cadastrar Funcionários</span></a></li>
                                     <li><a title="Cadastrar Filiais" href="cadastraFiliais.html"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
 
