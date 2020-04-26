@@ -4,6 +4,7 @@
     Author     : lucas
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -71,7 +72,7 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
 
-    <body>
+    <body> 
         <!--[if lt IE 8]>
                 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
             <![endif]-->
@@ -201,7 +202,7 @@
                         </div>
                         <!-- Single pro tab start-->
                        
-                        <div class="container ml-5 mr-5" id="vendasCadastradas">
+                        <div class="container ml-5 mr-5" id="workspace">
                         <div class="product-status mg-b-30">
                             <div class="container-fluid">
                                 <div class="row">
@@ -209,7 +210,8 @@
                                         <div class="product-status-wrap">
                                             <h4>Lista de vendas</h4>
 
-                                            <table>
+                                            <table onload="VendasServlet" method="GET">
+                                                <thead>
                                                 <tr>
                                                     <th>Id da Venda</th>
                                                     <th>Id do Cliente</th>
@@ -220,42 +222,33 @@
 
 
                                                 </tr>
-                                                <tr>
+                                                </thead>
+                                                
+                                                
+                                                <tbody>
+                                                    <c:forEach items="${vendas}" var="venda">
+                                                        <tr>
 
-                                                    <td>1</td>
-                                                    <td>1</td>
-                                                    <td>filial 1</td>
-                                                    <td>1.600</td>
+                                                            <td><c:out value="${venda.id}"/></td>
+                                                            <td><c:out value="${venda.idCliente}"/></td>
+                                                            <td><c:out value="${venda.idFilial}"/></td>
+                                                            <td><c:out value="${venda.valorTotal}"/></td>
+                                                            <td><c:out value="${venda.dataVenda}"/></td>
 
-                                                    <td>13/08/2019</td>
+                                                            <td>
+                                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                            </td>
 
-                                                    <td>
-
-                                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-
-                                                    <td>2</td>
-                                                    <td>5</td>
-                                                    <td>filial 1</td>
-                                                    <td>25</td>
-
-                                                    <td>13/08/2020</td>
-                                                    <td>
-
-                                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                    </td>
-
-                                                </tr>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
 
                                             </table>
                                             
                                            <div class="row m-t-xl">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-5">
                                                     <div class="text-right custom-pro-edt-ds">
-                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Nova Venda
+                                                        <button type="button" onclick="vendasViewJS.updateForm()" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Nova Venda
                                                         </button>
                                                     </div>
                                                 </div>
@@ -318,5 +311,10 @@
                     <!-- main JS
                                 ============================================ -->
                     <script src="js/main.js"></script>
+                    
+                    <script src="js/classes/VendasViewJS.js"></script>
+                    <script>
+                        let vendasViewJS = new VendasViewJS();
+                    </script>
                     </body>
                     </html>
