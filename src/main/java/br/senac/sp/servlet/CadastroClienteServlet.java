@@ -2,23 +2,44 @@ package br.senac.sp.servlet;
 
 import br.senac.sp.dao.ClienteDAO;
 import br.senac.sp.entidade.Cliente;
+import br.senac.sp.entidade.Venda;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//@WebServlet(name = "CadastroClienteServlet", urlPatterns = {"/CadastroClienteServlet"})
+@WebServlet(name = "CadastroClienteServlet", urlPatterns = {"/CadastroClienteServlet"})
 public class CadastroClienteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+       String forward = "";
+        
+        forward = "/cliente.jsp";
+
+        Cliente cliente = new Cliente();
+        
+        cliente.setId(1);
+        cliente.setNome("Ederson");
+        cliente.setSobrenome("Souza");
+        cliente.setDataNascimento("12-06-06");
+        cliente.setCpf("21412");
+        cliente.setTelefone("213123");
+        cliente.setSexo("masc");
+
+        request.setAttribute("vendas", Arrays.asList(cliente, cliente, cliente));
+
+        RequestDispatcher view = request.getRequestDispatcher(forward);
+        view.forward(request, response);
     }
 
     @Override
