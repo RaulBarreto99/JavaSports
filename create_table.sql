@@ -1,7 +1,12 @@
-CREATE TABLE cliente (
-   id INT not null primary key
+create table "ROOT".CLIENTE
+(
+	id INT not null primary key
         GENERATED ALWAYS AS IDENTITY
         (START WITH 1, INCREMENT BY 1),
-   nome VARCHAR(255),
-   email VARCHAR(255)
+	NOME VARCHAR(255),
+	SOBRENOME VARCHAR(255),
+	DATANASCIMENTO DATE,
+	CPF VARCHAR(12),
+	TELEFONE VARCHAR(14),
+	SEXO VARCHAR(20)
 );
