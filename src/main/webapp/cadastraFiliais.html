@@ -191,6 +191,7 @@
                                     <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Cadastro</a></li>
                                     
                                 </ul>
+                                <form name = "cadastro filial" action='CadastroFilialServlet' method='post'>
                                 <div id="myTabContent" class="tab-content custom-product-edit">
                                     <div class="product-tab-list tab-pane fade active in" id="description">
                                         <div class="row">
@@ -198,43 +199,43 @@
                                                 <div class="review-content-section">
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Id da filial">
+                                                        <input type="text" class="form-control" placeholder="Id da filial" name="Id" disabled>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Nome da filial">
+                                                        <input type="text" class="form-control" placeholder="Nome da filial" name="NomeFilial">
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Cep">
+                                                        <input type="text" class="form-control" placeholder="Cep" name="CEP">
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Pais">
+                                                        <input type="text" class="form-control" placeholder="Pais" name="Pais">
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Cidade">
+                                                        <input type="text" class="form-control" placeholder="Cidade" name="Cidade">
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Uf">
+                                                        <input type="text" class="form-control" placeholder="Uf" name="UF">
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Bairro">
+                                                        <input type="text" class="form-control" placeholder="Bairro" name="Bairro">
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Rua">
+                                                        <input type="text" class="form-control" placeholder="Rua" name="Rua">
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Número">
+                                                        <input type="text" class="form-control" placeholder="Número" name="Numero">
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Complemento">
+                                                        <input type="text" class="form-control" placeholder="Complemento" name="Complemento">
                                                     </div>
                                                     
                                                 </div>
@@ -261,6 +262,10 @@
                                     
                                 </div>
                             </div>
+                  </form>
+                                
+                                
+                                
                         </div>
                     </div>
                 </div>
