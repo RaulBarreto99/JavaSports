@@ -99,10 +99,9 @@
                                 <ul class="submenu-angle" aria-expanded="true">
                                     <li><a title="Cadastrar Clientes" href="cadastrarCliente.html"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
                                     <li><a title="Cadastrar Produto" href="cadastrarProdutos.html"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="vendas.jsp"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
                                     <li><a title="Cadastrar Funcionário" href="cadastrarFuncionarios.html"><span class="mini-sub-pro">Cadastrar Funcionários</span></a></li>
                                     <li><a title="Cadastrar Filiais" href="cadastraFiliais.html"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-
                                 </ul>
                             </li>
 
@@ -219,55 +218,58 @@
                             </div>
                         </div>
                         <!-- Single pro tab start-->
-                       
+
                         <div class="container ml-5 mr-5" id="workspace">
-                        <div class="product-status mg-b-30">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="product-status-wrap">
-                                            <h4>Lista de vendas</h4>
+                            <div class="product-status mg-b-30">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="product-status-wrap">
+                                                <h4>Lista de vendas</h4>
 
-                                            <table onload="VendasServlet" method="GET">
-                                                <thead>
-                                                <tr>
-                                                    <th>Id da Venda</th>
-                                                    <th>Id do Cliente</th>
-                                                    <th>Nome da filial</th>
-                                                    <th>Valor Total</th>
-                                                    <th>Data da Venda</th>
-                                                    <th>Detalhar Venda</th>
-
-
-                                                </tr>
-                                                </thead>
-                                                
-                                                
-                                                <tbody>
-                                                    <c:forEach items="${vendas}" var="venda">
+                                                <table onload="VendasServlet" method="GET">
+                                                    <thead>
                                                         <tr>
+                                                            <th>Id da Venda</th>
+                                                            <th>Id do Cliente</th>
+                                                            <th>Nome da filial</th>
+                                                            <th>Valor Total</th>
+                                                            <th>Data da Venda</th>
+                                                            <th>Detalhar Venda</th>
 
-                                                            <td><c:out value="${venda.id}"/></td>
-                                                            <td><c:out value="${venda.idCliente}"/></td>
-                                                            <td><c:out value="${venda.idFilial}"/></td>
-                                                            <td><c:out value="${venda.valorTotal}"/></td>
-                                                            <td><c:out value="${venda.dataVenda}"/></td>
-
-                                                            <td>
-                                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                            </td>
 
                                                         </tr>
-                                                    </c:forEach>
-                                                </tbody>
+                                                    </thead>
 
-                                            </table>
-                                            
-                                           <div class="row m-t-xl">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-5">
-                                                    <div class="text-right custom-pro-edt-ds">
-                                                        <button type="button" onclick="vendasViewJS.updateForm()" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Nova Venda
-                                                        </button>
+
+                                                    <tbody>
+                                                        <c:forEach items="${vendas}" var="venda">
+                                                            <tr>
+
+                                                                <td><c:out value="${venda.id}"/></td>
+                                                                <td><c:out value="${venda.idCliente}"/></td>
+                                                                <td><c:out value="${venda.idFilial}"/></td>
+                                                                <td><c:out value="${venda.valorTotal}"/></td>
+                                                                <td><c:out value="${venda.dataVenda}"/></td>
+
+                                                                <td>
+                                                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                </td>
+
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </tbody>
+
+                                                </table>
+
+                                                <div class="row m-t-xl">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-5">
+                                                        <div class="text-right custom-pro-edt-ds">
+                                                            <form action="VendasServlet">
+                                                                <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Nova Venda
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -276,7 +278,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
 
                     <!-- jquery
@@ -329,10 +330,10 @@
                     <!-- main JS
                                 ============================================ -->
                     <script src="js/main.js"></script>
-                    
+
                     <script src="js/classes/VendasViewJS.js"></script>
                     <script>
-                        let vendasViewJS = new VendasViewJS();
+                                                    let vendasViewJS = new VendasViewJS();
                     </script>
                     </body>
                     </html>

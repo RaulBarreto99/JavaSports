@@ -5,6 +5,8 @@
  */
 package br.senac.sp.servlet;
 
+import br.senac.sp.dao.VendasDao;
+import br.senac.sp.entidade.Produto;
 import br.senac.sp.entidade.Venda;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,56 +28,77 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "VendasServlet", urlPatterns = {"/VendasServlet"})
 public class VendasServlet extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private List<Produto> carrinho = new ArrayList<Produto>();
+    private List<Produto> produtos = new ArrayList<Produto>();
+
+    public VendasServlet() {
+        VendasDao dao = new VendasDao();
+        produtos = dao.getProdutos();
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String forward = "";
-        
-        forward = "/vendas.jsp";
 
-        Venda venda = new Venda();
+        String action = request.getParameter("action");
 
-        venda.setId(1);
-        venda.setIdCliente(1);
-        venda.setIdFilial(1);
-        venda.setValorTotal(100.0);
-        venda.setDataVenda(new Date());
+        try {
+            if (action.equals("listarVendas")) {
+                forward = "/listarVendas.jsp";
 
-        request.setAttribute("vendas", Arrays.asList(venda, venda, venda));
+                Venda venda = new Venda();
 
-        RequestDispatcher view = request.getRequestDispatcher(forward);
+                Produto produto = new Produto(1, "Arroz", "Camil", 10, 100);
+
+                System.out.println(action);
+                venda.setId(1);
+                venda.setIdCliente(1);
+                venda.setIdFilial(1);
+                venda.setValorTotal(100.0);
+                venda.setDataVenda(new Date());
+                venda.addProduto(produto);
+                venda.addProduto(produto);
+                venda.addProduto(produto);
+
+                request.setAttribute("vendas", Arrays.asList(venda, venda, venda));
+                request.setAttribute("produtos", Arrays.asList(produto, produto, produto));
+
+                RequestDispatcher view = request.getRequestDispatcher(forward);
+                view.forward(request, response);
+            }
+        } catch (Exception e) {
+            forward = "/cadastrarVenda.jsp";
+
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String action = request.getParameter("action");
+
+        int id = Integer.parseInt(request.getParameter("idProduto"));
+        int quantidade = Integer.parseInt(request.getParameter("quantidadeVendida"));
+
+        for (Produto produto : this.produtos) {
+
+            if (produto.getCodigo() == id) {
+                Produto produtoCarrinho = new Produto(id, produto.getNomeProduto(), produto.getMarca(), produto.getPreco(), quantidade);
+                this.carrinho.add(produtoCarrinho);
+            }
+
+        }
+        request.setAttribute("carrinho", this.carrinho);
+        RequestDispatcher view = request.getRequestDispatcher("/cadastrarVenda.jsp");
         view.forward(request, response);
     }
 
-//    /**
-//     * Handles the HTTP <code>POST</code> method.
-//     *
-//     * @param request servlet request
-//     * @param response servlet response
-//     * @throws ServletException if a servlet-specific error occurs
-//     * @throws IOException if an I/O error occurs
-//     */
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        processRequest(request, response);
-//    }
-//
-//    /**
-//     * Returns a short description of the servlet.
-//     *
-//     * @return a String containing servlet description
-//     */
-//    @Override
-//    public String getServletInfo() {
-//        return "Short description";
-//    }// </editor-fold>
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 }
