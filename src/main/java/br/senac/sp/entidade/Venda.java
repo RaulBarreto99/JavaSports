@@ -6,6 +6,7 @@
 package br.senac.sp.entidade;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class Venda {
     private int id;
-    private List<String> produtosVendidos;
+    private List<Produto> produtosVendidos = new ArrayList<>();
     private int idCliente;
     private int idFilial;
     private double valorTotal;
@@ -29,11 +30,11 @@ public class Venda {
         this.id = id;
     }
 
-    public List<String> getProdutosVendidos() {
+    public List<Produto> getProdutosVendidos() {
         return produtosVendidos;
     }
 
-    public void addProduto(String produto) {
+    public void addProduto(Produto produto) {
         this.produtosVendidos.add(produto);
     }
 
@@ -68,6 +69,10 @@ public class Venda {
     public void setDataVenda(Date dataVenda) {
         this.dataVenda = dataVenda;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+    }
+       
 }
