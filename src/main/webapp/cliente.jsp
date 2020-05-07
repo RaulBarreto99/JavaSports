@@ -188,7 +188,7 @@
                 </div>
             </div>
             <!-- Single pro tab start-->
-            <div class="single-product-tab-area mg-b-30">
+            <div class="single-product-tab-area mg-b-30" >
                 <!-- Single pro tab review Start-->
                 <div class="single-pro-review-area">
                     <div class="container-fluid">
@@ -262,6 +262,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="text-center custom-pro-edt-ds">
                                                         <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
+                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Alterar</button>
                                                         <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
 
                                                     </div>
@@ -318,8 +319,8 @@
                                                             <td><c:out value="${cliente.telefone}"/></td>
                                                             <td><c:out value="${cliente.sexo}"/></td>
                                                             <td>
-                                                                <button data-toggle="tooltip" title="Alterar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                                <button data-toggle="tooltip" title="Deletar" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Preencher" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Excluir" href = "CadastroClienteServlet?action=excluir&=${cliente.id}"class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                             </td>
 
                                                         </tr>

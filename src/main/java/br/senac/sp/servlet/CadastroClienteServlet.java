@@ -23,8 +23,28 @@ public class CadastroClienteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String forward = "";
+        String forward = "";
+
+        forward = "cliente.jsp";
+
+        String action = request.getParameter("action");
+
+        if (action.equalsIgnoreCase("excluir")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            boolean excliu = ClienteDAO.excluirCliente(id);
+
+            String url = "";
+            if (excliu) {
+                url = "/sucesso.jsp";
+            } else {
+                url = "/erro.jsp";
+            }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(forward);
+            dispatcher.forward(request, response);
+
+        }
         
+
         forward = "cliente.jsp";
 
         List<Cliente> lista = ClienteDAO.listarCliente();
@@ -38,6 +58,8 @@ public class CadastroClienteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        
+
         //int id = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
@@ -48,7 +70,6 @@ public class CadastroClienteServlet extends HttpServlet {
 
         Cliente cliente = new Cliente();
 
-       
         cliente.setNome(nome);
         cliente.setSobrenome(sobrenome);
         cliente.setDataNascimento(dataNascimento);
@@ -56,7 +77,6 @@ public class CadastroClienteServlet extends HttpServlet {
         cliente.setTelefone(telefone);
         cliente.setSexo(sexo);
 
-       
         boolean cadastrou = ClienteDAO.cadastrarCliente(cliente);
         PrintWriter out = response.getWriter();
 
@@ -71,7 +91,6 @@ public class CadastroClienteServlet extends HttpServlet {
 
     }
 
-   
     @Override
     public String getServletInfo() {
         return "Short description";
