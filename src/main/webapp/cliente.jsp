@@ -1,13 +1,13 @@
 <%-- 
-    Document   : vendas
-    Created on : 23/04/2020, 22:07:58
-    Author     : lucas
+    Document   : cliente
+    Created on : 01/05/2020, 13:50:58
+    Author     : ederson
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="en">
 
     <head>
         <meta charset="utf-8">
@@ -70,9 +70,11 @@
         <!-- modernizr JS
                     ============================================ -->
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+
     </head>
 
-    <body> 
+    <body>
         <!--[if lt IE 8]>
                 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
             <![endif]-->
@@ -119,9 +121,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="logo-pro">
-                            
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -135,126 +135,210 @@
                                         <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
 
                                         </div>
-                                        <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
-                                            <div class="header-top-menu tabl-d-n">
-                                                
-                                            </div>
-                                        </div>
+
                                         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                             <div class="header-right-info">
                                                 <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                                     <li class="nav-item dropdown">
 
-                                                    
-
-
-                                                    <div role="menu" class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated zoomIn">
-
-
-                                                        <div class="tab-content custom-bdr-nt">
-                                                            <div id="Notes" class="tab-pane fade in active">
-                                                                <div class="notes-area-wrap">
-
-                                                                    <div class="notes-list-area notes-menu-scrollbar">
 
 
 
-                                                                    </div>
-                                                                </div>
-                                                                </li>
-                                                                </ul>
-                                                            </div>
+                                                        <div role="menu" class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated zoomIn">
+
+
+
                                                         </div>
-                                                    </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="breadcome-area">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="breadcome-list">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        <div class="breadcomb-wp">
-                                                            <div class="breadcomb-icon">
-                                                                <i class="icon nalika-home"></i>
-                                                            </div>
-                                                            <div class="breadcomb-ctn">
-                                                                <h2>Cadastrar Vendas</h2>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-
-                                                    </div>
-                                                </div>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Single pro tab start-->
+                    </div>
+                </div>
 
-                        <div class="container ml-5 mr-5" id="workspace">
-                            <div class="product-status mg-b-30">
-                                <div class="container-fluid">
+                <div class="breadcome-area">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="breadcome-list">
                                     <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="product-status-wrap">
-                                                <h4>Lista de vendas</h4>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <div class="breadcomb-wp">
+                                                <div class="breadcomb-icon">
+                                                    <i class="icon nalika-home"></i>
+                                                </div>
+                                                <div class="breadcomb-ctn">
+                                                    <h2>Cadastrar Clientes</h2>
 
-                                                <table onload="VendasServlet" method="GET">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Id da Venda</th>
-                                                            <th>Id do Cliente</th>
-                                                            <th>Nome da filial</th>
-                                                            <th>Valor Total</th>
-                                                            <th>Data da Venda</th>
-                                                            <th>Detalhar Venda</th>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Single pro tab start-->
+            <div class="single-product-tab-area mg-b-30">
+                <!-- Single pro tab review Start-->
+                <div class="single-pro-review-area">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="review-tab-pro-inner">
+                                    <ul id="myTab3" class="tab-review-design">
+                                        <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Cadastro</a></li>
+
+                                    </ul
+                                    <!-- Aqui no Form você deve chamar no action o seu servlet e colocar o metodo post nele, 
+                                    já que para cadastrar se trata de um post-->
+                                    <form name = "cadastro cliente" action='CadastroClienteServlet' method='post'>
+                                        <div id="myTabContent" class="tab-content custom-product-edit">
+                                            <div class="product-tab-list tab-pane fade active in" id="description">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="review-content-section">
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" placeholder="Id" name="id" disabled>
+                                                            </div>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" placeholder="Nome" name="nome">
+                                                            </div>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome">
+                                                            </div>
+
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
+                                                                <input type="date" class="form-control" placeholder="Data de nascimento" name="dataNascimento">
+                                                            </div>
 
 
-                                                        </tr>
-                                                    </thead>
+
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" placeholder="CPF" name="cpf">
+                                                            </div>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" placeholder="Telefone" name="telefone">
+                                                            </div>
+
+                                                            <select name="sexo" class="form-control pro-edt-select form-control-primary" name = "sexo">
+                                                                <option value="Masculino">Masculino</option>
+                                                                <option value="Feminino">Feminino</option>
+
+                                                            </select>
+                                                            <br>
 
 
-                                                    <tbody>
-                                                        <c:forEach items="${vendas}" var="venda">
-                                                            <tr>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="review-content-section">
 
-                                                                <td><c:out value="${venda.id}"/></td>
-                                                                <td><c:out value="${venda.idCliente}"/></td>
-                                                                <td><c:out value="${venda.idFilial}"/></td>
-                                                                <td><c:out value="${venda.valorTotal}"/></td>
-                                                                <td><c:out value="${venda.dataVenda}"/></td>
 
-                                                                <td>
-                                                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                                </td>
-
-                                                            </tr>
-                                                        </c:forEach>
-                                                    </tbody>
-
-                                                </table>
-
-                                                <div class="row m-t-xl">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-5">
-                                                        <div class="text-right custom-pro-edt-ds">
-                                                            <form action="VendasServlet">
-                                                                <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Nova Venda
-                                                                </button>
-                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
+
+
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="text-center custom-pro-edt-ds">
+                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
+                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="product-status mg-b-30">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="product-status-wrap">
+                                            <h4>Lista de clientes cadastrados</h4>
+
+                                            <table onload="CadastroClienteServlet" method="GET">
+                                                <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Nome</th>
+                                                    <th>Sobrenome</th>
+                                                    <th>Data</th>
+                                                    <th>Cpf</th>
+                                                    <th>Telefone</th>
+                                                    <th>Sexo</th>
+                                                    <th>Ação</th>
+
+
+                                                </tr>
+                                                </thead>
+                                                
+                                                
+                                                <tbody>
+                                                    <c:forEach items="${clientes}" var="cliente">
+                                                        <tr>
+
+                                                            <td><c:out value="${cliente.id}"/></td>
+                                                            <td><c:out value="${cliente.nome}"/></td>
+                                                            <td><c:out value="${cliente.sobrenome}"/></td>
+                                                            <td><c:out value="${cliente.dataNascimento}"/></td>
+                                                            <td><c:out value="${cliente.cpf}"/></td>
+                                                            <td><c:out value="${cliente.telefone}"/></td>
+                                                            <td><c:out value="${cliente.sexo}"/></td>
+                                                            <td>
+                                                                <button data-toggle="tooltip" title="Alterar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Deletar" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                            </td>
+
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
+
+                                            </table>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-copyright-area">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="footer-copy-right">
+                                            <p>JavaSports desenvolvido por Xnexus</a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -312,10 +396,6 @@
                     <!-- main JS
                                 ============================================ -->
                     <script src="js/main.js"></script>
-
-                    <script src="js/classes/VendasViewJS.js"></script>
-                    <script>
-                                                    let vendasViewJS = new VendasViewJS();
-                    </script>
                     </body>
+
                     </html>
