@@ -12,7 +12,10 @@ import br.senac.sp.entidade.Cliente;
 import br.senac.sp.entidade.Filial;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FilialDAO {
 
@@ -42,6 +45,48 @@ public class FilialDAO {
             ex.printStackTrace();
         }
         return cadastrou;
+    }
+    
+    public static List<Filial> listarFilial() {
+
+        Connection connection;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            connection = ConexaoDB.getConexao();
+
+            pstmt = connection.prepareStatement(
+                    "SELECT * FROM FILIAL ORDER BY id");
+
+            rs = pstmt.executeQuery();
+
+            List lista = new ArrayList<>();
+
+            while (rs.next()) {
+
+                Filial Filial = new Filial();
+
+                Filial.setId(rs.getInt("id"));
+                Filial.setNome(rs.getString("nome"));
+                Filial.setBairro(rs.getString("bairro"));
+                Filial.setCep(rs.getString("cep"));
+                Filial.setPais(rs.getString("cpf"));
+                Filial.setRua(rs.getString("rua"));
+                Filial.setComplemento(rs.getString("complemento"));
+                Filial.setNumero(rs.getString("numero"));
+                Filial.setUf(rs.getString("uf"));
+                Filial.setCidade(rs.getString("cidade"));
+
+                lista.add(Filial);
+            }
+            return lista;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+
+        }
     }
 
 }

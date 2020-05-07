@@ -13,6 +13,7 @@ import br.senac.sp.entidade.Cliente;
 import br.senac.sp.entidade.Filial;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +31,16 @@ public class CadastroFilialServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        
+       String forward = "";
+        
+        forward = "filial.jsp";
+
+        List<Filial> lista = FilialDAO.listarFilial();
+        request.setAttribute("fliais", lista);
+
+        RequestDispatcher view = request.getRequestDispatcher(forward);
+        view.forward(request, response);
     }
 
     @Override
