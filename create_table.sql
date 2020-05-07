@@ -29,6 +29,12 @@ create table "ROOT".FILIAL(
         GENERATED ALWAYS AS IDENTITY
         (START WITH 1, INCREMENT BY 1),
     NOME VARCHAR(60),
+);
+
+create table "ROOT".ENDERECO(
+	ID_FILIAL BIGINT not null primary key
+        GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
     Bairro VARCHAR(60),
     CEP VARCHAR(60),
     PAIS VARCHAR(60),
