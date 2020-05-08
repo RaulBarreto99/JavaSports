@@ -29,6 +29,7 @@ public class CadastroClienteServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action.equalsIgnoreCase("excluir")) {
+            forward = "/cliente.jsp";
             int id = Integer.parseInt(request.getParameter("id"));
             boolean excliu = ClienteDAO.excluirCliente(id);
             String url = "";
@@ -37,7 +38,7 @@ public class CadastroClienteServlet extends HttpServlet {
             } else {
                 url = "/erro.jsp";
             }
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(forward);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
         }
 
