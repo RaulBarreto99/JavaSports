@@ -23,40 +23,42 @@ public class CadastroClienteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String forward = "";
+//        String forward = "";
+//
+//        forward = "cliente.jsp";
+//
+//        String action = request.getParameter("action");
+//
+//        if (action.equalsIgnoreCase("excluir")) {
+//            int id = Integer.parseInt(request.getParameter("id"));
+//            boolean excliu = ClienteDAO.excluirCliente(id);
+//
+//            String url = "";
+//            if (excliu) {
+//                url = "/sucesso.jsp";
+//            } else {
+//                url = "/erro.jsp";
+//            }
+//            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(forward);
+//            dispatcher.forward(request, response);
+//
+//        }
+//        
 
-        forward = "cliente.jsp";
+        String forward = "cliente.jsp";
 
-        String action = request.getParameter("action");
+        List<Cliente> lista = ClienteDAO.listarCliente();
+        request.setAttribute("clientes", lista);
 
-        if (action.equalsIgnoreCase("excluir")) {
-            int id = Integer.parseInt(request.getParameter("id"));
-            boolean excliu = ClienteDAO.excluirCliente(id);
-
-            String url = "";
-            if (excliu) {
-                url = "/sucesso.jsp";
-            } else {
-                url = "/erro.jsp";
-            }
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(forward);
-            dispatcher.forward(request, response);
-
-        }
-
-        if (action.equalsIgnoreCase("listarCliente")) {
-            forward = "cliente.jsp";
-            List<Cliente> lista = ClienteDAO.listarCliente();
-            request.setAttribute("clientes", lista);
-
-            RequestDispatcher view = request.getRequestDispatcher(forward);
-            view.forward(request, response);
-        }
+        RequestDispatcher view = request.getRequestDispatcher(forward);
+        view.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        
 
         //int id = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");
