@@ -59,6 +59,8 @@
     <!-- responsive CSS
 		============================================ -->
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/stylish-portfolio.min.css" type="text/css"/>
+
     <!-- modernizr JS
 		============================================ -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
@@ -89,11 +91,11 @@
                                        <span class="mini-click-non">Cadastros</span>
                                     </a>
                                     <ul class="submenu-angle" aria-expanded="true">
-                                       <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
-                                    <li><a title="Cadastrar Produto" href="cadastrarProdutos.html"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
-                                    <li><a title="Cadastrar Filiais" href="cadastraFiliais.html"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-                                    
+                                        <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
+                                        <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
+                                        <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                        <li><a title="Cadastrar Funcionário" href="cadastrarFuncionarios.html"><span class="mini-sub-pro">Cadastrar Funcionários</span></a></li>
+                                        <li><a title="Cadastrar Filiais" href="cadastraFiliais.html"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
                                     </ul>
                             </li>
                                     
@@ -187,6 +189,9 @@
                                     <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Cadastro</a></li>
                                     
                                 </ul>
+                                <!-- Aqui no Form você deve chamar no action o seu servlet e colocar o metodo post nele, 
+                                               já que para cadastrar se trata de um post-->
+                                                <form name = "cadastro produto" action='CadastroProdutoServlet' method='post'>
                                 <div id="myTabContent" class="tab-content custom-product-edit">
                                     <div class="product-tab-list tab-pane fade active in" id="description">
                                         <div class="row">
@@ -194,23 +199,23 @@
                                                 <div class="review-content-section">
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Código">
+                                                        <input type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" disabled>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Nome do produto">
+                                                        <input type="text" class="form-control" placeholder="Nome do produto" name="nomeProduto" id="txtNome">
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Marca">
+                                                        <input type="text" class="form-control" placeholder="Marca" name="marca">
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Preço">
+                                                        <input type="text" class="form-control" placeholder="Preço" name="preco">
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Quantidade">
+                                                        <input type="text" class="form-control" placeholder="Quantidade" name="quantidade">
                                                     </div>
                                                     
                                                 </div>
@@ -237,6 +242,7 @@
                                     
                                 </div>
                             </div>
+                                                    </form>
                         </div>
                     </div>
                 </div>
@@ -268,7 +274,7 @@
                                     <td>$750</td>
                                     <td>3</td>
                                     <td>
-                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" onclick="alterarProduto()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                         <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                     </td>
                                 </tr>
@@ -416,6 +422,16 @@
     <!-- main JS
 		============================================ -->
     <script src="js/main.js"></script>
+    
+    <script>
+        function alterarProduto(){
+        document.getElementById("txtCodigo").value = document.getElementById("tdCodigo").textContent;
+        document.getElementById("txtNome").value = document.getElementById("tdNome").textContent;
+        document.getElementById("txtMarca").value = document.getElementById("tdMarca").textContent;
+        document.getElementById("txtPreco").value = document.getElementById("tdPreco").textContent;
+        document.getElementById("txtQuantidade").value = document.getElementById("tdQuantidade").textContent;
+        }                      
+    </script>
 </body>
 
 </html>
