@@ -21,66 +21,68 @@ import java.util.List;
  * @author Raul
  */
 public class ProdutoDao {
-   
-     public static boolean cadastrarProduto(Produto produto) {
+
+    public static boolean cadastrarProduto(Produto produto) {
         boolean cadastrou = false;
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
             String sql = "INSERT INTO produto VALUES (default,?,?,?,?)";
             PreparedStatement PreparedStatement = connection.prepareStatement(sql);
-            
+
             PreparedStatement.setString(1, produto.getNomeProduto());
             PreparedStatement.setString(2, produto.getMarca());
             PreparedStatement.setLong(3, (long) produto.getPreco());
-            PreparedStatement.setInt(4, (int) produto.getQuantidade());  
+            PreparedStatement.setInt(4, (int) produto.getQuantidade());
             PreparedStatement.execute();
             cadastrou = true;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-       return cadastrou;
+        return cadastrou;
     }
 
-    public static boolean alterarProduto(Produto produto, int codigo){
+    public static boolean alterarProduto(Produto produto, int codigo) {
         boolean alterou = false;
         Connection connection;
-        try{
+        try {
             connection = ConexaoDB.getConexao();
             String sql = "UPDATE produto SET nome = ?,marca = ?,preco = ?,quantidade = ? WHERE idProduto = ?";
             PreparedStatement PreparedStatement = connection.prepareStatement(sql);
-       
+
             PreparedStatement.setString(1, produto.getNomeProduto());
             PreparedStatement.setString(2, produto.getMarca());
             PreparedStatement.setLong(3, (long) produto.getPreco());
-            PreparedStatement.setInt(4, (int) produto.getQuantidade()); 
+            PreparedStatement.setInt(4, (int) produto.getQuantidade());
             PreparedStatement.setInt(4, codigo);
             PreparedStatement.execute();
             alterou = true;
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
-       return alterou;
+        return alterou;
     }
 
     public static boolean excluirProduto(int codigo) {
-        boolean excluiu = false;
         Connection connection;
-        try{
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        boolean excluiu = false;
+        try {
             connection = ConexaoDB.getConexao();
-            String sql = "DELETE FROM produto WHERE idProduto = ?";
-            PreparedStatement PreparedStatement = connection.prepareStatement(sql);
-            
-            PreparedStatement.setInt(1, codigo);
-            PreparedStatement.execute();
+            String sql = "delete  from produto where idproduto = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, codigo);
+            preparedStatement.execute();
             excluiu = true;
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
-       return excluiu;
+        return excluiu;
+
     }
-    
-    public static List<Produto> listarProduto(){
+
+    public static List<Produto> listarProduto() {
         Connection connection;
         PreparedStatement pstmt = null;
         ResultSet rs = null;

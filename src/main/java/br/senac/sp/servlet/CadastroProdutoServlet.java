@@ -26,10 +26,44 @@ public class CadastroProdutoServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String forward = "";
+        forward = "produto.jsp";
+
+        String action = request.getParameter("action");
+
+        if (action.equalsIgnoreCase("excluir")) {
+            forward = "/produto.jsp";
+            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            boolean excliu = ProdutoDao.excluirProduto(codigo);
+            String url = "";
+            if (excliu) {
+                url = "/sucesso.jsp";
+            } else {
+                url = "/erro.jsp";
+            }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+            dispatcher.forward(request, response);
+        }
+
+        if (action.equalsIgnoreCase("listarProduto")) {
+            forward = "produto.jsp";
+            List<Produto> lista = ProdutoDao.listarProduto();
+            request.setAttribute("produtos", lista);
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
+        }
         
         
         
-        List<Produto> lista = ProdutoDao.listarProduto();
+        
+        
+        
+        
+        
+        
+        
+        
+        /*List<Produto> lista = ProdutoDao.listarProduto();
         request.setAttribute("produtos", lista);
         
         String forward = "";
@@ -38,7 +72,7 @@ public class CadastroProdutoServlet extends HttpServlet{
         forward = "produto.jsp";
 
         RequestDispatcher view = request.getRequestDispatcher(forward);
-        view.forward(request, response);
+        view.forward(request, response);*/
  
     }
 
