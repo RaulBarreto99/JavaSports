@@ -22,7 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Raul
  */
 @WebServlet(name = "CadastroProdutoServlet", urlPatterns = {"/CadastroProdutoServlet"})
-public class CadastroProdutoServlet extends HttpServlet{
+public class CadastroProdutoServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -52,43 +53,20 @@ public class CadastroProdutoServlet extends HttpServlet{
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /*List<Produto> lista = ProdutoDao.listarProduto();
-        request.setAttribute("produtos", lista);
-        
-        String forward = "";
-        
-        
-        forward = "produto.jsp";
-
-        RequestDispatcher view = request.getRequestDispatcher(forward);
-        view.forward(request, response);*/
- 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         //String codigo = request.getParameter("codigo");
         String nomeProduto = request.getParameter("nomeProduto");
         String marca = request.getParameter("marca");
         String preco = request.getParameter("preco");
         String quantidade = request.getParameter("quantidade");
-        
 
         Produto produto = new Produto(nomeProduto, marca, Long.parseLong(preco), Integer.parseInt(quantidade));
-        
+
         boolean cadastrou = ProdutoDao.cadastrarProduto(produto);
         PrintWriter out = response.getWriter();
 
@@ -102,7 +80,6 @@ public class CadastroProdutoServlet extends HttpServlet{
         dispatcher.forward(request, response);
 
     }
-
 
     @Override
     public String getServletInfo() {

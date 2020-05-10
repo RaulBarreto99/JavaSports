@@ -210,7 +210,7 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" disabled>
+                                                                <input  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" disabled>
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
@@ -246,9 +246,9 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="text-center custom-pro-edt-ds">
-                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
-                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Alterar</button>
-                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
+                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnSalvar">Salvar</button>
+                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnAlterar" disabled="true">Alterar</button>
+                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light" id="btnLimpar">Limpar</button>
 
                                                     </div>
 
@@ -294,15 +294,15 @@
                                                     
                                                     <c:forEach items="${produtos}" var="produto">
                                                         
-                                                        <tr>
+                                                        <tr id="${produto.codigo}">
 
-                                                            <td><c:out value="${produto.codigo}"/></td>
-                                                            <td><c:out value="${produto.nomeProduto}"/></td>
-                                                            <td><c:out value="${produto.marca}"/></td>
-                                                            <td><c:out value="${produto.preco}"/></td>
-                                                            <td><c:out value="${produto.quantidade}"/></td>
+                                                            <td id="id${produto.codigo}"><c:out value="${produto.codigo}"/></td>
+                                                            <td id="nome${produto.codigo}"><c:out value="${produto.nomeProduto}"/></td>
+                                                            <td id="marca${produto.codigo}"><c:out value="${produto.marca}"/></td>
+                                                            <td id="preco${produto.codigo}"><c:out value="${produto.preco}"/></td>
+                                                            <td id="quantidade${produto.codigo}"><c:out value="${produto.quantidade}"/></td>
                                                             <td>
-                                                                <button data-toggle="tooltip" title="Alterar" class="pd-setting-ed" onclick="alterarProduto()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Alterar" onClick="preencher(${produto.codigo})" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                                 <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroProdutoServlet?action=excluir&codigo=${produto.codigo}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                             </td>
 
@@ -311,21 +311,27 @@
                                                 </tbody>
 
                                             </table>
-
-                                            <script>
-                                                function alterarProduto(){
-                                                    var products = document.querySelectorAll(".prod");
-                                                                                                       
-                                                    alert(products[0].querySelectorAll(".but")[0].value);
                                             
-                                                    alert(alunos[1].querySelector(".tdCodigo").textContent);
-                                                    alert(alunos[2]);
-                                                    document.getElementById("txtCodigo").value = document.getElementById("tdCodigo").textContent;
-                                                    document.getElementById("txtNome").value = document.getElementById("tblProduto").tabIndex;
-                                                    document.getElementById("txtMarca").value = document.getElementById("tdMarca").textContent;
-                                                    document.getElementById("txtPreco").value = document.getElementById("tdPreco").textContent;
-                                                    document.getElementById("txtQuantidade").value = document.getElementById("tdQuantidade").textContent;
+                                            
+                                            <script>
+                                                function preencher(id2){
+                                                   
+                                                    let id = document.getElementById("id"+id2);
+                                                    let nome = document.getElementById("nome"+id2);
+                                                    let marca = document.getElementById("marca"+id2);
+                                                    let preco = document.getElementById("preco"+id2);
+                                                    let quantidade = document.getElementById("quantidade"+id2);
+                                                    
+                                                    document.getElementById("txtCodigo").value = id.textContent;
+                                                    document.getElementById("txtNome").value = nome.textContent;
+                                                    document.getElementById("txtMarca").value = marca.textContent;
+                                                    document.getElementById("txtPreco").value = preco.textContent;
+                                                    document.getElementById("txtQuantidade").value = quantidade.textContent;
+                                                    
+                                                    document.getElementById("btnSalvar").disabled = true;
+                                                    document.getElementById("btnAlterar").disabled = false;
                                                 }
+                    
                                             </script>
                                         </div>
                                     </div>
