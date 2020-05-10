@@ -47,7 +47,7 @@ public class ClienteDAO {
             connection = ConexaoDB.getConexao();
             
             pstmt = connection.prepareStatement(
-                    "SELECT * FROM cliente ORDER BY ID_CLIENTE");
+                    "SELECT * FROM cliente ORDER BY id_cliente");
             
             rs = pstmt.executeQuery();
             
@@ -57,7 +57,7 @@ public class ClienteDAO {
                 
                 Cliente cliente = new Cliente();
                 
-                cliente.setId(rs.getInt("ID_CLIENTE"));
+                cliente.setId(rs.getInt("id_cliente"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setSobrenome(rs.getString("sobrenome"));
                 cliente.setDataNascimento(rs.getString("dataNascimento"));

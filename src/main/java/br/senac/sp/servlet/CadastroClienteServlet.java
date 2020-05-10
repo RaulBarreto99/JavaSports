@@ -49,49 +49,49 @@ public class CadastroClienteServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
         }
+
     }
 
-        @Override
-        protected void doPost
-        (HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-            //int id = Integer.parseInt(request.getParameter("id"));
-            String nome = request.getParameter("nome");
-            String sobrenome = request.getParameter("sobrenome");
-            String dataNascimento = request.getParameter("dataNascimento");
-            String cpf = request.getParameter("cpf");
-            String telefone = request.getParameter("telefone");
-            String sexo = request.getParameter("sexo");
+        String forward = "";
+        forward = "cliente.jsp";
 
-            Cliente cliente = new Cliente();
+        String nome = request.getParameter("nome");
+        String sobrenome = request.getParameter("sobrenome");
+        String dataNascimento = request.getParameter("dataNascimento");
+        String cpf = request.getParameter("cpf");
+        String telefone = request.getParameter("telefone");
+        String sexo = request.getParameter("sexo");
 
-            cliente.setNome(nome);
-            cliente.setSobrenome(sobrenome);
-            cliente.setDataNascimento(dataNascimento);
-            cliente.setCpf(cpf);
-            cliente.setTelefone(telefone);
-            cliente.setSexo(sexo);
+        Cliente cliente = new Cliente();
 
-            boolean cadastrou = ClienteDAO.cadastrarCliente(cliente);
-            PrintWriter out = response.getWriter();
+        cliente.setNome(nome);
+        cliente.setSobrenome(sobrenome);
+        cliente.setDataNascimento(dataNascimento);
+        cliente.setCpf(cpf);
+        cliente.setTelefone(telefone);
+        cliente.setSexo(sexo);
 
-            String url = "";
-            if (cadastrou) {
-                url = "/sucesso.jsp";
-            } else {
-                url = "/erro.jsp";
-            }
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-            dispatcher.forward(request, response);
+        boolean cadastrou = ClienteDAO.cadastrarCliente(cliente);
+        PrintWriter out = response.getWriter();
 
+        String url = "";
+        if (cadastrou) {
+            url = "/sucesso.jsp";
+        } else {
+            url = "/erro.jsp";
         }
-
-        @Override
-        public String getServletInfo
-        
-            () {
-        return "Short description";
-        }// </editor-fold>
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
 
     }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
