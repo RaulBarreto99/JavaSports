@@ -47,7 +47,7 @@ public class ClienteDAO {
             connection = ConexaoDB.getConexao();
             
             pstmt = connection.prepareStatement(
-                    "SELECT * FROM cliente ORDER BY id");
+                    "SELECT * FROM cliente ORDER BY ID_CLIENTE");
             
             rs = pstmt.executeQuery();
             
@@ -57,7 +57,7 @@ public class ClienteDAO {
                 
                 Cliente cliente = new Cliente();
                 
-                cliente.setId(rs.getInt("id"));
+                cliente.setId(rs.getInt("ID_CLIENTE"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setSobrenome(rs.getString("sobrenome"));
                 cliente.setDataNascimento(rs.getString("dataNascimento"));
@@ -85,7 +85,7 @@ public class ClienteDAO {
         boolean excluiu = false;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "delete  from cliente where id = ?";
+            String sql = "delete  from cliente where ID_CLIENTE = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             preparedStatement.execute();

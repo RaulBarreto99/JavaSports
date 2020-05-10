@@ -59,6 +59,7 @@ public class FilialDAO {
             pstmt = connection.prepareStatement(
                     "SELECT * FROM filial");
 
+
             rs = pstmt.executeQuery();
 
             List lista = new ArrayList<>();

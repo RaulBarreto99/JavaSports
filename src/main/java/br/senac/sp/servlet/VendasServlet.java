@@ -6,6 +6,7 @@
 package br.senac.sp.servlet;
 
 import br.senac.sp.dao.VendasDao;
+import br.senac.sp.entidade.ItemCarrinhoDto;
 import br.senac.sp.entidade.Produto;
 import br.senac.sp.entidade.Venda;
 import java.io.IOException;
@@ -28,17 +29,24 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "VendasServlet", urlPatterns = {"/VendasServlet"})
 public class VendasServlet extends HttpServlet {
 
-    private List<Produto> carrinho = new ArrayList<Produto>();
+    private List<ItemCarrinhoDto> carrinho;
     private List<Produto> produtos = new ArrayList<Produto>();
+    private double valorTotal = 0;
+    private int idIterativo;
+    private int idCliente;
+    private int idFilial;
 
     public VendasServlet() {
         VendasDao dao = new VendasDao();
         produtos = dao.getProdutos();
+        this.carrinho = new ArrayList<ItemCarrinhoDto>();
+        this.valorTotal = 0;
+        this.idIterativo = -1;
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        VendasDao dao = new VendasDao();
         String forward = "";
 
         String action = request.getParameter("action");
@@ -47,29 +55,16 @@ public class VendasServlet extends HttpServlet {
             if (action.equals("listarVendas")) {
                 forward = "/listarVendas.jsp";
 
-                Venda venda = new Venda();
+                List<Venda> vendas = dao.getVendas();
 
-                Produto produto = new Produto(1, "Arroz", "Camil", 10, 100);
-
-                System.out.println(action);
-                venda.setId(1);
-                venda.setIdCliente(1);
-                venda.setIdFilial(1);
-                venda.setValorTotal(100.0);
-                venda.setDataVenda(new Date());
-                venda.addProduto(produto);
-                venda.addProduto(produto);
-                venda.addProduto(produto);
-
-                request.setAttribute("vendas", Arrays.asList(venda, venda, venda));
-                request.setAttribute("produtos", Arrays.asList(produto, produto, produto));
-
+                request.setAttribute("vendas", vendas);
                 RequestDispatcher view = request.getRequestDispatcher(forward);
                 view.forward(request, response);
             }
         } catch (Exception e) {
             forward = "/cadastrarVenda.jsp";
-
+            request.setAttribute("valorTotal", 0.0);
+            request.setAttribute("produtos", this.produtos);
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
         }
@@ -81,20 +76,67 @@ public class VendasServlet extends HttpServlet {
 
         String action = request.getParameter("action");
 
-        int id = Integer.parseInt(request.getParameter("idProduto"));
-        int quantidade = Integer.parseInt(request.getParameter("quantidadeVendida"));
+        if (action.equals("adicionarAoCarrinho")) {
+            int id = Integer.parseInt(request.getParameter("idProduto"));
+            int quantidade = Integer.parseInt(request.getParameter("quantidadeVendida"));
 
-        for (Produto produto : this.produtos) {
+            
+            for (Produto produto : this.produtos) {
 
-            if (produto.getCodigo() == id) {
-                Produto produtoCarrinho = new Produto(id, produto.getNomeProduto(), produto.getMarca(), produto.getPreco(), quantidade);
-                this.carrinho.add(produtoCarrinho);
+                if (produto.getCodigo() == id) {
+                    this.valorTotal += (quantidade * produto.getPreco());
+                    this.idIterativo++;
+                    ItemCarrinhoDto produtoCarrinho = new ItemCarrinhoDto(this.idIterativo, id, produto.getNomeProduto(), produto.getMarca(), quantidade, produto.getPreco());
+                    this.carrinho.add(produtoCarrinho);
+                }
+
             }
 
+            this.idCliente = Integer.parseInt(request.getParameter("idCliente"));
+            this.idFilial = Integer.parseInt(request.getParameter("idFilial"));
+
+            request.setAttribute("valorTotal", this.valorTotal);
+            request.setAttribute("carrinho", this.carrinho);
+            
+            System.out.println(carrinho.toString()); 
+           
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarVenda.jsp");
+            view.forward(request, response);
+        } else if (action.equals("excluir")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+
+            ItemCarrinhoDto produtoRemovido = this.carrinho.get(id);
+            this.carrinho.remove(id);
+
+            this.valorTotal -= produtoRemovido.getValorTotalItem();
+
+            request.setAttribute("valorTotal", this.valorTotal);
+
+            request.setAttribute("carrinho", this.carrinho);
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarVenda.jsp");
+            view.forward(request, response);
+        } else if (action.equals("salvarVenda")) {
+            salvarVenda(request, response);
+
         }
-        request.setAttribute("carrinho", this.carrinho);
-        RequestDispatcher view = request.getRequestDispatcher("/cadastrarVenda.jsp");
+
+    }
+
+    private void salvarVenda(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        VendasDao dao = new VendasDao();
+
+        Venda venda = new Venda();
+
+        venda.setIdCliente(this.idCliente);
+        venda.setIdFilial(this.idFilial);
+        venda.setProdutosVendidos(this.carrinho);
+        venda.setValorTotal(this.valorTotal);
+
+        boolean retorno = dao.salvarVenda(venda);
+
+        RequestDispatcher view = request.getRequestDispatcher("/VendasServlet?action=listarVendas");
         view.forward(request, response);
+
     }
 
     @Override
