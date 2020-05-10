@@ -15,7 +15,7 @@ import java.util.List;
  * @author Ederson_Souza
  */
 public class ClienteDAO {
-
+    
     public static boolean cadastrarCliente(Cliente cliente) {
         boolean cadastrou = false;
         Connection connection;
@@ -36,27 +36,27 @@ public class ClienteDAO {
         }
         return cadastrou;
     }
-
+    
     public static List<Cliente> listarCliente() {
-
+        
         Connection connection;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-
+        
         try {
             connection = ConexaoDB.getConexao();
-
+            
             pstmt = connection.prepareStatement(
                     "SELECT * FROM cliente ORDER BY id");
-
+            
             rs = pstmt.executeQuery();
-
+            
             List lista = new ArrayList<>();
-
+            
             while (rs.next()) {
-
+                
                 Cliente cliente = new Cliente();
-
+                
                 cliente.setId(rs.getInt("id"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setSobrenome(rs.getString("sobrenome"));
@@ -64,17 +64,37 @@ public class ClienteDAO {
                 cliente.setCpf(rs.getString("cpf"));
                 cliente.setTelefone(rs.getString("telefone"));
                 cliente.setSexo(rs.getString("sexo"));
-
+                
                 lista.add(cliente);
-
+                
             }
-
+            
             return lista;
-
+            
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-
+            
         }
     }
+    
+    public static boolean excluirCliente(int id) {
+        Connection connection;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        boolean excluiu = false;
+        try {
+            connection = ConexaoDB.getConexao();
+            String sql = "delete  from cliente where id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.execute();
+            excluiu = true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return excluiu;
+        
+    }
+    
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.sp.entidade;
 
 /**
@@ -16,13 +11,16 @@ public class Produto {
     private double preco;
     private int quantidade;
     
-    public Produto(int codigo, String nomeProduto, String marca, double preco, int quantidade){
-        this.codigo = codigo;
+    public Produto(String nomeProduto, String marca, double preco, int quantidade){
         this.nomeProduto = nomeProduto;
         this.marca = marca;
         this.preco = preco;
         this.quantidade = quantidade;
         }
+
+    public Produto() {
+        
+    }
 
     public int getCodigo() {
         return codigo;

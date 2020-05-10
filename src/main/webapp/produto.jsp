@@ -1,10 +1,11 @@
 <%-- 
-    Document   : cliente
-    Created on : 01/05/2020, 13:50:58
-    Author     : ederson
+    Document   : produto
+    Created on : 06/05/2020, 09:06:07
+    Author     : Raul
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@ page contentType="text/html; charset=iso-8859-1" language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -99,11 +100,11 @@
                                     <span class="mini-click-non">Cadastros</span>
                                 </a>
                                 <ul class="submenu-angle" aria-expanded="true">
-                                   <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
-                                    <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>                                   
+                                    <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
+                                    <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProdutos"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
+                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                    <li><a title="Cadastrar Funcionário" href="cadastrarFuncionarios.html"><span class="mini-sub-pro">Cadastrar Funcionários</span></a></li>
                                     <li><a title="Cadastrar Filiais" href="cadastraFiliais.html"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-                                    
                                 </ul>
                             </li>
 
@@ -172,7 +173,7 @@
                                                     <i class="icon nalika-home"></i>
                                                 </div>
                                                 <div class="breadcomb-ctn">
-                                                    <h2>Cadastrar Clientes</h2>
+                                                    <h2>Cadastrar Produtos</h2>
 
                                                 </div>
                                             </div>
@@ -188,7 +189,7 @@
                 </div>
             </div>
             <!-- Single pro tab start-->
-            <div class="single-product-tab-area mg-b-30" >
+            <div class="single-product-tab-area mg-b-30">
                 <!-- Single pro tab review Start-->
                 <div class="single-pro-review-area">
                     <div class="container-fluid">
@@ -201,7 +202,7 @@
                                     </ul
                                     <!-- Aqui no Form você deve chamar no action o seu servlet e colocar o metodo post nele, 
                                     já que para cadastrar se trata de um post-->
-                                    <form name = "cadastro cliente" action='CadastroClienteServlet' method='post'>
+                                    <form name = "cadastro produto" action='CadastroProdutoServlet' method='post'>
                                         <div id="myTabContent" class="tab-content custom-product-edit">
                                             <div class="product-tab-list tab-pane fade active in" id="description">
                                                 <div class="row">
@@ -209,40 +210,24 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Id" name="id" disabled>
+                                                                <input  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" disabled>
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Nome" name="nome">
+                                                                <input type="text" class="form-control" placeholder="Nome do produto" name="nomeProduto" id="txtNome">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome">
+                                                                <input type="text" class="form-control" placeholder="Marca" name="marca" id="txtMarca">
                                                             </div>
-
                                                             <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="date" class="form-control" placeholder="Data de nascimento" name="dataNascimento">
-                                                            </div>
-
-
-
-                                                            <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="CPF" name="cpf">
+                                                                <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Telefone" name="telefone">
+                                                                <input type="text" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
                                                             </div>
-
-                                                            <select name="sexo" class="form-control pro-edt-select form-control-primary" name = "sexo">
-                                                                <option value="Masculino">Masculino</option>
-                                                                <option value="Feminino">Feminino</option>
-
-                                                            </select>
-                                                            <br>
-
 
                                                         </div>
                                                     </div>
@@ -261,9 +246,9 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="text-center custom-pro-edt-ds">
-                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
-                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Alterar</button>
-                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
+                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnSalvar">Salvar</button>
+                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnAlterar" disabled="true">Alterar</button>
+                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light" id="btnLimpar">Limpar</button>
 
                                                     </div>
 
@@ -288,39 +273,37 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="product-status-wrap">
-                                            <h4>Lista de clientes cadastrados</h4>
+                                            <h4>Lista de produtos cadastrados</h4>
 
-                                            <table onload="CadastroClienteServlet" method="GET">
+                                            <table id="tblProduto" onload="CadastroProdutoServlet" method="GET">
                                                 <thead>
-                                                <tr>
-                                                    <th>Id</th>
-                                                    <th>Nome</th>
-                                                    <th>Sobrenome</th>
-                                                    <th>Data</th>
-                                                    <th>Cpf</th>
-                                                    <th>Telefone</th>
-                                                    <th>Sexo</th>
-                                                    <th>Ação</th>
+                                                    <tr>
+                                                        <th>Código</th>
+                                                        <th>Nome do produto</th>
+                                                        <th>Marca</th>
+                                                        <th>Preço</th>
+                                                        <th>Quantidade</th>
+                                                        <th>Ação</th>
 
 
-                                                </tr>
+                                                    </tr>
                                                 </thead>
-                                                
-                                                
-                                                <tbody>
-                                                    <c:forEach items="${clientes}" var="cliente">
-                                                        <tr>
 
-                                                            <td><c:out value="${cliente.id}"/></td>
-                                                            <td><c:out value="${cliente.nome}"/></td>
-                                                            <td><c:out value="${cliente.sobrenome}"/></td>
-                                                            <td><c:out value="${cliente.dataNascimento}"/></td>
-                                                            <td><c:out value="${cliente.cpf}"/></td>
-                                                            <td><c:out value="${cliente.telefone}"/></td>
-                                                            <td><c:out value="${cliente.sexo}"/></td>
+
+                                                <tbody>
+                                                    
+                                                    <c:forEach items="${produtos}" var="produto">
+                                                        
+                                                        <tr id="${produto.codigo}">
+
+                                                            <td id="id${produto.codigo}"><c:out value="${produto.codigo}"/></td>
+                                                            <td id="nome${produto.codigo}"><c:out value="${produto.nomeProduto}"/></td>
+                                                            <td id="marca${produto.codigo}"><c:out value="${produto.marca}"/></td>
+                                                            <td id="preco${produto.codigo}"><c:out value="${produto.preco}"/></td>
+                                                            <td id="quantidade${produto.codigo}"><c:out value="${produto.quantidade}"/></td>
                                                             <td>
-                                                                <button data-toggle="tooltip" title="Preencher" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                                <button data-toggle="tooltip" title="Excluir" onClick="javascript:window.location='CadastroClienteServlet?action=excluir&id=${cliente.id}'"class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Alterar" onClick="preencher(${produto.codigo})" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroProdutoServlet?action=excluir&codigo=${produto.codigo}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                             </td>
 
                                                         </tr>
@@ -329,6 +312,27 @@
 
                                             </table>
                                             
+                                            
+                                            <script>
+                                                function preencher(id2){
+                                                   
+                                                    let id = document.getElementById("id"+id2);
+                                                    let nome = document.getElementById("nome"+id2);
+                                                    let marca = document.getElementById("marca"+id2);
+                                                    let preco = document.getElementById("preco"+id2);
+                                                    let quantidade = document.getElementById("quantidade"+id2);
+                                                    
+                                                    document.getElementById("txtCodigo").value = id.textContent;
+                                                    document.getElementById("txtNome").value = nome.textContent;
+                                                    document.getElementById("txtMarca").value = marca.textContent;
+                                                    document.getElementById("txtPreco").value = preco.textContent;
+                                                    document.getElementById("txtQuantidade").value = quantidade.textContent;
+                                                    
+                                                    document.getElementById("btnSalvar").disabled = true;
+                                                    document.getElementById("btnAlterar").disabled = false;
+                                                }
+                    
+                                            </script>
                                         </div>
                                     </div>
                                 </div>

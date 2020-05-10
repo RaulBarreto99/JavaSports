@@ -1,4 +1,11 @@
-<!doctype html>
+<%-- 
+    Document   : filialjsp
+    Created on : 07/05/2020, 19:02:57
+    Author     : Lucas
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
@@ -89,17 +96,10 @@
                                        <span class="mini-click-non">Cadastros</span>
                                     </a>
                                     <ul class="submenu-angle" aria-expanded="true">
-<<<<<<< HEAD
                                         <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
-                                        <li><a title="Cadastrar Produto" href="cadastrarProdutos.html"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
+                                        <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
                                         <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
                                         <li><a title="Cadastrar Filiais" href="cadastraFiliais.html"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-=======
-                                    <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
-                                    <li><a title="Cadastrar Produto" href="cadastrarProdutos.html"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
-                                    <li><a title="Cadastrar Filiais" href="cadastraFiliais.html"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
->>>>>>> b639f9d9ef777de1655c976336ffa5315e6739a0
                                     </ul>
                             </li>
                                     
