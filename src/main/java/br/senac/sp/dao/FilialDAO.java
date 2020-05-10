@@ -57,7 +57,7 @@ public class FilialDAO {
             connection = ConexaoDB.getConexao();
 
             pstmt = connection.prepareStatement(
-                    "SELECT * FROM FILIAL ORDER BY id");
+                    "SELECT * FROM FILIAL ORDER BY ID_FILIAL");
 
             rs = pstmt.executeQuery();
 
@@ -67,11 +67,11 @@ public class FilialDAO {
 
                 Filial Filial = new Filial();
 
-                Filial.setId(rs.getInt("id"));
+                Filial.setId(rs.getInt("ID_FILIAL"));
                 Filial.setNome(rs.getString("nome"));
                 Filial.setBairro(rs.getString("bairro"));
                 Filial.setCep(rs.getString("cep"));
-                Filial.setPais(rs.getString("cpf"));
+                Filial.setPais(rs.getString("pais"));
                 Filial.setRua(rs.getString("rua"));
                 Filial.setComplemento(rs.getString("complemento"));
                 Filial.setNumero(rs.getString("numero"));

@@ -100,7 +100,7 @@
                                     <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
                                     <li><a title="Cadastrar Produto" href="cadastrarProdutos.html"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
                                     <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>                                   
-                                    <li><a title="Cadastrar Filiais" href="cadastraFiliais.html"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a title="Cadastrar Filiais" href="filial.jsp"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
                                 </ul>
                             </li>
 
@@ -162,7 +162,7 @@
                 <br/>
 
                 <!-- Single pro tab start-->
-                <form action="VendasServlet" method="post">
+                
                     <div class="container ml-5 mr-5" id="workspace">
                         <div class="single-product-tab-area mg-b-30">
                             <!-- Single pro tab review Start-->
@@ -172,91 +172,89 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-tab-pro-inner">
 
+                                                <form action="VendasServlet?action=adicionarAoCarrinho" method="post">
+                                                    <div id="myTabContent" class="tab-content custom-product-edit">
+                                                        
+                                                        <div class="alert alert-info" role="alert">
+                                                            A simple info alert—check it out!
+                                                        </div>
+                                                        <div class="product-tab-list tab-pane fade active in" id="description">                                                               
+                                                                <div class="row">
+                                                                    <ul id="myTab3" class="tab-review-design">
+                                                                        <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Informações Venda</a></li>
 
-                                                <div id="myTabContent" class="tab-content custom-product-edit">
-                                                    <div class="product-tab-list tab-pane fade active in" id="description">
-                                                        <form action="">        
-                                                            <div class="row">
-                                                                <ul id="myTab3" class="tab-review-design">
-                                                                    <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Informações Venda</a></li>
-
-                                                                </ul>
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                    <div class="review-content-section">
+                                                                    </ul>
+                                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                        <div class="review-content-section">
 
 
-                                                                        <div class="input-group mg-b-pro-edt">
-                                                                            <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                            <input type="text" class="form-control" name="idFilial" placeholder="Id da filial">
-                                                                        </div>
+                                                                            <div class="input-group mg-b-pro-edt">
+                                                                                <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                                                <input type="text" class="form-control" name="idFilial" placeholder="Id da filial">
+                                                                            </div>
 
-                                                                        <div class="input-group mg-b-pro-edt">
-                                                                            <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                            <input type="text" class="form-control" id="idCliente" name="idCliente" placeholder="Id do cliente">
+                                                                            <div class="input-group mg-b-pro-edt">
+                                                                                <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                                                <input type="text" class="form-control" id="idCliente" name="idCliente" placeholder="Id do cliente">
+                                                                            </div>
+
                                                                         </div>
 
                                                                     </div>
-
                                                                 </div>
-                                                            </div>
 
 
-                                                    </div>
-
+                                                        </div>
 
                                                     <br>
 
-                                                </div>
-
-                                                <div class="row">
-                                                    <ul id="myTab3" class="tab-review-design">
-                                                        <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Informações Produto</a></li>
-
-                                                    </ul>
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                        <div class="review-content-section">
-
-                                                            <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" name="idProduto" placeholder="Id da produto">
-                                                            </div>
-
-                                                            <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" name="quantidadeVendida" placeholder="Quantidade">
-                                                            </div>
-
-
-                                                            <input name="action" value="adicionarAoCarrinho" hidden="true"/>
-                                                        </div>
-
                                                     </div>
-                                                </div>
+
+                                                    <div class="row">
+                                                        <ul id="myTab3" class="tab-review-design">
+                                                            <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Informações Produto</a></li>
+
+                                                        </ul>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="review-content-section">
+
+                                                                <div class="input-group mg-b-pro-edt">
+                                                                    <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                                    <input type="text" class="form-control" name="idProduto" placeholder="Id da produto">
+                                                                </div>
+
+                                                                <div class="input-group mg-b-pro-edt">
+                                                                    <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
+                                                                    <input type="text" class="form-control" name="quantidadeVendida" placeholder="Quantidade">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
 
                                                 <br>
 
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="text-center custom-pro-edt-ds">
-                                                            <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Adicionar no carrinho 
-                                                            </button>
-                                                            <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Limpar
-                                                            </button>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="text-center custom-pro-edt-ds">
+                                                                <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Adicionar no carrinho 
+                                                                </button>
+                                                                <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Limpar
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                <form/>
                                             </div>
 
                                         </div>
-
-
                                     </div>
                                 </div>
 
                             </div>
 
                         </div>
-                </form>
+                
                 <div class="product-status mg-b-30">
                     <div class="container-fluid">
                         <div class="row">

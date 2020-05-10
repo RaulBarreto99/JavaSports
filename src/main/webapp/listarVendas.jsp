@@ -99,8 +99,8 @@
                                 <ul<li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
                                     <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
                                     <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>                                   
-                                    <li><a title="Cadastrar Filiais" href="cadastraFiliais.html"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-                                    
+                                    <li><a title="Cadastrar Filiais" href="filial.jsp"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+
                                 </ul>
                             </li>
 
@@ -119,7 +119,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="logo-pro">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                                         </div>
                                         <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
                                             <div class="header-top-menu tabl-d-n">
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
@@ -144,177 +144,177 @@
                                                 <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                                     <li class="nav-item dropdown">
 
-                                                    
-
-
-                                                    <div role="menu" class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated zoomIn">
-
-
-                                                        <div class="tab-content custom-bdr-nt">
-                                                            <div id="Notes" class="tab-pane fade in active">
-                                                                <div class="notes-area-wrap">
-
-                                                                    <div class="notes-list-area notes-menu-scrollbar">
 
 
 
+                                                        <div role="menu" class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated zoomIn">
+
+
+                                                            <div class="tab-content custom-bdr-nt">
+                                                                <div id="Notes" class="tab-pane fade in active">
+                                                                    <div class="notes-area-wrap">
+
+                                                                        <div class="notes-list-area notes-menu-scrollbar">
+
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                    </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+
+                                                        <div class="breadcome-area">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                        <div class="breadcome-list">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                                    <div class="breadcomb-wp">
+                                                                                        <div class="breadcomb-icon">
+                                                                                            <i class="icon nalika-home"></i>
+                                                                                        </div>
+                                                                                        <div class="breadcomb-ctn">
+                                                                                            <h2>Cadastrar Vendas</h2>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                </li>
-                                                                </ul>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                                        </div>
+                                                        <!-- Single pro tab start-->
 
-                            <div class="breadcome-area">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="breadcome-list">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        <div class="breadcomb-wp">
-                                                            <div class="breadcomb-icon">
-                                                                <i class="icon nalika-home"></i>
-                                                            </div>
-                                                            <div class="breadcomb-ctn">
-                                                                <h2>Cadastrar Vendas</h2>
+                                                        <div class="container ml-5 mr-5" id="workspace">
+                                                            <div class="product-status mg-b-30">
+                                                                <div class="container-fluid">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                            <div class="product-status-wrap">
+                                                                                <h4>Lista de vendas</h4>
 
+                                                                                <table onload="VendasServlet" method="GET">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>Id da Venda</th>
+                                                                                            <th>Id do Cliente</th>
+                                                                                            <th>Nome da filial</th>
+                                                                                            <th>Valor Total</th>
+                                                                                            <th>Data da Venda</th>
+                                                                                            <th>Detalhar Venda</th>
+
+
+                                                                                        </tr>
+                                                                                    </thead>
+
+
+                                                                                    <tbody>
+                                                                                        <c:forEach items="${vendas}" var="venda">
+                                                                                            <tr>
+
+                                                                                                <td><c:out value="${venda.id}"/></td>
+                                                                                                <td><c:out value="${venda.idCliente}"/></td>
+                                                                                                <td><c:out value="${venda.idFilial}"/></td>
+                                                                                                <td><c:out value="${venda.valorTotal}"/></td>
+                                                                                                <td><c:out value="${venda.dataVenda}"/></td>
+
+                                                                                                <td>
+                                                                                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                                                </td>
+
+                                                                                            </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+
+                                                                                </table>
+
+                                                                                <div class="row m-t-xl">
+                                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-5">
+                                                                                        <div class="text-right custom-pro-edt-ds">
+                                                                                            <form action="VendasServlet">
+                                                                                                <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Nova Venda
+                                                                                                </button>
+                                                                                            </form>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single pro tab start-->
-
-                        <div class="container ml-5 mr-5" id="workspace">
-                            <div class="product-status mg-b-30">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="product-status-wrap">
-                                                <h4>Lista de vendas</h4>
-
-                                                <table onload="VendasServlet" method="GET">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Id da Venda</th>
-                                                            <th>Id do Cliente</th>
-                                                            <th>Nome da filial</th>
-                                                            <th>Valor Total</th>
-                                                            <th>Data da Venda</th>
-                                                            <th>Detalhar Venda</th>
-
-
-                                                        </tr>
-                                                    </thead>
-
-
-                                                    <tbody>
-                                                        <c:forEach items="${vendas}" var="venda">
-                                                            <tr>
-
-                                                                <td><c:out value="${venda.id}"/></td>
-                                                                <td><c:out value="${venda.idCliente}"/></td>
-                                                                <td><c:out value="${venda.idFilial}"/></td>
-                                                                <td><c:out value="${venda.valorTotal}"/></td>
-                                                                <td><c:out value="${venda.dataVenda}"/></td>
-
-                                                                <td>
-                                                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                                </td>
-
-                                                            </tr>
-                                                        </c:forEach>
-                                                    </tbody>
-
-                                                </table>
-
-                                                <div class="row m-t-xl">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-5">
-                                                        <div class="text-right custom-pro-edt-ds">
-                                                            <form action="VendasServlet">
-                                                                <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Nova Venda
-                                                                </button>
-                                                            </form>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- jquery
-                                ============================================ -->
-                    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-                    <!-- bootstrap JS
-                                ============================================ -->
-                    <script src="js/bootstrap.min.js"></script>
-                    <!-- wow JS
-                                ============================================ -->
-                    <script src="js/wow.min.js"></script>
-                    <!-- price-slider JS
-                                ============================================ -->
-                    <script src="js/jquery-price-slider.js"></script>
-                    <!-- meanmenu JS
-                                ============================================ -->
-                    <script src="js/jquery.meanmenu.js"></script>
-                    <!-- owl.carousel JS
-                                ============================================ -->
-                    <script src="js/owl.carousel.min.js"></script>
-                    <!-- sticky JS
-                                ============================================ -->
-                    <script src="js/jquery.sticky.js"></script>
-                    <!-- scrollUp JS
-                                ============================================ -->
-                    <script src="js/jquery.scrollUp.min.js"></script>
-                    <!-- mCustomScrollbar JS
-                                ============================================ -->
-                    <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-                    <script src="js/scrollbar/mCustomScrollbar-active.js"></script>
-                    <!-- metisMenu JS
-                                ============================================ -->
-                    <script src="js/metisMenu/metisMenu.min.js"></script>
-                    <script src="js/metisMenu/metisMenu-active.js"></script>
-                    <!-- morrisjs JS
-                                ============================================ -->
-                    <script src="js/sparkline/jquery.sparkline.min.js"></script>
-                    <script src="js/sparkline/jquery.charts-sparkline.js"></script>
-                    <!-- calendar JS
-                                ============================================ -->
-                    <script src="js/calendar/moment.min.js"></script>
-                    <script src="js/calendar/fullcalendar.min.js"></script>
-                    <script src="js/calendar/fullcalendar-active.js"></script>
-                    <!-- tab JS
-                                ============================================ -->
-                    <script src="js/tab.js"></script>
-                    <!-- plugins JS
-                                ============================================ -->
-                    <script src="js/plugins.js"></script>
-                    <!-- main JS
-                                ============================================ -->
-                    <script src="js/main.js"></script>
+                                                        <!-- jquery
+                                                                    ============================================ -->
+                                                        <script src="js/vendor/jquery-1.12.4.min.js"></script>
+                                                        <!-- bootstrap JS
+                                                                    ============================================ -->
+                                                        <script src="js/bootstrap.min.js"></script>
+                                                        <!-- wow JS
+                                                                    ============================================ -->
+                                                        <script src="js/wow.min.js"></script>
+                                                        <!-- price-slider JS
+                                                                    ============================================ -->
+                                                        <script src="js/jquery-price-slider.js"></script>
+                                                        <!-- meanmenu JS
+                                                                    ============================================ -->
+                                                        <script src="js/jquery.meanmenu.js"></script>
+                                                        <!-- owl.carousel JS
+                                                                    ============================================ -->
+                                                        <script src="js/owl.carousel.min.js"></script>
+                                                        <!-- sticky JS
+                                                                    ============================================ -->
+                                                        <script src="js/jquery.sticky.js"></script>
+                                                        <!-- scrollUp JS
+                                                                    ============================================ -->
+                                                        <script src="js/jquery.scrollUp.min.js"></script>
+                                                        <!-- mCustomScrollbar JS
+                                                                    ============================================ -->
+                                                        <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+                                                        <script src="js/scrollbar/mCustomScrollbar-active.js"></script>
+                                                        <!-- metisMenu JS
+                                                                    ============================================ -->
+                                                        <script src="js/metisMenu/metisMenu.min.js"></script>
+                                                        <script src="js/metisMenu/metisMenu-active.js"></script>
+                                                        <!-- morrisjs JS
+                                                                    ============================================ -->
+                                                        <script src="js/sparkline/jquery.sparkline.min.js"></script>
+                                                        <script src="js/sparkline/jquery.charts-sparkline.js"></script>
+                                                        <!-- calendar JS
+                                                                    ============================================ -->
+                                                        <script src="js/calendar/moment.min.js"></script>
+                                                        <script src="js/calendar/fullcalendar.min.js"></script>
+                                                        <script src="js/calendar/fullcalendar-active.js"></script>
+                                                        <!-- tab JS
+                                                                    ============================================ -->
+                                                        <script src="js/tab.js"></script>
+                                                        <!-- plugins JS
+                                                                    ============================================ -->
+                                                        <script src="js/plugins.js"></script>
+                                                        <!-- main JS
+                                                                    ============================================ -->
+                                                        <script src="js/main.js"></script>
 
-                    <script src="js/classes/VendasViewJS.js"></script>
-                    <script>
-                                                    let vendasViewJS = new VendasViewJS();
-                    </script>
-                    </body>
-                    </html>
+                                                        <script src="js/classes/VendasViewJS.js"></script>
+                                                        <script>
+                                                                                    let vendasViewJS = new VendasViewJS();
+                                                        </script>
+                                                        </body>
+                                                        </html>

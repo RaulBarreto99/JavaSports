@@ -36,7 +36,8 @@ public class VendasDao {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                Produto produto = new Produto(rs.getInt("idProduto"), rs.getString("nome"), rs.getString("marca"), rs.getDouble("preco"), rs.getInt("quantidade"));
+                Produto produto = new Produto(rs.getString("nome"), rs.getString("marca"), rs.getDouble("preco"), rs.getInt("quantidade"));
+                produto.setCodigo(rs.getInt("idProduto"));
                 produtos.add(produto);
 
             }

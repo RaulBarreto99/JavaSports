@@ -80,6 +80,7 @@ public class VendasServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("idProduto"));
             int quantidade = Integer.parseInt(request.getParameter("quantidadeVendida"));
 
+            
             for (Produto produto : this.produtos) {
 
                 if (produto.getCodigo() == id) {
@@ -96,6 +97,9 @@ public class VendasServlet extends HttpServlet {
 
             request.setAttribute("valorTotal", this.valorTotal);
             request.setAttribute("carrinho", this.carrinho);
+            
+            System.out.println(carrinho.toString()); 
+           
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarVenda.jsp");
             view.forward(request, response);
         } else if (action.equals("excluir")) {
