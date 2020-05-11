@@ -102,9 +102,8 @@
                                 <ul class="submenu-angle" aria-expanded="true">
                                     <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
                                     <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProdutos"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
-                                    <li><a title="Cadastrar Funcionário" href="cadastrarFuncionarios.html"><span class="mini-sub-pro">Cadastrar Funcionários</span></a></li>
-                                    <li><a title="Cadastrar Filiais" href="cadastraFiliais.html"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>                                 
+                                    <li><a title="Cadastrar Filiais" href="filial.jsp"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
                                 </ul>
                             </li>
 
@@ -229,7 +228,10 @@
                                                                 <input type="text" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
                                                             </div>
                                                             
+
                                                             <input type="text" name="action" id="action" hidden="true">
+                                                            
+
 
                                                         </div>
                                                     </div>
@@ -331,6 +333,7 @@
                                                     document.getElementById("txtMarca").value = marca.textContent;
                                                     document.getElementById("txtPreco").value = preco.textContent;
                                                     document.getElementById("txtQuantidade").value = quantidade.textContent;
+                                                    document.getElementByName("action").value = "alterar";
                                                     
                                                     document.getElementById("btnSalvar").disabled = true;
                                                     document.getElementById("btnAlterar").disabled = false;

@@ -86,7 +86,7 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                        <a href="#"><img src="img/notification/4.jpg" alt="" /></a>
+                        <a  href="#"><img src="img/notification/4.jpg" alt="" /></a>
                         <h2>Java <span class="min-dtn">Sports</span></h2>
                     </div>
                 </div>
@@ -100,9 +100,9 @@
                                 </a>
                                 <ul class="submenu-angle" aria-expanded="true">
                                    <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
-                                    <li><a title="Cadastrar Produto" href="cadastrarProdutos.html"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
-                                    <li><a title="Cadastrar Filiais" href="cadastraFiliais.html"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
+                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>                                   
+                                    <li><a title="Cadastrar Filiais" href="filial.jsp"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
                                     
                                 </ul>
                             </li>
@@ -201,7 +201,7 @@
                                     </ul
                                     <!-- Aqui no Form você deve chamar no action o seu servlet e colocar o metodo post nele, 
                                     já que para cadastrar se trata de um post-->
-                                    <form name = "cadastro cliente" action='CadastroClienteServlet' method='post'>
+                                    <form name = "cadastrar" action='CadastroClienteServlet' method='post' id="cadastrar">
                                         <div id="myTabContent" class="tab-content custom-product-edit">
                                             <div class="product-tab-list tab-pane fade active in" id="description">
                                                 <div class="row">
@@ -209,34 +209,34 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Id" name="id" disabled>
+                                                                <input type="text" class="form-control" placeholder="Id" name="id" readonly = "true" id="txtid">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Nome" name="nome">
+                                                                <input type="text" class="form-control" placeholder="Nome" name="nome" id="txtnome">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome">
+                                                                <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome" id="txtsobrenome">
                                                             </div>
 
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="date" class="form-control" placeholder="Data de nascimento" name="dataNascimento">
+                                                                <input type="date" class="form-control" placeholder="Data de nascimento" name="dataNascimento" id="txtdata">
                                                             </div>
 
 
 
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="CPF" name="cpf">
+                                                                <input type="text" class="form-control" placeholder="CPF" name="cpf" id="txtcpf">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Telefone" name="telefone">
+                                                                <input type="text" class="form-control" placeholder="Telefone" name="telefone" id="txttelefone">
                                                             </div>
 
-                                                            <select name="sexo" class="form-control pro-edt-select form-control-primary" name = "sexo">
+                                                            <select name="sexo" class="form-control pro-edt-select form-control-primary" name = "sexo" id="txtsexo">
                                                                 <option value="Masculino">Masculino</option>
                                                                 <option value="Feminino">Feminino</option>
 
@@ -261,12 +261,13 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="text-center custom-pro-edt-ds">
+                                                        <input type="hidden" name="action" value="cadastrar" id="action">
                                                         <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
+                                                        <input type="hidden" name="action" value="alterar" id="action">
                                                         <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Alterar</button>
                                                         <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
-
                                                     </div>
-
+                                                   
                                                 </div>
 
                                             </div>
@@ -309,17 +310,18 @@
                                                 
                                                 <tbody>
                                                     <c:forEach items="${clientes}" var="cliente">
-                                                        <tr>
+                                                        <tr id="${cliente.id}">
+                                                            
 
-                                                            <td><c:out value="${cliente.id}"/></td>
-                                                            <td><c:out value="${cliente.nome}"/></td>
-                                                            <td><c:out value="${cliente.sobrenome}"/></td>
-                                                            <td><c:out value="${cliente.dataNascimento}"/></td>
-                                                            <td><c:out value="${cliente.cpf}"/></td>
-                                                            <td><c:out value="${cliente.telefone}"/></td>
-                                                            <td><c:out value="${cliente.sexo}"/></td>
+                                                            <td id="id${cliente.id}"><c:out value="${cliente.id}"/></td>
+                                                            <td id="nome${cliente.id}"><c:out value="${cliente.nome}"/></td>
+                                                            <td id="sobrenome${cliente.id}"><c:out value="${cliente.sobrenome}"/></td>
+                                                            <td id="dataNascimento${cliente.id}"><c:out value="${cliente.dataNascimento}"/></td>
+                                                            <td id="cpf${cliente.id}"><c:out value="${cliente.cpf}"/></td>
+                                                            <td id="telefone${cliente.id}"><c:out value="${cliente.telefone}"/></td>
+                                                            <td id="sexo${cliente.id}"><c:out value="${cliente.sexo}"/></td>
                                                             <td>
-                                                                <button data-toggle="tooltip" title="Preencher" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Prencher" onClick="preencher(${cliente.id})" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                                 <button data-toggle="tooltip" title="Excluir" onClick="javascript:window.location='CadastroClienteServlet?action=excluir&id=${cliente.id}'"class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                             </td>
 
@@ -328,6 +330,29 @@
                                                 </tbody>
 
                                             </table>
+                                            <script>
+                                                function preencher(id2){
+                        let id =  document.getElementById("id"+id2);
+                        let nome = document.getElementById("nome"+id2);
+                        let sobrenome = document.getElementById("sobrenome"+id2);
+                        let dataNascimento = document.getElementById("dataNascimento"+id2);
+                        let cpf = document.getElementById("cpf"+id2);
+                        let telefone = document.getElementById("telefone"+id2);
+                        let sexo = document.getElementById("sexo"+id2);
+                        
+                        
+                        
+                         
+                        document.getElementById("txtid").value = id.textContent;
+                         document.getElementById("txtnome").value = nome.textContent;
+                         document.getElementById("txtsobrenome").value = sobrenome.textContent;
+                         document.getElementById("txtdata").value = dataNascimento.textContent;
+                         document.getElementById("txtcpf").value = cpf.textContent;
+                         document.getElementById("txttelefone").value = telefone.textContent;
+                         document.getElementById("txtsexo").value = sexo.textContent;
+                        document.getElementById("action").value = "alterar";
+                                                }
+                         </script>
                                             
                                         </div>
                                     </div>
@@ -397,6 +422,8 @@
                     <!-- main JS
                                 ============================================ -->
                     <script src="js/main.js"></script>
+
+                    
                     </body>
 
                     </html>

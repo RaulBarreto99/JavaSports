@@ -5,6 +5,7 @@
  */
 package br.senac.sp.entidade;
 
+import br.senac.sp.dto.ItemCarrinhoDto;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,42 +16,42 @@ import java.util.List;
  * @author lucas
  */
 public class Venda {
-    private int id;
-    private List<Produto> produtosVendidos = new ArrayList<>();
-    private int idCliente;
-    private int idFilial;
+    private long id;
+    private List<ItemCarrinhoDto> produtosVendidos = new ArrayList<>();
+    private long idCliente;
+    private long idFilial;
     private double valorTotal;
     private Date dataVenda;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public List<Produto> getProdutosVendidos() {
+    public List<ItemCarrinhoDto> getProdutosVendidos() {
         return produtosVendidos;
     }
 
-    public void addProduto(Produto produto) {
-        this.produtosVendidos.add(produto);
+    public void setProdutosVendidos(List<ItemCarrinhoDto> produtosVendidos) {
+        this.produtosVendidos = produtosVendidos;
     }
 
-    public int getIdCliente() {
+    public long getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(long idCliente) {
         this.idCliente = idCliente;
     }
 
-    public int getIdFilial() {
+    public long getIdFilial() {
         return idFilial;
     }
 
-    public void setIdFilial(int idFilial) {
+    public void setIdFilial(long idFilial) {
         this.idFilial = idFilial;
     }
 
@@ -73,6 +74,10 @@ public class Venda {
     @Override
     public String toString() {
         return super.toString(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void addProdutos(List<ItemCarrinhoDto> produtos) {
+        this.produtosVendidos = produtos;
     }
        
 }
