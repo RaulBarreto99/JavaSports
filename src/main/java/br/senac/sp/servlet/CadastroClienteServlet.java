@@ -57,8 +57,45 @@ public class CadastroClienteServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String forward = "";
-        forward = "cliente.jsp";
+      
+        String action = request.getParameter("action");
 
+        if (action.equalsIgnoreCase("alterar")) {
+            
+            forward = "cliente.jsp";
+            int id = Integer.parseInt(request.getParameter("id"));
+            String nome = request.getParameter("nome");
+            String sobrenome = request.getParameter("sobrenome");
+            String dataNascimento = request.getParameter("dataNascimento");
+            String cpf = request.getParameter("cpf");
+            String telefone = request.getParameter("telefone");
+            String sexo = request.getParameter("sexo");
+
+            Cliente cliente = new Cliente();
+            
+            
+            cliente.setId(id);
+            cliente.setNome(nome);
+            cliente.setSobrenome(sobrenome);
+            cliente.setDataNascimento(dataNascimento);
+            cliente.setCpf(cpf);
+            cliente.setTelefone(telefone);
+            cliente.setSexo(sexo);
+
+            boolean alterou = ClienteDAO.alterarCliente(cliente);
+            PrintWriter out = response.getWriter();
+
+            String url = "";
+            if (alterou) {
+                url = "/sucesso.jsp";
+            } else {
+                url = "/erro.jsp";
+            }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+            dispatcher.forward(request, response);
+
+        }else{
+        
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String dataNascimento = request.getParameter("dataNascimento");
@@ -87,6 +124,7 @@ public class CadastroClienteServlet extends HttpServlet {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
 
+    }
     }
 
     @Override

@@ -201,7 +201,7 @@
                                     </ul
                                     <!-- Aqui no Form você deve chamar no action o seu servlet e colocar o metodo post nele, 
                                     já que para cadastrar se trata de um post-->
-                                    <form name = "cadastro cliente" action='CadastroClienteServlet' method='post'>
+                                    <form name = "cadastrar" action='CadastroClienteServlet' method='post' id="cadastrar">
                                         <div id="myTabContent" class="tab-content custom-product-edit">
                                             <div class="product-tab-list tab-pane fade active in" id="description">
                                                 <div class="row">
@@ -209,7 +209,7 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Id" name="id" disabled id="txtid">
+                                                                <input type="text" class="form-control" placeholder="Id" name="id" readonly = "true" id="txtid">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
@@ -261,12 +261,13 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="text-center custom-pro-edt-ds">
+                                                        <input type="hidden" name="action" value="cadastrar" id="action">
                                                         <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
-                                                        <input type="hidden" name="action" value="alterar">
-                                                        <button type="submit" onClick="javascript:window.location='CadastroClienteServlet?action=alterar&id=${id}'"class="btn btn-ctl-bt waves-effect waves-light m-r-10">Alterar</button>
+                                                        <input type="hidden" name="action" value="alterar" id="action">
+                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Alterar</button>
                                                         <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
                                                     </div>
-
+                                                   
                                                 </div>
 
                                             </div>
@@ -349,7 +350,7 @@
                          document.getElementById("txtcpf").value = cpf.textContent;
                          document.getElementById("txttelefone").value = telefone.textContent;
                          document.getElementById("txtsexo").value = sexo.textContent;
-                        
+                        document.getElementById("action").value = "alterar";
                                                 }
                          </script>
                                             

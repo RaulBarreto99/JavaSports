@@ -96,5 +96,27 @@ public class ClienteDAO {
         return excluiu;
         
     }
+
+    public static boolean alterarCliente(Cliente cliente) {
+          boolean alterou = false;
+        Connection connection;
+        try {
+            connection = ConexaoDB.getConexao();
+            String sql = "update cliente set nome = ?, sobrenome = ?, dataNascimento = ?,cpf = ?,telefone = ?, sexo = ? where ID_CLIENTE = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, cliente.getNome());
+            preparedStatement.setString(2, cliente.getSobrenome());
+            preparedStatement.setString(3, cliente.getDataNascimento());
+            preparedStatement.setString(4, cliente.getCpf());
+            preparedStatement.setString(5, cliente.getTelefone());
+            preparedStatement.setString(6, cliente.getSexo());
+            preparedStatement.setInt(7, cliente.getId());
+            preparedStatement.executeUpdate();
+            alterou = true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return alterou;
+    }
     
 }
