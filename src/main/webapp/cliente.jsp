@@ -265,9 +265,21 @@
                                                         <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
                                                         <input type="hidden" name="action" value="alterar" id="action">
                                                         <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Alterar</button>
-                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
+                                                        <button type="button" onClick="limpar()"class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
                                                     </div>
-                                                   
+                                                    <script>
+                                                        function limpar(){
+                                
+                                document.getElementById("txtid").value = "";
+                                 document.getElementById("txtnome").value = "";
+                                 document.getElementById("txtsobrenome").value = "";
+                                 document.getElementById("txtdata").value = "";
+                                 document.getElementById("txtcpf").value = "";
+                                 document.getElementById("txttelefone").value = "";
+                                
+                                
+                                                        }
+                                 </script>
                                                 </div>
 
                                             </div>
