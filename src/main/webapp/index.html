@@ -590,7 +590,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="curved-line-chart" class="flot-chart-sts flot-chart curved-chart-statistic"></div>
+                                <!--<div id="curved-line-chart" class="flot-chart-sts flot-chart curved-chart-statistic"></div>-->
+                                <canvas id="relVendas"></canvas>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -664,7 +665,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="line-chart" class="flot-chart flot-chart-sts line-chart-statistic"></div>
+                                            <!--<div id="line-chart" class="flot-chart flot-chart-sts line-chart-statistic"></div>-->
+                                            <canvas id="relaturamento"></canvas>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -842,6 +844,12 @@
                     <!-- main JS
                                 ============================================ -->
                     <script src="js/main.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+                    <script src="./js/grafico-api/chartjs.js"></script>
+                    <script>
+                        montarGrafico('relVendas', 'bar');
+                        montarGrafico('relFaturamento', 'line');
+                    </script>
                     </body>
 
                     </html>
