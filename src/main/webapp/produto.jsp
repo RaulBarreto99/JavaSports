@@ -227,6 +227,8 @@
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
                                                                 <input type="text" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
                                                             </div>
+                                                            
+                                                            <input name="action" value="${action}">
 
                                                         </div>
                                                     </div>
@@ -326,6 +328,7 @@
                                                     document.getElementById("txtMarca").value = marca.textContent;
                                                     document.getElementById("txtPreco").value = preco.textContent;
                                                     document.getElementById("txtQuantidade").value = quantidade.textContent;
+                                                    document.getElementByName("action").value = "alterar";
                                                     
                                                     document.getElementById("btnSalvar").disabled = true;
                                                     document.getElementById("btnAlterar").disabled = false;
