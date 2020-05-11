@@ -3,7 +3,7 @@
     Created on : 07/05/2020, 19:02:57
     Author     : Lucas
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -99,7 +99,7 @@
                                     <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
                                     <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
                                     <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
-                                    <li><a title="Cadastrar Filiais" href="filial.jsp"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a title="Cadastrar Filiais" href="CadastroFilialServlet?action=listarFilial"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
 
                                 </ul>
                             </li>
@@ -286,98 +286,48 @@
                                 <div class="product-status-wrap">
                                     <h4>Lista de filiais cadastradas</h4>
 
-                                    <table>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Nome</th>
-                                            <th>CEP</th>
-                                            <th>Número</th>
-                                            <th>Telefone</th>
-                                            <th>Ação</th>
+                                    <table onload="CadastroFilialServlet" method="GET">
+                                                <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Nome</th>
+                                                    <th>bairro</th>
+                                                    <th>cep</th>
+                                                    <th>pais</th>
+                                                    <th>rua</th>
+                                                    <th>complemento</th>
+                                                    <th>numero</th>
+                                                    <th>uf</th>
+                                                    <th>cidade</th>
+                                                </tr>
+                                                </thead>
+                                                
+                                                
+                                                <tbody>
+                                                    <c:forEach items="${filiais}" var="filial">
+                                                        <tr>
 
-                                        </tr>
-                                        <tr>
+                                                            <td><c:out value="${filial.id}"/></td>
+                                                            <td><c:out value="${filial.nome}"/></td>
+                                                            <td><c:out value="${filial.bairro}"/></td>
+                                                            <td><c:out value="${filial.cep}"/></td>
+                                                            <td><c:out value="${filial.pais}"/></td>
+                                                            <td><c:out value="${filial.rua}"/></td>
+                                                            <td><c:out value="${filial.complemento}"/></td>
+                                                            <td><c:out value="${filial.numero}"/></td>
+                                                            <td><c:out value="${filial.uf}"/></td>
+                                                            <td><c:out value="${filial.cidade}"/></td>
+                                                            <td>
+                                                                <button data-toggle="tooltip" title="Preencher" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Excluir" onclick = "javascript:window.location='CadastroFilialServlet?action=excluir&id=${filial.id}'"class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                            </td>
 
-                                            <td>1</td>
-                                            <td>Filial 1</td>
-                                            <td>111111</td>
-                                            <td>212</td>
-                                            <td>444444444</td>
-                                            <td>
-                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
 
-                                            <td>2</td>
-                                            <td>Filial 2</td>
-                                            <td>111111</td>
-                                            <td>212</td>
-                                            <td>444444444</td>
-                                            <td>
-                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td>3</td>
-                                            <td>Filial 3</td>
-                                            <td>111111</td>
-                                            <td>212</td>
-                                            <td>444444444</td>
-                                            <td>
-                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td>4</td>
-                                            <td>Filial 4</td>
-                                            <td>111111</td>
-                                            <td>212</td>
-                                            <td>444444444</td>
-                                            <td>
-                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td>5</td>
-                                            <td>Filial 5</td>
-                                            <td>111111</td>
-                                            <td>212</td>
-                                            <td>444444444</td>
-                                            <td>
-                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td>6</td>
-                                            <td>Filial 6</td>
-                                            <td>111111</td>
-                                            <td>212</td>
-                                            <td>444444444</td>
-                                            <td>
-                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <div class="custom-pagination">
-                                        <ul class="pagination">
-                                            <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
-                                        </ul>
-                                    </div>
+                                            </table>
+                                    
                                 </div>
                             </div>
                         </div>
