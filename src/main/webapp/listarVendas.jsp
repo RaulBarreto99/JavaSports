@@ -88,7 +88,8 @@
                         <h2>Java <span class="min-dtn">Sports</span></h2>
                     </div>
                 </div>
-                <div class="left-custom-menu-adp-wrap comment-scrollbar">
+    
+<div class="left-custom-menu-adp-wrap comment-scrollbar">
                     <nav class="sidebar-nav left-sidebar-menu-pro">
                         <ul class="metismenu" id="menu1">
                             <li class="active">
@@ -104,13 +105,20 @@
                                 </ul>
                             </li>
 
+
                             <li id="removable">
                                 <a class="has-arrow" href="estoque.html" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
+
 
                             </li>
                         </ul>
                     </nav>
                 </div>
+
+
+
+
+
             </nav>
         </div>
         <!-- Start Welcome area -->
