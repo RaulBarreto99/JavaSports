@@ -57,7 +57,7 @@ public class FilialDAO {
             connection = ConexaoDB.getConexao();
 
             pstmt = connection.prepareStatement(
-                    "SELECT * FROM filial");
+                    "SELECT * FROM filial ORDER BY id");
 
 
             rs = pstmt.executeQuery();
@@ -68,7 +68,7 @@ public class FilialDAO {
 
                 Filial Filial = new Filial();
 
-                Filial.setId(rs.getInt("idproduto"));
+                Filial.setId(rs.getInt("id"));
                 Filial.setNome(rs.getString("nome"));
                 Filial.setBairro(rs.getString("bairro"));
                 Filial.setCep(rs.getString("cep"));
@@ -88,6 +88,26 @@ public class FilialDAO {
             return null;
 
         }
+    }
+    
+    public static boolean excluirFilial(int id) {
+        Connection connection;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        
+        boolean excluiu = false;
+        try {
+            connection = ConexaoDB.getConexao();
+            String sql = "delete from filial where id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.execute();
+            excluiu = true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return excluiu;
+
     }
 
 }

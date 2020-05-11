@@ -5,8 +5,6 @@ package br.senac.sp.servlet;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import br.senac.sp.dao.ClienteDAO;
 import br.senac.sp.dao.FilialDAO;
 import br.senac.sp.entidade.Cliente;
@@ -27,20 +25,38 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "CadastroFilialServlet", urlPatterns = {"/CadastroFilialServlet"})
 public class CadastroFilialServlet extends HttpServlet {
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-       String forward = "";
-        
+        String forward = "";
         forward = "filial.jsp";
 
-        List<Filial> lista = FilialDAO.listarFilial();
-        request.setAttribute("fliais", lista);
+        String action = request.getParameter("action");
 
-        RequestDispatcher view = request.getRequestDispatcher(forward);
-        view.forward(request, response);
+        if (action.equalsIgnoreCase("listarfilial")) {
+            forward = "/filial.jsp";
+
+            List<Filial> lista = FilialDAO.listarFilial();
+            request.setAttribute("filiais", lista);
+
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
+        }
+        
+        if (action.equalsIgnoreCase("excluir")) {
+            forward = "/filial.jsp";
+            int id = Integer.parseInt(request.getParameter("id"));
+            boolean excliu = FilialDAO.excluirFilial(id);
+            String url = "";
+            if (excliu) {
+                url = "/sucesso.jsp";
+            } else {
+                url = "/erro.jsp";
+            }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+            dispatcher.forward(request, response);
+        }
     }
 
     @Override
@@ -58,20 +74,18 @@ public class CadastroFilialServlet extends HttpServlet {
         String numero = request.getParameter("Numero");
         String Complemento = request.getParameter("Complemento");
 
+        Filial filial = new Filial();
 
-       Filial filial = new Filial();
+        filial.setNome(nome);
+        filial.setBairro(bairro);
+        filial.setCep(cep);
+        filial.setCidade(cidade);
+        filial.setComplemento(Complemento);
+        filial.setNumero(numero);
+        filial.setRua(rua);
+        filial.setUf(uf);
+        filial.setPais(pais);
 
-       filial.setNome(nome);
-       filial.setBairro(bairro);
-       filial.setCep(cep);
-       filial.setCidade(cidade);
-       filial.setComplemento(Complemento);
-       filial.setNumero(numero);
-       filial.setRua(rua);
-       filial.setUf(uf);
-       filial.setPais(pais);
-        
-       
         boolean cadastrou = FilialDAO.cadastrarFilial(filial);
         PrintWriter out = response.getWriter();
 
@@ -86,7 +100,6 @@ public class CadastroFilialServlet extends HttpServlet {
 
     }
 
-   
     @Override
     public String getServletInfo() {
         return "Short description";
