@@ -58,27 +58,51 @@ public class CadastroProdutoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String action = request.getParameter("action");
 
-        //String codigo = request.getParameter("codigo");
-        String nomeProduto = request.getParameter("nomeProduto");
-        String marca = request.getParameter("marca");
-        String preco = request.getParameter("preco");
-        String quantidade = request.getParameter("quantidade");
+        if (action.equalsIgnoreCase("alterar")) {
+            String codigo = request.getParameter("codigo");
+            System.out.println("SDDCBDUCYKBWUICBWEICUBWENC: "+codigo);
+            String nomeProduto = request.getParameter("nomeProduto");
+            String marca = request.getParameter("marca");
+            String preco = request.getParameter("preco");
+            String quantidade = request.getParameter("quantidade");
+            
+            Produto produto = new Produto(nomeProduto, marca, Long.parseLong(preco), Integer.parseInt(quantidade));
 
-        Produto produto = new Produto(nomeProduto, marca, Long.parseLong(preco), Integer.parseInt(quantidade));
+            boolean cadastrou = ProdutoDao.alterarProduto(produto, Integer.parseInt(codigo));
+            PrintWriter out = response.getWriter();
 
-        boolean cadastrou = ProdutoDao.cadastrarProduto(produto);
-        PrintWriter out = response.getWriter();
+            String url = "";
+            if (cadastrou) {
+                url = "/sucesso.jsp";
+            } else {
+                url = "/erro.jsp";
+            }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+            dispatcher.forward(request, response);
+        } else if (action.equalsIgnoreCase("")) {
 
-        String url = "";
-        if (cadastrou) {
-            url = "/sucesso.jsp";
-        } else {
-            url = "/erro.jsp";
+            //String codigo = request.getParameter("codigo");
+            String nomeProduto = request.getParameter("nomeProduto");
+            String marca = request.getParameter("marca");
+            String preco = request.getParameter("preco");
+            String quantidade = request.getParameter("quantidade");
+
+            Produto produto = new Produto(nomeProduto, marca, Long.parseLong(preco), Integer.parseInt(quantidade));
+
+            boolean cadastrou = ProdutoDao.cadastrarProduto(produto);
+            PrintWriter out = response.getWriter();
+
+            String url = "";
+            if (cadastrou) {
+                url = "/sucesso.jsp";
+            } else {
+                url = "/erro.jsp";
+            }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+            dispatcher.forward(request, response);
         }
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
-
     }
 
     @Override
