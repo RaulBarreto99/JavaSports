@@ -109,5 +109,34 @@ public class FilialDAO {
         return excluiu;
 
     }
+    
+     public static boolean alterarFilial(Filial filial, int Id) {
+        boolean alterou = false;
+        Connection connection;
+        try {
+            connection = ConexaoDB.getConexao();
+            String sql = "update filial set nome = ?, bairro = ?, cep = ?, pais = ?, rua = ?,complemento = ?, numero = ?, uf = ?, cidade = ? where id = ?";
+            
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            
+            preparedStatement.setString(1, filial.getNome());
+            preparedStatement.setString(2, filial.getBairro());
+            preparedStatement.setString(3, filial.getCep());
+            preparedStatement.setString(4, filial.getPais());
+            preparedStatement.setString(5, filial.getRua());
+            preparedStatement.setString(6, filial.getComplemento());
+            preparedStatement.setString(7, filial.getNumero());
+            preparedStatement.setString(8, filial.getUf());
+            preparedStatement.setString(9, filial.getCidade());
+            preparedStatement.setInt(10, Id);
+
+            preparedStatement.execute();
+            alterou = true;
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return alterou;
+    }
 
 }

@@ -43,7 +43,7 @@ public class CadastroFilialServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
         }
-        
+
         if (action.equalsIgnoreCase("excluir")) {
             forward = "/filial.jsp";
             int id = Integer.parseInt(request.getParameter("id"));
@@ -63,40 +63,71 @@ public class CadastroFilialServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //int id = Integer.parseInt(request.getParameter("id"));
-        String nome = request.getParameter("NomeFilial");
-        String cep = request.getParameter("CEP");
-        String pais = request.getParameter("Pais");
-        String cidade = request.getParameter("Cidade");
-        String uf = request.getParameter("UF");
-        String bairro = request.getParameter("Bairro");
-        String rua = request.getParameter("Rua");
-        String numero = request.getParameter("Numero");
-        String Complemento = request.getParameter("Complemento");
+        String action = request.getParameter("action");
 
-        Filial filial = new Filial();
+        if (action.equalsIgnoreCase("alterar")) {
+            
+            String id = request.getParameter("Id");
+            String nome = request.getParameter("NomeFilial");
+            String cep = request.getParameter("CEP");
+            String pais = request.getParameter("Pais");
+            String cidade = request.getParameter("Cidade");
+            String uf = request.getParameter("UF");
+            String bairro = request.getParameter("Bairro");
+            String rua = request.getParameter("Rua");
+            String numero = request.getParameter("Numero");
+            String complemento = request.getParameter("Complemento");
 
-        filial.setNome(nome);
-        filial.setBairro(bairro);
-        filial.setCep(cep);
-        filial.setCidade(cidade);
-        filial.setComplemento(Complemento);
-        filial.setNumero(numero);
-        filial.setRua(rua);
-        filial.setUf(uf);
-        filial.setPais(pais);
+            Filial filial = new Filial(nome, cep, pais,cidade,uf,bairro,rua,numero,complemento);
 
-        boolean cadastrou = FilialDAO.cadastrarFilial(filial);
-        PrintWriter out = response.getWriter();
+            boolean cadastrou = FilialDAO.alterarFilial(filial, Integer.parseInt(id));
+            PrintWriter out = response.getWriter();
 
-        String url = "";
-        if (cadastrou) {
-            url = "/sucesso.jsp";
-        } else {
-            url = "/erro.jsp";
+            String url = "";
+            if (cadastrou) {
+                url = "/sucesso.jsp";
+            } else {
+                url = "/erro.jsp";
+            }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+            dispatcher.forward(request, response);
+            
+        } else if (action.equalsIgnoreCase("")) {
+
+            String nome = request.getParameter("NomeFilial");
+            String cep = request.getParameter("CEP");
+            String pais = request.getParameter("Pais");
+            String cidade = request.getParameter("Cidade");
+            String uf = request.getParameter("UF");
+            String bairro = request.getParameter("Bairro");
+            String rua = request.getParameter("Rua");
+            String numero = request.getParameter("Numero");
+            String Complemento = request.getParameter("Complemento");
+
+            Filial filial = new Filial();
+
+            filial.setNome(nome);
+            filial.setBairro(bairro);
+            filial.setCep(cep);
+            filial.setCidade(cidade);
+            filial.setComplemento(Complemento);
+            filial.setNumero(numero);
+            filial.setRua(rua);
+            filial.setUf(uf);
+            filial.setPais(pais);
+
+            boolean cadastrou = FilialDAO.cadastrarFilial(filial);
+            PrintWriter out = response.getWriter();
+
+            String url = "";
+            if (cadastrou) {
+                url = "/sucesso.jsp";
+            } else {
+                url = "/erro.jsp";
+            }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+            dispatcher.forward(request, response);
         }
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
 
     }
 

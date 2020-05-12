@@ -206,44 +206,45 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Id da filial" name="Id" disabled>
+                                                                <input type="text" class="form-control" placeholder="Id da filial" name="Id" readonly="true" id="ID">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Nome da filial" name="NomeFilial">
+                                                                <input type="text" class="form-control" placeholder="Nome da filial" name="NomeFilial" id="NOME" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Cep" name="CEP">
+                                                                <input type="text" class="form-control" placeholder="Cep" name="CEP" id="CEP">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Pais" name="Pais">
+                                                                <input type="text" class="form-control" placeholder="Pais" name="Pais" id="PAIS">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Cidade" name="Cidade">
+                                                                <input type="text" class="form-control" placeholder="Cidade" name="Cidade" id="CIDADE">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Uf" name="UF">
+                                                                <input type="text" class="form-control" placeholder="Uf" name="UF" id="UF">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Bairro" name="Bairro">
+                                                                <input type="text" class="form-control" placeholder="Bairro" name="Bairro" id="BAIRRO">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Rua" name="Rua">
+                                                                <input type="text" class="form-control" placeholder="Rua" name="Rua" id="RUA">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Número" name="Numero">
+                                                                <input type="text" class="form-control" placeholder="Número" name="Numero" id="NUMERO">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Complemento" name="Complemento">
+                                                                <input type="text" class="form-control" placeholder="Complemento" name="Complemento" id="COMPLEMENTO">
                                                             </div>
+                                                            <input type="text" name="action" id="action" hidden="true">
 
                                                         </div>
                                                     </div>
@@ -252,7 +253,7 @@
                                                             <div class="text-center custom-pro-edt-ds">
                                                                 <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
                                                                 <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
-
+                                                                <button type="submit" class="btn btn-ctl-bt waves-effect waves-light">Alterar</button>
                                                             </div>
 
                                                         </div>
@@ -305,20 +306,20 @@
                                                 
                                                 <tbody>
                                                     <c:forEach items="${filiais}" var="filial">
-                                                        <tr>
+                                                        <tr id="${filial.id}">
 
-                                                            <td><c:out value="${filial.id}"/></td>
-                                                            <td><c:out value="${filial.nome}"/></td>
-                                                            <td><c:out value="${filial.bairro}"/></td>
-                                                            <td><c:out value="${filial.cep}"/></td>
-                                                            <td><c:out value="${filial.pais}"/></td>
-                                                            <td><c:out value="${filial.rua}"/></td>
-                                                            <td><c:out value="${filial.complemento}"/></td>
-                                                            <td><c:out value="${filial.numero}"/></td>
-                                                            <td><c:out value="${filial.uf}"/></td>
-                                                            <td><c:out value="${filial.cidade}"/></td>
+                                                            <td id="id${filial.id}"><c:out value="${filial.id}"/></td>
+                                                            <td id="nome${filial.id}"><c:out value="${filial.nome}"/></td>
+                                                            <td id="bairro${filial.id}"><c:out value="${filial.bairro}"/></td>
+                                                            <td id="cep${filial.id}"><c:out value="${filial.cep}"/></td>
+                                                            <td id="pais${filial.id}"><c:out value="${filial.pais}"/></td>
+                                                            <td id="rua${filial.id}"><c:out value="${filial.rua}"/></td>
+                                                            <td id="complemento${filial.id}"><c:out value="${filial.complemento}"/></td>
+                                                            <td id="numero${filial.id}"><c:out value="${filial.numero}"/></td>
+                                                            <td id="uf${filial.id}"><c:out value="${filial.uf}"/></td>
+                                                            <td id="cidade${filial.id}"><c:out value="${filial.cidade}"/></td>
                                                             <td>
-                                                                <button data-toggle="tooltip" title="Preencher" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Preencher" onclick="preencher(${filial.id})"class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                                 <button data-toggle="tooltip" title="Excluir" onclick = "javascript:window.location='CadastroFilialServlet?action=excluir&id=${filial.id}'"class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                             </td>
 
@@ -327,6 +328,36 @@
                                                 </tbody>
 
                                             </table>
+                                    
+                                    <script>
+                                                function preencher(id2){
+                                                   
+                                                    let id = document.getElementById("id"+id2);
+                                                    let nome = document.getElementById("nome"+id2);
+                                                    let bairro = document.getElementById("bairro"+id2);
+                                                    let cep = document.getElementById("cep"+id2);
+                                                    let pais = document.getElementById("pais"+id2);
+                                                    let rua = document.getElementById("rua"+id2);
+                                                    let complemento = document.getElementById("complemento"+id2);
+                                                    let numero = document.getElementById("numero"+id2);
+                                                    let uf = document.getElementById("uf"+id2);
+                                                    let cidade = document.getElementById("cidade"+id2);
+                                                    
+                                                    document.getElementById("ID").value = id.textContent;
+                                                    document.getElementById("NOME").value = nome.textContent;
+                                                    document.getElementById("BAIRRO").value = bairro.textContent;
+                                                    document.getElementById("CEP").value = cep.textContent;
+                                                    document.getElementById("PAIS").value = pais.textContent;
+                                                    document.getElementById("RUA").value = rua.textContent;
+                                                    document.getElementById("COMPLEMENTO").value = complemento.textContent;
+                                                    document.getElementById("NUMERO").value = numero.textContent;
+                                                    document.getElementById("UF").value = uf.textContent;
+                                                    document.getElementById("CIDADE").value = cidade.textContent;
+                                                    
+                                                    document.getElementById("action").value = "alterar";
+                                                }
+                    
+                                            </script>
                                     
                                 </div>
                             </div>
