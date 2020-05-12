@@ -402,36 +402,22 @@
                                                     <tr id="${cliente.id}">
 
 
-                                                        <td id="id${cliente.id}">
-                                                            <c:out value="${cliente.id}" />
+                                                        <td id="id${cliente.id}"><c:out value="${cliente.id}"/>
                                                         </td>
-                                                        <td id="nome${cliente.id}">
-                                                            <c:out value="${cliente.nome}" />
+                                                        <td id="nome${cliente.id}"><c:out value="${cliente.nome}"/>
                                                         </td>
-                                                        <td id="sobrenome${cliente.id}">
-                                                            <c:out value="${cliente.sobrenome}" />
+                                                        <td id="sobrenome${cliente.id}"><c:out value="${cliente.sobrenome}"/>
                                                         </td>
-                                                        <td id="dataNascimento${cliente.id}">
-                                                            <c:out value="${cliente.dataNascimento}" />
+                                                        <td id="dataNascimento${cliente.id}"><c:out value="${cliente.dataNascimento}"/>
                                                         </td>
-                                                        <td id="cpf${cliente.id}">
-                                                            <c:out value="${cliente.cpf}" />
+                                                        <td id="cpf${cliente.id}"><c:out value="${cliente.cpf}" />
                                                         </td>
-                                                        <td id="telefone${cliente.id}">
-                                                            <c:out value="${cliente.telefone}" />
+                                                        <td id="telefone${cliente.id}"><c:out value="${cliente.telefone}"/>
                                                         </td>
-                                                        <td id="sexo${cliente.id}">
-                                                            <c:out value="${cliente.sexo}" />
-                                                        </td>
+                                                        <td id="sexo${cliente.id}"><c:out value="${cliente.sexo}"/></td>
                                                         <td>
-                                                            <button data-toggle="tooltip" title="Prencher"
-                                                                onClick="preencher(${cliente.id})"
-                                                                class="pd-setting-ed"><i class="fa fa-pencil-square-o"
-                                                                    aria-hidden="true"></i></button>
-                                                            <button data-toggle="tooltip" title="Excluir"
-                                                                onClick="javascript:window.location='CadastroClienteServlet?action=excluir&id=${cliente.id}'"
-                                                                class="pd-setting-ed"><i class="fa fa-trash-o"
-                                                                    aria-hidden="true"></i></button>
+                                                            <button data-toggle="tooltip" title="Prencher" onClick="preencher(${cliente.id})" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                            <button data-toggle="tooltip" title="Excluir" onClick="javascript:window.location='CadastroClienteServlet?action=excluir&id=${cliente.id}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                         </td>
 
                                                     </tr>

@@ -38,6 +38,8 @@ public class CadastroClienteServlet extends HttpServlet {
             } else {
                 url = "/erro.jsp";
             }
+            request.setAttribute("msgSucesso", "Cliente Excluido com sucesso");
+            request.setAttribute("forward", "/xNexus-java-sports/CadastroClienteServlet?action=listarCliente");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
         }
@@ -91,6 +93,8 @@ public class CadastroClienteServlet extends HttpServlet {
             } else {
                 url = "/erro.jsp";
             }
+            request.setAttribute("msgSucesso", "Cliente Alterado com Sucesso");
+            request.setAttribute("forward", "/xNexus-java-sports/CadastroClienteServlet?action=listarCliente");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
 
@@ -121,6 +125,8 @@ public class CadastroClienteServlet extends HttpServlet {
         } else {
             url = "/erro.jsp";
         }
+        request.setAttribute("msgSucesso", "Cliente Cadastrado com Sucesso");
+        request.setAttribute("forward", "/xNexus-java-sports/CadastroClienteServlet?action=listarCliente");
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
 
