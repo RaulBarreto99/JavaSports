@@ -25,7 +25,7 @@ create table "ROOT".PRODUTO(
 );
 
 create table "ROOT".FILIAL(
-	ID_FILIAL BIGINT not null primary key
+	IDFILIAL BIGINT not null primary key
         GENERATED ALWAYS AS IDENTITY
         (START WITH 1, INCREMENT BY 1),
     NOME VARCHAR(60),
