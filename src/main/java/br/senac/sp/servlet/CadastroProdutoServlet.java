@@ -68,7 +68,7 @@ public class CadastroProdutoServlet extends HttpServlet {
             String preco = request.getParameter("preco");
             String quantidade = request.getParameter("quantidade");
             
-            Produto produto = new Produto(nomeProduto, marca, Long.parseLong(preco), Integer.parseInt(quantidade));
+            Produto produto = new Produto(nomeProduto, marca, Double.parseDouble(preco), Integer.parseInt(quantidade));
 
             boolean cadastrou = ProdutoDao.alterarProduto(produto, Integer.parseInt(codigo));
             PrintWriter out = response.getWriter();
@@ -89,7 +89,7 @@ public class CadastroProdutoServlet extends HttpServlet {
             String preco = request.getParameter("preco");
             String quantidade = request.getParameter("quantidade");
 
-            Produto produto = new Produto(nomeProduto, marca, Long.parseLong(preco), Integer.parseInt(quantidade));
+            Produto produto = new Produto(nomeProduto, marca, Double.parseDouble(preco), Integer.parseInt(quantidade));
 
             boolean cadastrou = ProdutoDao.cadastrarProduto(produto);
             PrintWriter out = response.getWriter();

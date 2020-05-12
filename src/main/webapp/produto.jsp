@@ -102,8 +102,9 @@
                                 <ul class="submenu-angle" aria-expanded="true">
                                     <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
                                     <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProdutos"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>                                 
-                                    <li><a title="Cadastrar Filiais" href="filial.jsp"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                    <li><a title="Cadastrar Funcionário" href="cadastrarFuncionarios.html"><span class="mini-sub-pro">Cadastrar Funcionários</span></a></li>
+                                    <li><a title="Cadastrar Filiais" href="cadastraFiliais.html"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
                                 </ul>
                             </li>
 
@@ -209,29 +210,26 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" readonly="true">
+                                                                <input required="true"  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" readonly="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Nome do produto" name="nomeProduto" id="txtNome">
+                                                                <input required="true" type="text" class="form-control" placeholder="Nome do produto" name="nomeProduto" id="txtNome">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Marca" name="marca" id="txtMarca">
+                                                                <input required="true" type="text" class="form-control" placeholder="Marca" name="marca" id="txtMarca">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
+                                                                <input required="true" type="text" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
+                                                                <input required="true" type="text" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
                                                             </div>
                                                             
-
                                                             <input type="text" name="action" id="action" hidden="true">
-                                                            
-
 
                                                         </div>
                                                     </div>
@@ -252,7 +250,7 @@
                                                     <div class="text-center custom-pro-edt-ds">
                                                         <button type="submit"  class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnSalvar">Salvar</button>
                                                         <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnAlterar" disabled="true">Alterar</button>
-                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light" id="btnLimpar">Limpar</button>
+                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light" id="btnLimpar" onclick="limpar()">Limpar</button>
 
                                                     </div>
 
@@ -333,12 +331,17 @@
                                                     document.getElementById("txtMarca").value = marca.textContent;
                                                     document.getElementById("txtPreco").value = preco.textContent;
                                                     document.getElementById("txtQuantidade").value = quantidade.textContent;
-                                                    document.getElementByName("action").value = "alterar";
                                                     
                                                     document.getElementById("btnSalvar").disabled = true;
                                                     document.getElementById("btnAlterar").disabled = false;
                                                 }
-                    
+                                                
+                                                function limpar(){
+                                                    document.getElementById("txtNome").value = "";
+                                                    document.getElementById("txtMarca").value = "";
+                                                    document.getElementById("txtPreco").value = "";
+                                                    document.getElementById("txtQuantidade").value = "";
+                                                }
                                             </script>
                                         </div>
                                     </div>
