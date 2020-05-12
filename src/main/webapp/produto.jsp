@@ -209,7 +209,7 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" disabled>
+                                                                <input  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" readonly="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
@@ -227,6 +227,11 @@
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
                                                                 <input type="text" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
                                                             </div>
+                                                            
+
+                                                            <input type="text" name="action" id="action" hidden="true">
+                                                            
+
 
                                                         </div>
                                                     </div>
@@ -245,8 +250,8 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="text-center custom-pro-edt-ds">
-                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnSalvar">Salvar</button>
-                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnAlterar" disabled="true">Alterar</button>
+                                                        <button type="submit"  class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnSalvar">Salvar</button>
+                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnAlterar" disabled="true">Alterar</button>
                                                         <button type="button" class="btn btn-ctl-bt waves-effect waves-light" id="btnLimpar">Limpar</button>
 
                                                     </div>
@@ -313,7 +318,9 @@
                                             
                                             
                                             <script>
+                                                
                                                 function preencher(id2){
+                                                    document.getElementById("action").value = "alterar";
                                                    
                                                     let id = document.getElementById("id"+id2);
                                                     let nome = document.getElementById("nome"+id2);
@@ -326,6 +333,7 @@
                                                     document.getElementById("txtMarca").value = marca.textContent;
                                                     document.getElementById("txtPreco").value = preco.textContent;
                                                     document.getElementById("txtQuantidade").value = quantidade.textContent;
+                                                    document.getElementByName("action").value = "alterar";
                                                     
                                                     document.getElementById("btnSalvar").disabled = true;
                                                     document.getElementById("btnAlterar").disabled = false;

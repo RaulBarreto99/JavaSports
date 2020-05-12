@@ -54,7 +54,7 @@ public class ProdutoDao {
             PreparedStatement.setString(2, produto.getMarca());
             PreparedStatement.setLong(3, (long) produto.getPreco());
             PreparedStatement.setInt(4, (int) produto.getQuantidade());
-            PreparedStatement.setInt(4, codigo);
+            PreparedStatement.setInt(5, codigo);
             PreparedStatement.execute();
             alterou = true;
         } catch (SQLException ex) {
