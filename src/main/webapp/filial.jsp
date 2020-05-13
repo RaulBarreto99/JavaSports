@@ -214,35 +214,35 @@
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Cep" name="CEP" id="CEP">
+                                                                <input type="Number" class="form-control" placeholder="Cep" name="CEP" id="CEP" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Pais" name="Pais" id="PAIS">
+                                                                <input type="text" class="form-control" placeholder="Pais" name="Pais" id="PAIS" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Cidade" name="Cidade" id="CIDADE">
+                                                                <input type="text" class="form-control" placeholder="Cidade" name="Cidade" id="CIDADE"  required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Uf" name="UF" id="UF">
+                                                                <input type="text" class="form-control" placeholder="Uf" name="UF" id="UF" required="true" maxlength="2">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Bairro" name="Bairro" id="BAIRRO">
+                                                                <input type="text" class="form-control" placeholder="Bairro" name="Bairro" id="BAIRRO" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Rua" name="Rua" id="RUA">
+                                                                <input type="text" class="form-control" placeholder="Rua" name="Rua" id="RUA" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Número" name="Numero" id="NUMERO">
+                                                                <input type="text" class="form-control" placeholder="Número" name="Numero" id="NUMERO" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Complemento" name="Complemento" id="COMPLEMENTO">
+                                                                <input type="text" class="form-control" placeholder="Complemento" name="Complemento" id="COMPLEMENTO" required="true">
                                                             </div>
                                                             <input type="text" name="action" id="action" hidden="true">
 
@@ -252,7 +252,8 @@
                                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <div class="text-center custom-pro-edt-ds">
                                                                 <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
-                                                                <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
+                                                                <button type="button" onClick="limpar()"
+                                                        class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
                                                                 <button type="submit" class="btn btn-ctl-bt waves-effect waves-light">Alterar</button>
                                                             </div>
 
@@ -358,6 +359,24 @@
                                                 }
                     
                                             </script>
+                                            
+                                            <script>
+                                                    function limpar() {
+
+                                                    document.getElementById("ID").value = "";
+                                                    document.getElementById("NOME").value = "";
+                                                    document.getElementById("BAIRRO").value = "";
+                                                    document.getElementById("CEP").value = "";
+                                                    document.getElementById("PAIS").value = "";
+                                                    document.getElementById("RUA").value = "";
+                                                    document.getElementById("COMPLEMENTO").value = "";
+                                                    document.getElementById("NUMERO").value = "";
+                                                    document.getElementById("UF").value = "";
+                                                    document.getElementById("CIDADE").value = "";
+
+
+                                                    }
+                                                </script>
                                     
                                 </div>
                             </div>
