@@ -59,7 +59,7 @@ public class FilialDAO {
             pstmt = connection.prepareStatement(
 
              
-                    "SELECT * FROM filial ORDER BY idFilial");
+                    "SELECT * FROM filial ORDER BY ID_FILIAL");
 
 
             rs = pstmt.executeQuery();
@@ -71,7 +71,7 @@ public class FilialDAO {
                 Filial Filial = new Filial();
 
 
-                Filial.setId(rs.getInt("idFilial"));
+                Filial.setId(rs.getInt("ID_FILIAL"));
 
                 Filial.setNome(rs.getString("nome"));
                 Filial.setBairro(rs.getString("bairro"));
@@ -103,7 +103,7 @@ public class FilialDAO {
         try {
             connection = ConexaoDB.getConexao();
 
-            String sql = "delete from filial where idFilial = ?";
+            String sql = "delete from filial where ID_FILIAL = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
@@ -121,7 +121,7 @@ public class FilialDAO {
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "update filial set nome = ?, bairro = ?, cep = ?, pais = ?, rua = ?,complemento = ?, numero = ?, uf = ?, cidade = ? where idFilial = ?";
+            String sql = "update filial set nome = ?, bairro = ?, cep = ?, pais = ?, rua = ?,complemento = ?, numero = ?, uf = ?, cidade = ? where ID_FILIAL = ?";
             
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             
