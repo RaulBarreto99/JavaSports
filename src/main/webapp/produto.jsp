@@ -109,7 +109,7 @@
                             </li>
 
                             <li id="removable">
-                                <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
+                                <a class="has-arrow" href="estoque.html" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
 
                             </li>
                         </ul>
@@ -222,11 +222,11 @@
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                                                                                               <input required="true" type="number" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
+                                                                <input required="true" type="text" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                    <input required="true" type="number" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
+                                                                <input required="true" type="text" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
                                                             </div>
                                                             
                                                             <input type="text" name="action" id="action" hidden="true">
