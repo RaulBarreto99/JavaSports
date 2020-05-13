@@ -10,7 +10,7 @@
 <html>
 
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" lang="pt-br">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Xnexus</title>
         <meta name="description" content="">
@@ -99,8 +99,9 @@
                                 <ul class="submenu-angle" aria-expanded="true">
                                     <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
                                     <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>                                   
-                                    <li><a title="Cadastrar Filiais" href="filial.jsp"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                    <li><a title="Cadastrar Filiais" href="CadastroFilialServlet?action=listarFilial"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+
                                 </ul>
                             </li>
 
@@ -186,12 +187,12 @@
 
                                                                     <div class="input-group mg-b-pro-edt">
                                                                         <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                        <input type="text" class="form-control" name="idFilial" placeholder="Id da filial" value="${idFilial}">
+                                                                        <input type="number" class="form-control" name="idFilial" placeholder="Id da filial" value="${idFilial}" required="true" min="1">
                                                                     </div>
 
                                                                     <div class="input-group mg-b-pro-edt">
                                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                        <input type="text" class="form-control" id="idCliente" name="idCliente" placeholder="Id do cliente" value="${idCliente}">
+                                                                        <input type="number" class="form-control" id="idCliente" name="idCliente" placeholder="Id do cliente" value="${idCliente}" required="true" min="1">
                                                                     </div>
 
                                                                 </div>
@@ -216,8 +217,8 @@
 
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <select name="idProduto" class="form-control pro-edt-select form-control-primary">
-                                                                    <option value="teste">Selecione um produto</option>
+                                                                <select name="idProduto" class="form-control pro-edt-select form-control-primary" required="true">
+                                                                    <option value="">Selecione um produto</option>
                                                                     <c:forEach var="produto" items="${produtos}">
                                                                         <option value="${produto.codigo}">${produto.codigo} - ${produto.nomeProduto} - ${produto.marca}</option>
 
@@ -227,7 +228,7 @@
 
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" name="quantidadeVendida" placeholder="Quantidade">
+                                                                <input type="number" class="form-control" name="quantidadeVendida" placeholder="Quantidade" required="true" min="1">
                                                             </div>
 
                                                             <div class="input-group mg-b-pro-edt">
@@ -295,9 +296,8 @@
                                                         <td name="quantidade${item.idItemCarrinho}"><c:out value="${item.quantidade}"/></td>
 
                                                         <td>
-                                                            <form action="VendasServlet?id=${item.idItemCarrinho}&action=excluir" method="post">
-                                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed" type="submit" ><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                                            </form>
+                                                                <!--<button data-toggle="tooltip" title="Trash" class="pd-setting-ed" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>-->
+                                                                <a data-toggle="tooltip" title="Trash" class="pd-setting-ed" href="VendasServlet?id=${item.idItemCarrinho}&action=excluir"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -307,15 +307,15 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                       
+
                                         <br/>
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="text-center custom-pro-edt-ds">
                                                     <form action="VendasServlet?action=salvarVenda" method="post">
 
-                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar Venda
-                                                        </button>
+                                                        <a href="VendasServlet?action=salvarVenda"class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar Venda
+                                                        </a>
                                                     </form>
                                                 </div>
                                             </div>
