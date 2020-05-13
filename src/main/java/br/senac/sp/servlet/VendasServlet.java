@@ -64,6 +64,25 @@ public class VendasServlet extends HttpServlet {
                 request.setAttribute("vendas", vendas);
                 RequestDispatcher view = request.getRequestDispatcher(forward);
                 view.forward(request, response);
+            } else if (action.equals("excluir")) {
+                removerItem(request, response);
+            } else if (action.equals("salvarVenda")) {
+                try {
+                    salvarVenda(request, response);
+                } catch (ServletException ex) {
+                    request.setAttribute("msgErro", ex.getMessage());
+                    request.setAttribute("forward", "/xNexus-java-sports/VendasServlet");
+
+                    Logger.getLogger(VendasServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    RequestDispatcher view = request.getRequestDispatcher("/erro.jsp");
+                    try {
+                        view.forward(request, response);
+                        //Logger.getLogger(VendasServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (Exception ex1) {
+                        Logger.getLogger(VendasServlet.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                }
+
             }
         } catch (Exception e) {
             forward = "/cadastrarVenda.jsp";
@@ -85,15 +104,10 @@ public class VendasServlet extends HttpServlet {
 
             if (action.equals("adicionarAoCarrinho")) {
                 adicionarAoCarrinho(request, response);
-
-            } else if (action.equals("excluir")) {
-
-                removerItem(request, response);
-
-            } else if (action.equals("salvarVenda")) {
+            } /*else if (action.equals("salvarVenda")) {
                 salvarVenda(request, response);
 
-            } else if (action.equals("detalharVenda")) {
+            }*/ else if (action.equals("detalharVenda")) {
                 int id = Integer.parseInt(request.getParameter("id"));
 
                 VendaDetalhadaDto vendaDetalhada = dao.detalharVenda(id);
@@ -125,25 +139,52 @@ public class VendasServlet extends HttpServlet {
     }
 
     private void removerItem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
 
-        ItemCarrinhoDto produtoRemovido = this.carrinho.get(id);
-        this.carrinho.remove(id);
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
 
-        this.valorTotal -= produtoRemovido.getValorTotalItem();
+            int index = -1;
 
-        request.setAttribute("valorTotal", this.valorTotal);
+            for (int i = 0; i < this.carrinho.size(); i++) {
+                if (carrinho.get(i).getIdItemCarrinho() == id) {
+                    index = i;
+                }
+            }
 
-        request.setAttribute("carrinho", this.carrinho);
-        RequestDispatcher view = request.getRequestDispatcher("/cadastrarVenda.jsp");
-        view.include(request, response);
+            ItemCarrinhoDto produtoRemovido = this.carrinho.get(index);
+
+            this.carrinho.remove(index);
+
+            this.valorTotal -= produtoRemovido.getValorTotalItem();
+
+            request.setAttribute("idFilial", this.idFilial);
+            request.setAttribute("idCliente", this.idCliente);
+            request.setAttribute("produtos", this.produtos);
+            request.setAttribute("valorTotal", this.valorTotal);
+            request.setAttribute("carrinho", this.carrinho);
+
+            VendaDetalhadaDto v = new VendaDetalhadaDto();
+            v.setCarrinho(this.carrinho);
+            System.out.println(v.toString());
+
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarVenda.jsp");
+            view.forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void adicionarAoCarrinho(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.err.println(request.getParameter("idProduto"));
-        int id = Integer.parseInt(request.getParameter("idProduto"));
-        int quantidade = Integer.parseInt(request.getParameter("quantidadeVendida"));
+        int id = 0;
+        int quantidade = 0;
+        try {
+            id = Integer.parseInt(request.getParameter("idProduto"));
+            quantidade = Integer.parseInt(request.getParameter("quantidadeVendida"));
+        } catch (NumberFormatException ex) {
+            throw new ServletException("Quantidade não pode ser vazia.");
+        }
 
         String retornoValidacao = VendaValidate.validaCarrinho(quantidade, id);
         if (retornoValidacao.equals("")) {
@@ -171,6 +212,10 @@ public class VendasServlet extends HttpServlet {
 
         Venda venda = new Venda();
 
+        if (this.carrinho.size() == 0) {
+            throw new ServletException("O carrinho não pode estar vazio ao finalizar a venda.");
+        }
+
         venda.setIdCliente(this.idCliente);
         venda.setIdFilial(this.idFilial);
         venda.setProdutosVendidos(this.carrinho);
@@ -191,7 +236,7 @@ public class VendasServlet extends HttpServlet {
 
             request.setAttribute("msgErro", "Não foi possivel Cadastrar a nova venda.");
             request.setAttribute("forward", "/xNexus-java-sports/cadastrarVenda.jsp");
-            view.include(request, response);
+            view.forward(request, response);
         }
 
     }
@@ -208,31 +253,25 @@ public class VendasServlet extends HttpServlet {
 
     private ItemCarrinhoDto buscaProduto(int idProduto, int quantidade) throws ServletException {
         ItemCarrinhoDto itemCarrinho = null;
-        
+
         for (int i = 0; i < produtos.size(); i++) {
             if (produtos.get(i).getCodigo() == idProduto) {
                 this.valorTotal += (quantidade * produtos.get(i).getPreco());
-                
+
                 Produto produtoAtual = produtos.get(i);
-                
+
                 int novaQuantidade = produtoAtual.getQuantidade() - quantidade;
-                
-                if(novaQuantidade >= 0){
-                produtoAtual.setQuantidade(novaQuantidade);
-                produtos.set(i, produtoAtual);
-                this.idIterativo++;
-                itemCarrinho = new ItemCarrinhoDto(this.idIterativo, idProduto, produtoAtual.getNomeProduto(), produtoAtual.getMarca(), quantidade, produtoAtual.getPreco());
-                }else{
+
+                if (novaQuantidade >= 0) {
+                    produtoAtual.setQuantidade(novaQuantidade);
+                    produtos.set(i, produtoAtual);
+                    this.idIterativo++;
+                    itemCarrinho = new ItemCarrinhoDto(this.idIterativo, idProduto, produtoAtual.getNomeProduto(), produtoAtual.getMarca(), quantidade, produtoAtual.getPreco());
+                } else {
                     throw new ServletException("A Quantidade não Pode Ser Maior que a Disponivel no Estoque.");
                 }
-                
-                
+
             }
-        }
-        for (Produto produto : this.produtos) {
-
-            
-
         }
 
         return itemCarrinho;
