@@ -59,7 +59,7 @@ public class FilialDAO {
             pstmt = connection.prepareStatement(
 
              
-                    "SELECT * FROM filial ORDER BY id_Filial");
+                    "SELECT * FROM filial ORDER BY idFilial");
 
 
             rs = pstmt.executeQuery();
@@ -71,7 +71,7 @@ public class FilialDAO {
                 Filial Filial = new Filial();
 
 
-                Filial.setId(rs.getInt("id_Filial"));
+                Filial.setId(rs.getInt("idFilial"));
 
                 Filial.setNome(rs.getString("nome"));
                 Filial.setBairro(rs.getString("bairro"));

@@ -50,9 +50,13 @@ public class CadastroFilialServlet extends HttpServlet {
             boolean excliu = FilialDAO.excluirFilial(id);
             String url = "";
             if (excliu) {
+                request.setAttribute("msgSucesso", "Filial excluida com sucesso.");
+                request.setAttribute("forward", "CadastroFilialServlet?action=listarFilial");
                 url = "/sucesso.jsp";
             } else {
                 url = "/erro.jsp";
+                request.setAttribute("msgErro", "Não foi possivel excluir a filial.");
+                request.setAttribute("forward", "CadastroFilialServlet?action=listarFilial");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
@@ -85,9 +89,13 @@ public class CadastroFilialServlet extends HttpServlet {
 
             String url = "";
             if (cadastrou) {
+                request.setAttribute("msgSucesso", "Filial alterada com sucesso.");
+                request.setAttribute("forward", "CadastroFilialServlet?action=listarFilial");
                 url = "/sucesso.jsp";
             } else {
                 url = "/erro.jsp";
+                request.setAttribute("msgErro", "Não foi possivel alterar a filial.");
+                request.setAttribute("forward", "CadastroFilialServlet?action=listarFilial");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
@@ -121,9 +129,13 @@ public class CadastroFilialServlet extends HttpServlet {
 
             String url = "";
             if (cadastrou) {
+                request.setAttribute("msgSucesso", "Filial cadastrada com sucesso.");
+                request.setAttribute("forward", "CadastroFilialServlet?action=listarFilial");
                 url = "/sucesso.jsp";
             } else {
                 url = "/erro.jsp";
+                request.setAttribute("msgErro", "Não foi possivel cadastrar a filial.");
+                request.setAttribute("forward", "CadastroFilialServlet?action=listarFilial");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);

@@ -38,9 +38,13 @@ public class CadastroProdutoServlet extends HttpServlet {
             boolean excliu = ProdutoDao.excluirProduto(codigo);
             String url = "";
             if (excliu) {
+                request.setAttribute("msgSucesso", "Produto excluido com sucesso.");
+                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
                 url = "/sucesso.jsp";
             } else {
                 url = "/erro.jsp";
+                request.setAttribute("msgErro", "Não foi possivel excluir o produto.");
+                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
@@ -75,9 +79,13 @@ public class CadastroProdutoServlet extends HttpServlet {
 
             String url = "";
             if (cadastrou) {
+                request.setAttribute("msgSucesso", "Produto alterado com sucesso.");
+                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
                 url = "/sucesso.jsp";
             } else {
                 url = "/erro.jsp";
+                request.setAttribute("msgErro", "Não foi possivel alterar o produto.");
+                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
@@ -96,9 +104,13 @@ public class CadastroProdutoServlet extends HttpServlet {
 
             String url = "";
             if (cadastrou) {
+                request.setAttribute("msgSucesso", "Produto cadastro com sucesso.");
+                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
                 url = "/sucesso.jsp";
             } else {
                 url = "/erro.jsp";
+                request.setAttribute("msgErro", "Não foi possivel cadasrar o produto.");
+                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);

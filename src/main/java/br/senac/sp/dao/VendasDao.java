@@ -87,7 +87,7 @@ public class VendasDao {
         try {
             conexao = ConexaoDB.getConexao();
             
-            String sql = "SELECT V.ID_VENDA, C.NOME, C.SOBRENOME, F.NOME, V.DATA_VENDA, V.TOTAL FROM VENDA AS V INNER JOIN CLIENTE AS C ON(C.ID_CLIENTE = V.ID_CLIENTE) INNER JOIN FILIAL AS F ON (V.ID_FILIAL = F.ID_FILIAL) WHERE V.ID_VENDA = ?";
+            String sql = "SELECT V.ID_VENDA, C.NOME, C.SOBRENOME, F.NOME, V.DATA_VENDA, V.TOTAL FROM VENDA AS V INNER JOIN CLIENTE AS C ON(C.ID_CLIENTE = V.ID_CLIENTE) INNER JOIN FILIAL AS F ON (V.ID_FILIAL = F.IDFILIAL) WHERE V.ID_VENDA = ?";
         
             PreparedStatement st = conexao.prepareStatement(sql);
             st.setInt(1, id);
