@@ -66,7 +66,6 @@ public class CadastroProdutoServlet extends HttpServlet {
 
         if (action.equalsIgnoreCase("alterar")) {
             String codigo = request.getParameter("codigo");
-            System.out.println("SDDCBDUCYKBWUICBWEICUBWENC: "+codigo);
             String nomeProduto = request.getParameter("nomeProduto");
             String marca = request.getParameter("marca");
             String preco = request.getParameter("preco");

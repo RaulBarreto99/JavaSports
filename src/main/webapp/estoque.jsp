@@ -1,3 +1,9 @@
+<%-- 
+    Document   : estoque
+    Created on : 13/05/2020, 20:20:23
+    Author     : eders
+--%>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -188,7 +194,7 @@
                                 
                                     <th>Id</th>
                                     <th>Nome do produto</th>
-                                    <th>PreÃ§o</th>
+                                    <th>Preço</th>
                                     <th>Quantidade</th>
                                     
                                 </thead>
@@ -203,7 +209,7 @@
 									<li class="page-item"><a class="page-link" href="#">1</a></li>
 									<li class="page-item"><a class="page-link" href="#">2</a></li>
 									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">PrÃ³ximo</a></li>
+									<li class="page-item"><a class="page-link" href="#">Próximo</a></li>
 								</ul>
                             </div>
                         </div>
