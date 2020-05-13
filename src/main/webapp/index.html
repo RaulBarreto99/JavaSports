@@ -576,7 +576,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="caption pro-sl-hd">
-                                                <span class="caption-subject text-uppercase"><b>Relatório de vendas</b></span>
+                                                <span class="caption-subject text-uppercase"><b>Relatório de Clientes</b></span>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -596,15 +596,18 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                             <div class="white-box analytics-info-cs mg-b-30 res-mg-t-30">
-                                <h3 class="box-title">Total de vendas realizadas</h3>
+                                <h3 class="box-title">Quantidade de vendas realizadas</h3>
                                 <ul class="list-inline two-part-sp">
                                     <li>
                                         <div id="sparklinedash"></div>
                                     </li>
-                                    <li class="text-right sp-cn-r"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter sales-sts-ctn">8659</span></li>
+                                    <li class="text-right sp-cn-r">
+                                        <i class="fa fa-level-up" aria-hidden="true"></i> 
+                                        <span class="counter sales-sts-ctn" id="qtdVenda">0</span>
+                                    </li>
                                 </ul>
                             </div>
-                            <div class="white-box analytics-info-cs mg-b-30">
+                            <!--<div class="white-box analytics-info-cs mg-b-30">
                                 <h3 class="box-title">Total de vendas no mês</h3>
                                 <ul class="list-inline two-part-sp">
                                     <li>
@@ -612,23 +615,17 @@
                                     </li>
                                     <li class="text-right"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter sales-sts-ctn">7469</span></li>
                                 </ul>
-                            </div>
+                            </div>-->
                             <div class="white-box analytics-info-cs mg-b-30">
                                 <h3 class="box-title">Valor total de vendas R$</h3>
                                 <ul class="list-inline two-part-sp">
                                     <li>
                                         <div id="sparklinedash3"></div>
                                     </li>
-                                    <li class="text-right"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter sales-sts-ctn">6011</span></li>
-                                </ul>
-                            </div>
-                            <div class="white-box analytics-info-cs">
-                                <h3 class="box-title">Total de vendas no ano</h3>
-                                <ul class="list-inline two-part-sp">
-                                    <li>
-                                        <div id="sparklinedash4"></div>
+                                    <li class="text-right">
+                                        <i class="fa fa-level-up" aria-hidden="true"></i> 
+                                        <span class="counter sales-sts-ctn" id="valorVenda">0,00</span>
                                     </li>
-                                    <li class="text-right"><i class="fa fa-level-down" aria-hidden="true"></i> <span class="sales-sts-ctn">18%</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -669,8 +666,8 @@
                                             <canvas id="relFaturamento"></canvas>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                        <div class="analytics-rounded mg-b-30 res-mg-t-30">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="infoFaturamento">
+                                        <!--<div class="analytics-rounded mg-b-30 res-mg-t-30">
                                             <div class="analytics-rounded-content">
                                                 <h5>Faturamento da filial 1</h5>
                                                 <h2><span class="counter">1220</span></h2>
@@ -680,10 +677,56 @@
                                         <div class="analytics-rounded">
                                             <div class="analytics-rounded-content">
                                                 <h5>Faturamento da filial 2</h5>
-                                                <h2><span class="counter">150</span><span class="counter"></span></h2>
+                                                <h2><span class="counter">150</span></h2>
+
+                                            </div>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-sales-area mg-tb-30">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                        <div class="product-sales-chart">
+                                            <div class="portlet-title">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="caption pro-sl-hd">
+                                                            <span class="caption-subject text-uppercase"><b>Relatórios de Produtos</b></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="actions graph-rp">
+
+                                                            <a href="#" class="btn btn-dark btn-circle active tip-top" data-toggle="tooltip" title="Exportar">
+                                                                <i class="fa fa-reply" aria-hidden="true"></i>
+                                                            </a>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--<div id="line-chart" class="flot-chart flot-chart-sts line-chart-statistic"></div>-->
+                                            <canvas id="relQtdProdutos"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="infoFaturamento">
+                                        <!--<div class="analytics-rounded mg-b-30 res-mg-t-30">
+                                            <div class="analytics-rounded-content">
+                                                <h5>Faturamento da filial 1</h5>
+                                                <h2><span class="counter">1220</span></h2>
 
                                             </div>
                                         </div>
+                                        <div class="analytics-rounded">
+                                            <div class="analytics-rounded-content">
+                                                <h5>Faturamento da filial 2</h5>
+                                                <h2><span class="counter">150</span></h2>
+
+                                            </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -847,8 +890,229 @@
                     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
                     <script src="./js/grafico-api/chartjs.js"></script>
                     <script>
-                        montarGrafico('relVendas', 'bar');
-                        montarGrafico('relFaturamento', 'pie');
+                        function montarGrafico(nameId, type, labels, valores, nomeGrafico) {
+                            try {
+
+                                var ctx = document.getElementById(nameId).getContext('2d');
+                                var myChart = new Chart(ctx, {
+                                    type: type,
+                                    data: {
+                                        labels: labels,
+                                        datasets: [{
+                                                label: nomeGrafico,
+                                                data: valores,
+                                                backgroundColor: [
+                                                    'rgba(255, 99, 132, 0.2)',
+                                                    'rgba(54, 162, 235, 0.2)',
+                                                    'rgba(255, 206, 86, 0.2)',
+                                                    'rgba(75, 192, 192, 0.2)',
+                                                    'rgba(75, 192, 192, 0.2)'
+                                                ],
+                                                borderColor: [
+                                                    'rgba(255, 99, 132, 1)',
+                                                    'rgba(54, 162, 235, 1)',
+                                                    'rgba(255, 206, 86, 1)',
+                                                    'rgba(75, 192, 192, 1)',
+                                                    'rgba(153, 102, 255, 1)'
+                                                ],
+                                                borderWidth: 1
+                                            }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            yAxes: [{
+                                                    ticks: {
+                                                        beginAtZero: true
+                                                    }
+                                                }]
+                                        }
+                                    }
+                                });
+
+                                return myChart;
+
+                            } catch (error) {
+                                alert('Não foi possível carregar o gráfico');
+                                return false;
+                            }
+                        }
+
+                    </script>
+                    <script>
+
+                        faturamento();
+                        async function faturamento() {
+                            try {
+                                var faturamento = document.getElementById('infoFaturamento');
+                                var valores = await getInfoGrafico();
+                                var json = JSON.parse(valores);
+                                var html = '';
+                                json.forEach(function (elementos) {
+                                    console.log(elementos)
+                                    html += '<div class="analytics-rounded mg-b-30 res-mg-t-30">'
+                                    html += '<div class="analytics-rounded-content">'
+                                    html += `<h5>${elementos.nome}</h5>`
+                                    html += `<h2><span class="counter">R$ ${(elementos.total.toFixed(2)).replace('.', ',')}</span></h2>`
+                                    html += `</div>`
+                                    html += `</div>`
+                                })
+
+                                faturamento.innerHTML = html;
+                            } catch (error) {
+                                alert('Não foi possível carregar as informações do faturamento');
+                                return false;
+                            }
+                        }
+
+                        async function getInfoGrafico() {
+                            try {
+                                var url = window.location.href;
+                                var res = await fetch(url + '/RelatorioFilialServelet');
+                                return res.text();
+                            } catch (error) {
+                                alert('Não foi possível carregar as informações do RelatorioFilialServelet');
+                                return false;
+                            }
+                        }
+
+                    </script>
+                    <script>
+
+                        armazenaDados();
+                        async function armazenaDados() {
+                            try {
+                                var resultado = await getInfoGrafico();
+                                var info = JSON.parse(resultado);
+                                var labels = [], totalFaturamento = [];
+                                var total = 0;
+                                info.forEach(function (e) {
+                                    labels.push(e.nome);
+                                    totalFaturamento.push(e.total);
+                                    total += e.total;
+                                });
+                                console.log(labels);
+                                var percent = totalFaturamento.map(function (numero) {
+                                    return eval((numero / total * 100).toFixed(2));
+                                });
+                                console.log(percent);
+                                montarGrafico('relFaturamento', 'pie', labels, percent, 'Faturamento');
+
+                            } catch (error) {
+                                alert('Não foi possivel armazenar os dados');
+                                return false;
+                            }
+                        }
+                    </script>
+                    <script>
+                        armezenaDadosGraficoCliente();
+                        async function armezenaDadosGraficoCliente() {
+                            try {
+                                var resultado = await montaGraficoCliente();
+                                var json = JSON.parse(resultado);
+                                var nomeCliente = [], valoresCliente = [];
+
+                                json.forEach(function (elementos) {
+                                    nomeCliente.push(elementos.nome + " " + elementos.sobrenome);
+                                    valoresCliente.push(elementos.total);
+                                })
+                                montarGrafico('relVendas', 'bar', nomeCliente, valoresCliente, 'Cliente');
+
+                            } catch (error) {
+                                alert('Não foi possivel armazenar os dados do cliente');
+                                return false;
+                            }
+                        }
+
+                        async function montaGraficoCliente() {
+                            try {
+                                var url = window.location.href;
+                                var resultadoCliente = await fetch(url + '/RelatorioClienteServelet');
+                                return resultadoCliente.text();
+                            } catch (error) {
+                                alert('Não foi possível carregar as informações do RelatorioClienteServelet');
+                                return false;
+                            }
+
+                        }
+                    </script>
+                    <script>
+
+                        console.log(window.location.href);
+                        gerarGraficoProduto();
+                        async function gerarGraficoProduto() {
+                            try {
+                                var produto = await montaGraficoProduto();
+                                var arr = JSON.parse(produto);
+                                var nomeProduto = [], qtdProduto = [];
+
+                                arr.forEach(function (elementos) {
+                                    nomeProduto.push(elementos.nome);
+                                    qtdProduto.push(elementos.total);
+                                });
+
+                                montarGrafico('relQtdProdutos', 'bar', nomeProduto, qtdProduto, 'Produtos');
+
+                            } catch (error) {
+                                alert('Não foi possível carregar as informações do produto');
+                                return false
+                            }
+                        }
+
+                        async function montaGraficoProduto() {
+                            try {
+                                var url = window.location.href;
+                                var resultadoCliente = await fetch(url + '/RelatorioProdutoServelet');
+                                return resultadoCliente.text();
+                            } catch (error) {
+                                alert('Não foi possível carregar as informações do RelatorioProdutoServelet');
+                                return false;
+                            }
+
+                        }
+                    </script>
+                    <script>
+                        main();
+                        async function main(){
+                            await carregaQuantidadeProduto();
+                            await carregaTotalVenda();
+                        }
+                        
+                        async function carregaQuantidadeProduto(){
+                            var qtdTotal = document.getElementById("qtdVenda");
+                            try{
+                                var qtdProdutoVendidos = await montaGraficoProduto();
+                                var qtdProdutos = JSON.parse(qtdProdutoVendidos);
+                                var sum = 0;
+                                
+                                qtdProdutos.forEach(function(elementos){
+                                    sum += elementos.total;
+                                });
+                                
+                                qtdTotal.innerHTML = sum;
+                                
+                            }catch(error){
+                                alert('Houve um erro ao somar a quantidade de produtos vendidos');
+                                return false;
+                            }
+                        }
+                        
+                        
+                        async function carregaTotalVenda(){
+                            var valorVenda = document.getElementById('valorVenda');
+                            try{
+                                var resultadoVendas = await getInfoGrafico();
+                                var totalVendas = JSON.parse(resultadoVendas);
+                                var sum = 0;
+                                
+                                totalVendas.forEach(function(elementos){
+                                    sum += elementos.total;
+                                })
+                                valorVenda.innerHTML = 'R$ '+ sum.toFixed(2).replace('.',',');
+                            }catch(error){
+                                alert('Não foi possível calcular o total de vendas');
+                                return false;
+                            }
+                        }
                     </script>
                     </body>
 
