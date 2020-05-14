@@ -27,20 +27,6 @@ create table "ROOT".FILIAL(
     CIDADE VARCHAR(60)
 );
 
-create table ENDERECO(
-	ID_ENDERECO BIGINT not null primary key
-        GENERATED ALWAYS AS IDENTITY
-        (START WITH 1, INCREMENT BY 1),
-    Bairro VARCHAR(60),
-    CEP VARCHAR(60),
-    PAIS VARCHAR(60),
-    RUA VARCHAR(60),
-    COMPLEMENTO VARCHAR(60),
-    NUMERO VARCHAR(60),
-    UF VARCHAR(60),
-    CIDADE VARCHAR(60)
-);
-
 create table "ROOT".PRODUTO(
     ID_PRODUTO BIGINT not null primary key
         GENERATED ALWAYS AS IDENTITY
