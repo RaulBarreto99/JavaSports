@@ -44,7 +44,7 @@ public class RelatorioDAO {
 
                 RelatorioFilial relatorio = new RelatorioFilial();
 
-                relatorio.setId(resultSet.getInt("ID_FILIAL"));
+                relatorio.setId(resultSet.getInt("idfilial"));
                 relatorio.setNome(resultSet.getString("nome"));
                 relatorio.setTotal(resultSet.getDouble("total"));
 
@@ -80,7 +80,7 @@ public class RelatorioDAO {
 
                 RelatorioCliente relatorioCliente = new RelatorioCliente();
 
-                relatorioCliente.setId(resultSet.getInt("ID_CLIENTE"));
+                relatorioCliente.setId(resultSet.getInt("idcliente"));
                 relatorioCliente.setNome(resultSet.getString("nome"));
                 relatorioCliente.setSobrenome(resultSet.getString("sobrenome"));
                 relatorioCliente.setTotal(resultSet.getDouble("total"));
@@ -118,7 +118,7 @@ public class RelatorioDAO {
 
                 RelatorioProduto relatorioProduto = new RelatorioProduto();
 
-                relatorioProduto.setId(resultSet.getInt("ID_PRODUTO"));
+                relatorioProduto.setId(resultSet.getInt("idproduto"));
                 relatorioProduto.setNome(resultSet.getString("nome"));
                 relatorioProduto.setTotal(resultSet.getDouble("total"));
 

@@ -84,7 +84,7 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                        <a href="index.jsp"><h2>Java Sports</h2></a>
+                        <a href="/xNexus-java-sports"><h2>Java Sports</h2></a>
                         
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                     <nav class="sidebar-nav left-sidebar-menu-pro">
                         <ul class="metismenu" id="menu1">
                             <li class="active">
-                                <a class="has-arrow" href="index.jsp">
+                                <a class="has-arrow" href="/xNexus-java-sports">
                                     <i class="icon nalika-home icon-wrap"></i>
                                     <span class="mini-click-non">Cadastros</span>
                                 </a>

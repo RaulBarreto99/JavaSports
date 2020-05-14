@@ -87,7 +87,7 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                       <a href="index.jsp"><h2>Java Sports</h2></a>
+                       <a href="/xNexus-java-sports"><h2>Java Sports</h2></a>
                         
                     </div>
                 </div>
@@ -224,12 +224,7 @@
                                                                 <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
                                                                <input required="true" type="number" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
                                                             </div>
-                                                            <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                    <input required="true" type="number" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
-
-                                                                <input required="true" type="number" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
-                                                            </div>
+                                                           
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
                                                                 <input required="true" type="number" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
@@ -334,7 +329,7 @@
                                                     let quantidade = document.getElementById("quantidade"+id2);
                                                     
                                                     document.getElementById("txtCodigo").value = id.textContent.trim();
-                                                    document.getElementById("txtNome").value = nome.textConten.trim()t;
+                                                    document.getElementById("txtNome").value = nome.textContent.trim();
                                                     document.getElementById("txtMarca").value = marca.textContent.trim();
                                                     document.getElementById("txtPreco").value = preco.textContent.trim();
                                                     document.getElementById("txtQuantidade").value = quantidade.textContent.trim();
