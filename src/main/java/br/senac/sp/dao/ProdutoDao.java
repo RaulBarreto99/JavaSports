@@ -91,7 +91,7 @@ public class ProdutoDao {
             connection = ConexaoDB.getConexao();
 
             pstmt = connection.prepareStatement(
-                    "SELECT * FROM produto ORDER BY ID_PRODUTO");
+                    "SELECT * FROM produto ORDER BY id_produto");
 
             rs = pstmt.executeQuery();
 
@@ -101,7 +101,7 @@ public class ProdutoDao {
 
                 Produto produto = new Produto();
 
-                produto.setCodigo(rs.getInt("ID_PRODUTO"));
+                produto.setCodigo(rs.getInt("id_produto"));
                 produto.setNomeProduto(rs.getString("nome"));
                 produto.setMarca(rs.getString("marca"));
                 produto.setPreco(rs.getDouble("preco"));
