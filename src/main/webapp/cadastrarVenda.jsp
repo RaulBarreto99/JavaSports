@@ -192,7 +192,7 @@
 
                                                                     <div class="input-group mg-b-pro-edt">
                                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                        <input type="number" class="form-control" id="idCliente" name="idCliente" placeholder="Id do cliente" value="${idCliente}" required="true" min="1">
+                                                                        <input type="number" class="form-control" id="idCliente" name="cpfCliente" placeholder="CPF do cliente" value="${cpfCliente}" required="true" min="1">
                                                                     </div>
 
                                                                 </div>

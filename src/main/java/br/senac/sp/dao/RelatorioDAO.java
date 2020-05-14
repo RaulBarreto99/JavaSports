@@ -109,7 +109,7 @@ public class RelatorioDAO {
 
             connection = ConexaoDB.getConexao();
 
-            stmt = connection.prepareStatement("select produto.IDPRODUTO as idproduto, produto.NOME as nome, sum(carrinho.QUANTIDADE) as total from produto inner join carrinho on produto.IDPRODUTO = carrinho.ID_PRODUTO group by produto.IDPRODUTO, produto.NOME order by produto.IDPRODUTO");
+            stmt = connection.prepareStatement("select produto.ID_PRODUTO as idproduto, produto.NOME as nome, sum(carrinho.QUANTIDADE) as total from produto inner join carrinho on produto.ID_PRODUTO = carrinho.ID_PRODUTO group by produto.ID_PRODUTO, produto.NOME order by produto.ID_PRODUTO");
 
             resultSet = stmt.executeQuery();
 

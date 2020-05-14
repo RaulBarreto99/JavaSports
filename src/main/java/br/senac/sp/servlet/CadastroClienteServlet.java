@@ -65,7 +65,7 @@ public class CadastroClienteServlet extends HttpServlet {
         if (action.equalsIgnoreCase("alterar")) {
             
             forward = "cliente.jsp";
-            int id = Integer.parseInt(request.getParameter("id"));
+            int id = Integer.parseInt(request.getParameter("id").trim());
             String nome = request.getParameter("nome");
             String sobrenome = request.getParameter("sobrenome");
             String dataNascimento = request.getParameter("dataNascimento");

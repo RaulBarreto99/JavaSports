@@ -8,6 +8,7 @@ package br.senac.sp.servlet;
 import br.senac.sp.dao.VendasDao;
 import br.senac.sp.dto.ItemCarrinhoDto;
 import br.senac.sp.dto.VendaDetalhadaDto;
+import br.senac.sp.entidade.Cliente;
 import br.senac.sp.entidade.Produto;
 import br.senac.sp.entidade.Venda;
 import br.senac.sp.validate.VendaValidate;
@@ -34,15 +35,17 @@ import javax.servlet.http.HttpServletResponse;
 public class VendasServlet extends HttpServlet {
 
     private List<ItemCarrinhoDto> carrinho;
-    private List<Produto> produtos = new ArrayList<Produto>();
+    private List<Produto> produtos;
+    private List<Cliente> clientes;
     private double valorTotal = 0;
     private int idIterativo;
-    private int idCliente;
+    private String cpfCliente;
     private int idFilial;
 
     public VendasServlet() {
         VendasDao dao = new VendasDao();
         produtos = dao.getProdutos();
+        clientes = dao.getClientes();
         this.carrinho = new ArrayList<ItemCarrinhoDto>();
         this.valorTotal = 0;
         this.idIterativo = -1;
@@ -71,7 +74,7 @@ public class VendasServlet extends HttpServlet {
                     salvarVenda(request, response);
                 } catch (ServletException ex) {
                     request.setAttribute("msgErro", ex.getMessage());
-                    request.setAttribute("forward", "/xNexus-java-sports/VendasServlet");
+                    request.setAttribute("forward", "/xNexus-java-sports/VendasServlet?action=carregarAtributosVenda");
 
                     Logger.getLogger(VendasServlet.class.getName()).log(Level.SEVERE, null, ex);
                     RequestDispatcher view = request.getRequestDispatcher("/erro.jsp");
@@ -83,12 +86,25 @@ public class VendasServlet extends HttpServlet {
                     }
                 }
 
+            } else if (action.equals("carregarAtributosVenda")) {
+                produtos = dao.getProdutos();
+                clientes = dao.getClientes();
+                forward = "/cadastrarVenda.jsp";
+                request.setAttribute("valorTotal", this.valorTotal);
+                request.setAttribute("idFilial", this.idFilial);
+                request.setAttribute("cpfCliente", this.cpfCliente);
+                request.setAttribute("carrinho", this.carrinho);
+                request.setAttribute("produtos", this.produtos);
+                RequestDispatcher view = request.getRequestDispatcher(forward);
+                view.forward(request, response);
             }
         } catch (Exception e) {
             forward = "/cadastrarVenda.jsp";
+            produtos = dao.getProdutos();
+            clientes = dao.getClientes();
             request.setAttribute("valorTotal", 0.0);
             request.setAttribute("idFilial", request.getParameter("idFilial"));
-            request.setAttribute("idCliente", request.getParameter("idCliente"));
+            request.setAttribute("cpfCliente", request.getParameter("cpfCliente"));
             request.setAttribute("carrinho", this.carrinho);
             request.setAttribute("produtos", this.produtos);
             RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -104,10 +120,7 @@ public class VendasServlet extends HttpServlet {
 
             if (action.equals("adicionarAoCarrinho")) {
                 adicionarAoCarrinho(request, response);
-            } /*else if (action.equals("salvarVenda")) {
-                salvarVenda(request, response);
-
-            }*/ else if (action.equals("detalharVenda")) {
+            } else if (action.equals("detalharVenda")) {
                 int id = Integer.parseInt(request.getParameter("id"));
 
                 VendaDetalhadaDto vendaDetalhada = dao.detalharVenda(id);
@@ -115,6 +128,7 @@ public class VendasServlet extends HttpServlet {
                 request.setAttribute("vendaDetalhada", vendaDetalhada);
                 request.setAttribute("carrinho", vendaDetalhada.getCarrinho());
 
+                VendasServlet.this.destroy();
                 RequestDispatcher view = request.getRequestDispatcher("/detalharVenda.jsp");
                 view.forward(request, response);
             }
@@ -122,7 +136,7 @@ public class VendasServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher("/erro.jsp");
 
             request.setAttribute("msgErro", ex.getMessage());
-            request.setAttribute("forward", "/xNexus-java-sports/VendasServlet");
+            request.setAttribute("forward", "/xNexus-java-sports/VendasServlet?action=carregarAtributosVenda");
 
             Logger.getLogger(VendasServlet.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -158,7 +172,7 @@ public class VendasServlet extends HttpServlet {
             this.valorTotal -= produtoRemovido.getValorTotalItem();
 
             request.setAttribute("idFilial", this.idFilial);
-            request.setAttribute("idCliente", this.idCliente);
+            request.setAttribute("idCliente", this.cpfCliente);
             request.setAttribute("produtos", this.produtos);
             request.setAttribute("valorTotal", this.valorTotal);
             request.setAttribute("carrinho", this.carrinho);
@@ -179,22 +193,23 @@ public class VendasServlet extends HttpServlet {
 
         int id = 0;
         int quantidade = 0;
-        try {
-            id = Integer.parseInt(request.getParameter("idProduto"));
-            quantidade = Integer.parseInt(request.getParameter("quantidadeVendida"));
-        } catch (NumberFormatException ex) {
-            throw new ServletException("Quantidade não pode ser vazia.");
-        }
+        
+        VendasDao dao = new VendasDao();
+        produtos = dao.getProdutos();
+        clientes = dao.getClientes();
+
+        id = Integer.parseInt(request.getParameter("idProduto"));
+        quantidade = Integer.parseInt(request.getParameter("quantidadeVendida"));
 
         String retornoValidacao = VendaValidate.validaCarrinho(quantidade, id);
         if (retornoValidacao.equals("")) {
             this.carrinho.add(buscaProduto(id, quantidade));
 
-            this.idCliente = Integer.parseInt(request.getParameter("idCliente"));
+            this.cpfCliente = request.getParameter("cpfCliente");
             this.idFilial = Integer.parseInt(request.getParameter("idFilial"));
 
             request.setAttribute("idFilial", request.getParameter("idFilial"));
-            request.setAttribute("idCliente", request.getParameter("idCliente"));
+            request.setAttribute("cpfCliente", request.getParameter("cpfCliente"));
             request.setAttribute("produtos", this.produtos);
             request.setAttribute("valorTotal", this.valorTotal);
             request.setAttribute("carrinho", this.carrinho);
@@ -212,11 +227,11 @@ public class VendasServlet extends HttpServlet {
 
         Venda venda = new Venda();
 
-        if (this.carrinho.size() == 0) {
+        if (this.carrinho.isEmpty()) {
             throw new ServletException("O carrinho não pode estar vazio ao finalizar a venda.");
         }
 
-        venda.setIdCliente(this.idCliente);
+        venda.setIdCliente(buscaCliente(this.cpfCliente));
         venda.setIdFilial(this.idFilial);
         venda.setProdutosVendidos(this.carrinho);
         venda.setValorTotal(this.valorTotal);
@@ -235,7 +250,7 @@ public class VendasServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher("/erro.jsp");
 
             request.setAttribute("msgErro", "Não foi possivel Cadastrar a nova venda.");
-            request.setAttribute("forward", "/xNexus-java-sports/cadastrarVenda.jsp");
+            request.setAttribute("forward", "/xNexus-java-sports/VendasServlet?action=carregarAtributosVenda");
             view.forward(request, response);
         }
 
@@ -245,7 +260,7 @@ public class VendasServlet extends HttpServlet {
         this.carrinho = new ArrayList<>();
         this.valorTotal = 0.0;
 
-        this.idCliente = 0;
+        this.cpfCliente = "";
         this.idFilial = 0;
 
         this.idIterativo = 0;
@@ -256,13 +271,14 @@ public class VendasServlet extends HttpServlet {
 
         for (int i = 0; i < produtos.size(); i++) {
             if (produtos.get(i).getCodigo() == idProduto) {
-                this.valorTotal += (quantidade * produtos.get(i).getPreco());
 
                 Produto produtoAtual = produtos.get(i);
 
                 int novaQuantidade = produtoAtual.getQuantidade() - quantidade;
 
                 if (novaQuantidade >= 0) {
+                    this.valorTotal += (quantidade * produtos.get(i).getPreco());
+
                     produtoAtual.setQuantidade(novaQuantidade);
                     produtos.set(i, produtoAtual);
                     this.idIterativo++;
@@ -275,6 +291,17 @@ public class VendasServlet extends HttpServlet {
         }
 
         return itemCarrinho;
+    }
+
+    private int buscaCliente(String cpf) throws ServletException {
+
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf().equals(cpf)) {
+                return cliente.getId();
+            }
+        }
+
+        throw new ServletException("Cliente inexistente.");
     }
 
     @Override
