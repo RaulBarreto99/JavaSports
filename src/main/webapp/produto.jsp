@@ -339,6 +339,7 @@
                                                 }
                                                 
                                                 function limpar(){
+                                                    document.getElementById("txtCodigo").value = "";
                                                     document.getElementById("txtNome").value = "";
                                                     document.getElementById("txtMarca").value = "";
                                                     document.getElementById("txtPreco").value = "";
