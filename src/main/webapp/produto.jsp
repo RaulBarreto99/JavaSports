@@ -87,15 +87,15 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                        <a href="#"><img src="img/notification/4.jpg" alt="" /></a>
-                        <h2>Java <span class="min-dtn">Sports</span></h2>
+                       <a href="index.jsp"><h2>Java Sports</h2></a>
+                        
                     </div>
                 </div>
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
                     <nav class="sidebar-nav left-sidebar-menu-pro">
                         <ul class="metismenu" id="menu1">
                             <li class="active">
-                                <a class="has-arrow" href="index.html">
+                                <a class="has-arrow" href="index.jsp">
                                     <i class="icon nalika-home icon-wrap"></i>
                                     <span class="mini-click-non">Cadastros</span>
                                 </a>
@@ -109,7 +109,7 @@
                             </li>
 
                             <li id="removable">
-                                <a class="has-arrow" href="estoque.html" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
+                                <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
 
                             </li>
                         </ul>
@@ -222,11 +222,18 @@
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                                <input required="true" type="text" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
+                                                               <input required="true" type="number" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input required="true" type="text" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
+                                                                    <input required="true" type="number" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
+
+                                                                <input required="true" type="number" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
+                                                            </div>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
+                                                                <input required="true" type="number" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
+
                                                             </div>
                                                             
                                                             <input type="text" name="action" id="action" hidden="true">
@@ -326,11 +333,11 @@
                                                     let preco = document.getElementById("preco"+id2);
                                                     let quantidade = document.getElementById("quantidade"+id2);
                                                     
-                                                    document.getElementById("txtCodigo").value = id.textContent;
-                                                    document.getElementById("txtNome").value = nome.textContent;
-                                                    document.getElementById("txtMarca").value = marca.textContent;
-                                                    document.getElementById("txtPreco").value = preco.textContent;
-                                                    document.getElementById("txtQuantidade").value = quantidade.textContent;
+                                                    document.getElementById("txtCodigo").value = id.textContent.trim();
+                                                    document.getElementById("txtNome").value = nome.textConten.trim()t;
+                                                    document.getElementById("txtMarca").value = marca.textContent.trim();
+                                                    document.getElementById("txtPreco").value = preco.textContent.trim();
+                                                    document.getElementById("txtQuantidade").value = quantidade.textContent.trim();
                                                     
                                                     document.getElementById("btnSalvar").disabled = true;
                                                     document.getElementById("btnAlterar").disabled = false;

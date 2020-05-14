@@ -39,7 +39,7 @@ public class VendasDao {
 
             while (rs.next()) {
                 Produto produto = new Produto(rs.getString("nome"), rs.getString("marca"), rs.getDouble("preco"), rs.getInt("quantidade"));
-                produto.setCodigo(rs.getInt("idProduto"));
+                produto.setCodigo(rs.getInt("ID_PRODUTO"));
                 produtos.add(produto);
 
             }

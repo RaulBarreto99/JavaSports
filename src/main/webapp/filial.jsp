@@ -83,15 +83,15 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                        <a href="#"><img src="img/notification/4.jpg" alt="" /></a>
-                        <h2>Java <span class="min-dtn">Sports</span></h2>
+                        <a href="index.jsp"><h2>Java Sports</h2></a>
+                        
                     </div>
                 </div>
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
                     <nav class="sidebar-nav left-sidebar-menu-pro">
                         <ul class="metismenu" id="menu1">
                             <li class="active">
-                                <a class="has-arrow" href="index.html">
+                                <a class="has-arrow" href="index.jsp">
                                     <i class="icon nalika-home icon-wrap"></i>
                                     <span class="mini-click-non">Cadastros</span>
                                 </a>
@@ -105,7 +105,7 @@
                             </li>
 
                             <li id="removable">
-                                <a class="has-arrow" href="estoque.html" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
+                                 <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
 
                             </li>
                         </ul>
@@ -252,9 +252,10 @@
                                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <div class="text-center custom-pro-edt-ds">
                                                                 <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
+                                                                
+                                                                <button type="submit" class="btn btn-ctl-bt waves-effect waves-light">Alterar</button>
                                                                 <button type="button" onClick="limpar()"
                                                         class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
-                                                                <button type="submit" class="btn btn-ctl-bt waves-effect waves-light">Alterar</button>
                                                             </div>
 
                                                         </div>
@@ -345,15 +346,15 @@
                                                     let cidade = document.getElementById("cidade"+id2);
                                                     
                                                     document.getElementById("ID").value = id.textContent;
-                                                    document.getElementById("NOME").value = nome.textContent;
-                                                    document.getElementById("BAIRRO").value = bairro.textContent;
-                                                    document.getElementById("CEP").value = cep.textContent;
-                                                    document.getElementById("PAIS").value = pais.textContent;
-                                                    document.getElementById("RUA").value = rua.textContent;
-                                                    document.getElementById("COMPLEMENTO").value = complemento.textContent;
-                                                    document.getElementById("NUMERO").value = numero.textContent;
-                                                    document.getElementById("UF").value = uf.textContent;
-                                                    document.getElementById("CIDADE").value = cidade.textContent;
+                                                    document.getElementById("NOME").value = nome.textContent.trim();
+                                                    document.getElementById("BAIRRO").value = bairro.textContent.trim();
+                                                    document.getElementById("CEP").value = cep.textContent.trim();
+                                                    document.getElementById("PAIS").value = pais.textContent.trim();
+                                                    document.getElementById("RUA").value = rua.textContent.trim();
+                                                    document.getElementById("COMPLEMENTO").value = complemento.textContent.trim();
+                                                    document.getElementById("NUMERO").value = numero.textContent.trim();
+                                                    document.getElementById("UF").value = uf.textContent.trim();
+                                                    document.getElementById("CIDADE").value = cidade.textContent.trim();
                                                     
                                                     document.getElementById("action").value = "alterar";
                                                 }

@@ -1,8 +1,16 @@
+<%-- 
+    Document   : index
+    Created on : 13/05/2020, 20:54:56
+    Author     : eders
+--%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html class="no-js" lang="pt-br">
 
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Xnexus</title>
         <meta name="description" content="">
@@ -76,35 +84,36 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                        <a href="#"><img src="img/notification/4.jpg" alt="" /></a>
-                        <h2>Java <span class="min-dtn">Sports</span></h2>
+                        <a href="index.jsp"><h2>Java Sports</h2></a>
+                        
                     </div>
                 </div>
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
-                    <nav class="sidebar-nav left-sidebar-menu-pro">
-                        <ul class="metismenu" id="menu1">
-                            <li class="active">
-                                <a class="has-arrow" href="index.html">
-
-                                    <i class="icon nalika-home icon-wrap"></i>
-                                    <span class="mini-click-non">Cadastros</span>
-                                </a>
-                                <ul class="submenu-angle" aria-expanded="true">
+                <nav class="sidebar-nav left-sidebar-menu-pro">
+                    <ul class="metismenu" id="menu1">
+                        <li class="active">
+                            <a class="has-arrow" href="index.jsp">
+                                <i class="icon nalika-home icon-wrap"></i>
+                                <span class="mini-click-non">Cadastros</span>
+                            </a>
+                            <ul class="submenu-angle" aria-expanded="true">
                                     <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
                                     <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
                                     <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
                                     <li><a title="Cadastrar Filiais" href="CadastroFilialServlet?action=listarFilial"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
 
                                 </ul>
-                            </li>
+                        </li>
 
-                            <li id="removable">
-                                <a class="has-arrow" href="estoque.html" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
+                        <li id="removable">
+                            <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i
+                                    class="icon nalika-new-file icon-wrap"></i> <span
+                                    class="mini-click-non">Estoque</span></a>
 
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
             </nav>
         </div>
         <!-- Start Welcome area -->
@@ -543,8 +552,8 @@
                                                     <i class="icon nalika-home"></i>
                                                 </div>
                                                 <div class="breadcomb-ctn">
-                                                    <h2>Bem vindo Lucas!</h2>
-                                                    <p>Seja bem vindo ao JavaSports<span class="bread-ntd">Utilize as funções ao lado para realizar as atividades.</span></p>
+                                                    <h2>Bem vindo!</h2>
+                                                    <p>Seja bem vindo ao JavaSports<span class="bread-ntd"> Utilize as funções ao lado para realizar as atividades.</span></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -608,7 +617,7 @@
                                 </ul>
                             </div>
                             <!--<div class="white-box analytics-info-cs mg-b-30">
-                                <h3 class="box-title">Total de vendas no mês</h3>
+                                <h3 class="box-title">Total de vendas no m�s</h3>
                                 <ul class="list-inline two-part-sp">
                                     <li>
                                         <div id="sparklinedash2"></div>
@@ -731,103 +740,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="author-area-pro">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="personal-info-wrap">
-                                            <div class="widget-head-info-box">
-                                                <div class="persoanl-widget-hd">
-                                                    <h2>Jon Royita</h2>
-                                                    <p>Founder of Uttara It Park</p>
-                                                </div>
-                                                <img src="img/notification/5.jpg" class="img-circle circle-border m-b-md" alt="profile">
-                                                <div class="social-widget-result">
-                                                    <span>100 Tweets</span> |
-                                                    <span>350 Following</span> |
-                                                    <span>610 Followers</span>
-                                                </div>
-                                            </div>
-                                            <div class="widget-text-box">
-                                                <h4>Jhon Royita</h4>
-                                                <p>To all the athaists attacking me right now, I can't make you believe in God, you have to have faith.</p>
-                                                <div class="text-right like-love-list">
-                                                    <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                                                    <a class="btn btn-xs btn-primary"><i class="fa fa-heart"></i> Love</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="author-widgets-single res-mg-t-30">
-                                            <div class="author-wiget-inner">
-                                                <div class="perso-img">
-                                                    <img src="img/notification/6.jpg" class="img-circle circle-border m-b-md" alt="profile">
-                                                </div>
-                                                <div class="persoanl-widget-hd persoanl1-widget-hd">
-                                                    <h2>Fire Foxy</h2>
-                                                    <p>Founder of Uttara It House</p>
-                                                </div>
-                                                <div class="social-widget-result social-widget1-result">
-                                                    <span>100 Tweets</span> |
-                                                    <span>350 Following</span> |
-                                                    <span>610 Followers</span>
-                                                </div>
-                                            </div>
-                                            <div class="widget-text-box">
-                                                <h4>Fire Foxy</h4>
-                                                <p>To all the athaists attacking me right now, I can't make you believe in God, you have to have faith.</p>
-                                                <div class="text-right like-love-list">
-                                                    <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                                                    <a class="btn btn-xs btn-primary"><i class="fa fa-heart"></i> Love</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="personal-info-wrap personal-info-ano res-mg-t-30">
-                                            <div class="widget-head-info-box">
-                                                <div class="persoanl-widget-hd">
-                                                    <h2>Jon Royita</h2>
-                                                    <p>Founder of Uttara It Park</p>
-                                                </div>
-                                                <img src="img/contact/2.jpg" class="img-circle circle-border m-b-md" alt="profile">
-                                                <div class="social-widget-result">
-                                                    <span>100 Tweets</span> |
-                                                    <span>350 Following</span> |
-                                                    <span>610 Followers</span>
-                                                </div>
-                                            </div>
-                                            <div class="widget-text-box">
-                                                <h4>Jhon Royita</h4>
-                                                <p>To all the athaists attacking me right now, I can't make you believe in God, you have to have faith.</p>
-                                                <div class="text-right like-love-list">
-                                                    <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                                                    <a class="btn btn-xs btn-primary"><i class="fa fa-heart"></i> Love</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="calender-area mg-tb-30">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="calender-inner">
-                                            <div id='calendar'></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="footer-copyright-area">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="footer-copy-right">
-                                            <p>Copyright © 2018 <a href="https://colorlib.com/wp/templates/">Colorlib</a> All rights reserved.</p>
+                                            <p>JavaSports desenvolvido por Xnexus</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1029,7 +948,7 @@
                                 var resultadoCliente = await fetch(url + '/RelatorioClienteServelet');
                                 return resultadoCliente.text();
                             } catch (error) {
-                                alert('Não foi possível carregar as informações do RelatorioClienteServelet');
+                                alert('Não foi possivel carregar as informações do RelatorioClienteServelet');
                                 return false;
                             }
 
@@ -1053,7 +972,7 @@
                                 montarGrafico('relQtdProdutos', 'bar', nomeProduto, qtdProduto, 'Produtos');
 
                             } catch (error) {
-                                alert('Não foi possível carregar as informações do produto');
+                                alert('Não foi possivel carregar as informações do produto');
                                 return false
                             }
                         }
@@ -1064,7 +983,7 @@
                                 var resultadoCliente = await fetch(url + '/RelatorioProdutoServelet');
                                 return resultadoCliente.text();
                             } catch (error) {
-                                alert('Não foi possível carregar as informações do RelatorioProdutoServelet');
+                                alert('Não foi possivel carregar as informações do RelatorioProdutoServelet');
                                 return false;
                             }
 
@@ -1109,7 +1028,7 @@
                                 })
                                 valorVenda.innerHTML = 'R$ '+ sum.toFixed(2).replace('.',',');
                             }catch(error){
-                                alert('Não foi possível calcular o total de vendas');
+                                alert('Não foi possivel calcular o total de vendas');
                                 return false;
                             }
                         }

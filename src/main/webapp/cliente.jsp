@@ -86,15 +86,15 @@
             </div>
             <div class="nalika-profile">
                 <div class="profile-dtl">
-                    <a href="#"><img src="img/notification/4.jpg" alt="" /></a>
-                    <h2>Java <span class="min-dtn">Sports</span></h2>
+                    <a href="index.jsp"><h2>Java Sports</h2></a>
+                   
                 </div>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                         <li class="active">
-                            <a class="has-arrow" href="index.html">
+                            <a class="has-arrow" href="index.jsp">
                                 <i class="icon nalika-home icon-wrap"></i>
                                 <span class="mini-click-non">Cadastros</span>
                             </a>
@@ -108,7 +108,7 @@
                         </li>
 
                         <li id="removable">
-                            <a class="has-arrow" href="estoque.html" aria-expanded="false"><i
+                            <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i
                                     class="icon nalika-new-file icon-wrap"></i> <span
                                     class="mini-click-non">Estoque</span></a>
 
@@ -288,7 +288,7 @@
                                                         class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
                                                     <input type="hidden" name="action" value="alterar" id="action">
                                                     <button type="submit"
-                                                        class="btn btn-ctl-bt waves-effect waves-light m-r-10">Alterar</button>
+                                                            class="btn btn-ctl-bt waves-effect waves-light m-r-10">Alterar</button>
                                                     <button type="button" onClick="limpar()"
                                                         class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
                                                 </div>
@@ -432,14 +432,15 @@
 
 
 
-                                                document.getElementById("txtid").value = id.textContent;
-                                                document.getElementById("txtnome").value = nome.textContent;
-                                                document.getElementById("txtsobrenome").value = sobrenome.textContent;
-                                                document.getElementById("txtdata").value = dataNascimento.textContent;
-                                                document.getElementById("txtcpf").value = cpf.textContent;
-                                                document.getElementById("txttelefone").value = telefone.textContent;
-                                                document.getElementById("txtsexo").value = sexo.textContent;
+                                                document.getElementById("txtid").value = id.textContent.trim();
+                                                document.getElementById("txtnome").value = nome.textContent.trim();
+                                                document.getElementById("txtsobrenome").value = sobrenome.textContent.trim();
+                                                document.getElementById("txtdata").value = dataNascimento.textContent.replace("\n","").trim();
+                                                document.getElementById("txtcpf").value = cpf.textContent.trim();
+                                                document.getElementById("txttelefone").value = telefone.textContent.trim();
+                                                document.getElementById("txtsexo").value = sexo.textContent.trim();
                                                 document.getElementById("action").value = "alterar";
+                                                console.log(dataNascimento.textContent);
                                             }
                                         </script>
 
