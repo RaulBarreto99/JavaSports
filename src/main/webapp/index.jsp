@@ -84,36 +84,36 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                        <a href="/xNexus-java-sports"><h2>Java Sports</h2></a>
-                        
+                        <a href="index.jsp"><h2>Java Sports</h2></a>
+
                     </div>
                 </div>
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
-                <nav class="sidebar-nav left-sidebar-menu-pro">
-                    <ul class="metismenu" id="menu1">
-                        <li class="active">
-                            <a class="has-arrow" href="index.jsp">
-                                <i class="icon nalika-home icon-wrap"></i>
-                                <span class="mini-click-non">Cadastros</span>
-                            </a>
-                            <ul class="submenu-angle" aria-expanded="true">
+                    <nav class="sidebar-nav left-sidebar-menu-pro">
+                        <ul class="metismenu" id="menu1">
+                            <li class="active">
+                                <a class="has-arrow" href="index.jsp">
+                                    <i class="icon nalika-home icon-wrap"></i>
+                                    <span class="mini-click-non">Cadastros</span>
+                                </a>
+                                <ul class="submenu-angle" aria-expanded="true">
                                     <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
                                     <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
                                     <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
                                     <li><a title="Cadastrar Filiais" href="CadastroFilialServlet?action=listarFilial"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
 
                                 </ul>
-                        </li>
+                            </li>
 
-                        <li id="removable">
-                            <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i
-                                    class="icon nalika-new-file icon-wrap"></i> <span
-                                    class="mini-click-non">Estoque</span></a>
+                            <li id="removable">
+                                <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i
+                                        class="icon nalika-new-file icon-wrap"></i> <span
+                                        class="mini-click-non">Estoque</span></a>
 
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </nav>
         </div>
         <!-- Start Welcome area -->
@@ -740,7 +740,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="footer-copyright-area">
                             <div class="container-fluid">
                                 <div class="row">
@@ -752,7 +752,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                     <!-- jquery
                                 ============================================ -->
                     <script src="js/vendor/jquery-1.12.4.min.js"></script>
@@ -859,38 +859,50 @@
                     </script>
                     <script>
 
-                        faturamento();
                         async function faturamento() {
                             try {
                                 var faturamento = document.getElementById('infoFaturamento');
-                                var valores = await getInfoGrafico();
-                                var json = JSON.parse(valores);
+                                var valores = await getInfoGrafico();    
+                                var resultado = JSON.parse(valores);
+                                console.log(resultado == false)
+                                if(resultado == false){
+                                    alert("Para exibir os relatórios, cadastre pelo menos uma filial, um cliente, um produto e realize uma venda!");
+                                }
                                 var html = '';
-                                json.forEach(function (elementos) {
-                                    console.log(elementos)
-                                    html += '<div class="analytics-rounded mg-b-30 res-mg-t-30">'
-                                    html += '<div class="analytics-rounded-content">'
-                                    html += `<h5>${elementos.nome}</h5>`
-                                    html += `<h2><span class="counter">R$ ${(elementos.total.toFixed(2)).replace('.', ',')}</span></h2>`
-                                    html += `</div>`
-                                    html += `</div>`
+                                resultado.forEach(function (elementos) {
+                                    
+                                    html += "<div class='analytics-rounded mg-b-30 res-mg-t-30'>";
+                                    html += "<div class='analytics-rounded-content'>";
+                                    html += "<h5>" + elementos.nome + "</h5>";
+                                    html += "<h2><span class='counter'>R$ " + (elementos.total.toFixed(2)).replace('.', ',') + "</span></h2>";
+                                    html += "</div>";
+                                    html += "</div>";
                                 })
 
                                 faturamento.innerHTML = html;
                             } catch (error) {
-                                alert('Não foi possível carregar as informações do faturamento');
-                                console.log(error)
+                                alert("Para exibir os relatórios, cadastre pelo menos uma filial, um cliente, um produto e realize uma venda!");
                                 return false;
                             }
                         }
 
                         async function getInfoGrafico() {
                             try {
-                                var url = window.location.href;
-                                var res = await fetch(url + '/RelatorioFilialServelet');
+
+                                var host = window.location.host;
+                                var protocol = window.location.protocol;
+                                var url = '';
+
+                                if (host[host.length - 1] == "/") {
+                                    url = protocol + "//" + host + "xNexus-java-sports/RelatorioFilialServlet";
+
+                                } else {
+                                    url = protocol + "//" + host + "/xNexus-java-sports/RelatorioFilialServlet";
+                                }
+
+                                var res = await fetch(url);
                                 return res.text();
                             } catch (error) {
-                                alert('Não foi possível carregar as informações do RelatorioFilialServelet');
                                 return false;
                             }
                         }
@@ -898,7 +910,6 @@
                     </script>
                     <script>
 
-                        armazenaDados();
                         async function armazenaDados() {
                             try {
                                 var resultado = await getInfoGrafico();
@@ -910,21 +921,20 @@
                                     totalFaturamento.push(e.total);
                                     total += e.total;
                                 });
-                                console.log(labels);
+                                
                                 var percent = totalFaturamento.map(function (numero) {
                                     return eval((numero / total * 100).toFixed(2));
                                 });
-                                console.log(percent);
+                                
                                 montarGrafico('relFaturamento', 'pie', labels, percent, 'Faturamento');
 
                             } catch (error) {
-                                alert('Não foi possivel armazenar os dados');
                                 return false;
                             }
                         }
                     </script>
                     <script>
-                        armezenaDadosGraficoCliente();
+
                         async function armezenaDadosGraficoCliente() {
                             try {
                                 var resultado = await montaGraficoCliente();
@@ -938,18 +948,28 @@
                                 montarGrafico('relVendas', 'bar', nomeCliente, valoresCliente, 'Cliente');
 
                             } catch (error) {
-                                alert('Não foi possivel armazenar os dados do cliente');
                                 return false;
                             }
                         }
 
                         async function montaGraficoCliente() {
                             try {
-                                var url = window.location.href;
-                                var resultadoCliente = await fetch(url + '/RelatorioClienteServelet');
+
+                                var host = window.location.host;
+                                var protocol = window.location.protocol;
+                                var url = '';
+
+                                if (host[host.length - 1] == "/") {
+                                    url = protocol + "//" + host + "xNexus-java-sports/RelatorioClienteServlet";
+
+                                } else {
+                                    url = protocol + "//" + host + "/xNexus-java-sports/RelatorioClienteServlet";
+                                }
+
+
+                                var resultadoCliente = await fetch(url);
                                 return resultadoCliente.text();
                             } catch (error) {
-                                alert('Não foi possivel carregar as informações do RelatorioClienteServelet');
                                 return false;
                             }
 
@@ -957,8 +977,6 @@
                     </script>
                     <script>
 
-                        console.log(window.location.href);
-                        gerarGraficoProduto();
                         async function gerarGraficoProduto() {
                             try {
                                 var produto = await montaGraficoProduto();
@@ -973,18 +991,27 @@
                                 montarGrafico('relQtdProdutos', 'bar', nomeProduto, qtdProduto, 'Produtos');
 
                             } catch (error) {
-                                alert('Não foi possivel carregar as informações do produto');
                                 return false
                             }
                         }
 
                         async function montaGraficoProduto() {
                             try {
-                                var url = window.location.href;
-                                var resultadoCliente = await fetch(url + '/RelatorioProdutoServelet');
+                                var host = window.location.host;
+                                var protocol = window.location.protocol;
+                                var url = '';
+
+                                if (host[host.length - 1] == "/") {
+                                    url = protocol + "//" + host + "xNexus-java-sports/RelatorioProdutoServlet";
+
+                                } else {
+                                    url = protocol + "//" + host + "/xNexus-java-sports/RelatorioProdutoServlet";
+                                }
+
+
+                                var resultadoCliente = await fetch(url);
                                 return resultadoCliente.text();
                             } catch (error) {
-                                alert('Não foi possivel carregar as informações do RelatorioProdutoServelet');
                                 return false;
                             }
 
@@ -992,44 +1019,50 @@
                     </script>
                     <script>
                         main();
-                        async function main(){
-                            await carregaQuantidadeProduto();
-                            await carregaTotalVenda();
-                        }
-                        
-                        async function carregaQuantidadeProduto(){
-                            var qtdTotal = document.getElementById("qtdVenda");
+                        async function main() {
                             try{
-                                var qtdProdutoVendidos = await montaGraficoProduto();
-                                var qtdProdutos = JSON.parse(qtdProdutoVendidos);
-                                var sum = 0;
-                                
-                                qtdProdutos.forEach(function(elementos){
-                                    sum += elementos.total;
-                                });
-                                
-                                qtdTotal.innerHTML = sum;
-                                
+                                await faturamento();
+                                await armazenaDados();
+                                await armezenaDadosGraficoCliente();
+                                await gerarGraficoProduto();
+                                await carregaQuantidadeProduto();
+                                await carregaTotalVenda();
                             }catch(error){
-                                alert('Houve um erro ao somar a quantidade de produtos vendidos');
                                 return false;
                             }
                         }
-                        
-                        
-                        async function carregaTotalVenda(){
+
+                        async function carregaQuantidadeProduto() {
+                            var qtdTotal = document.getElementById("qtdVenda");
+                            try {
+                                var qtdProdutoVendidos = await montaGraficoProduto();
+                                var qtdProdutos = JSON.parse(qtdProdutoVendidos);
+                                var sum = 0;
+
+                                qtdProdutos.forEach(function (elementos) {
+                                    sum += elementos.total;
+                                });
+
+                                qtdTotal.innerHTML = sum;
+
+                            } catch (error) {
+                                return false;
+                            }
+                        }
+
+
+                        async function carregaTotalVenda() {
                             var valorVenda = document.getElementById('valorVenda');
-                            try{
+                            try {
                                 var resultadoVendas = await getInfoGrafico();
                                 var totalVendas = JSON.parse(resultadoVendas);
                                 var sum = 0;
-                                
-                                totalVendas.forEach(function(elementos){
+
+                                totalVendas.forEach(function (elementos) {
                                     sum += elementos.total;
                                 })
-                                valorVenda.innerHTML = 'R$ '+ sum.toFixed(2).replace('.',',');
-                            }catch(error){
-                                alert('Não foi possivel calcular o total de vendas');
+                                valorVenda.innerHTML = 'R$ ' + sum.toFixed(2).replace('.', ',');
+                            } catch (error) {
                                 return false;
                             }
                         }
