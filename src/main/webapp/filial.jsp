@@ -217,7 +217,7 @@
                                                                 <input type="Number" class="form-control" placeholder="Cep" name="CEP" id="CEP" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
+                                                                <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
                                                                 <input type="text" class="form-control" placeholder="Pais" name="Pais" id="PAIS" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
@@ -302,6 +302,7 @@
                                                     <th>numero</th>
                                                     <th>uf</th>
                                                     <th>cidade</th>
+                                                    <th>Ação</th>
                                                 </tr>
                                                 </thead>
                                                 
