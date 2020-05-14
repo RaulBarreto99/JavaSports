@@ -242,7 +242,7 @@
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Complemento" name="Complemento" id="COMPLEMENTO" required="true">
+                                                                <input type="text" class="form-control" placeholder="Complemento" name="Complemento" id="COMPLEMENTO">
                                                             </div>
                                                             <input type="text" name="action" id="action" hidden="true">
 

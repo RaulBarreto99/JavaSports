@@ -82,9 +82,7 @@
                 <hr class="my-4">
                 <p><b>Erro:</b> ${msgErro}</p>
                 
-                <form action="${forward}">
-                <button class="btn btn-primary btn-lg" type="submit">Voltar</button>
-                </form>
+                <a class="btn btn-primary btn-lg" href="${forward}">Voltar</a>
             </div>
         </div>
     </body>

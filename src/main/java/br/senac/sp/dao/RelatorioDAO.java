@@ -111,6 +111,7 @@ public class RelatorioDAO {
 
             stmt = connection.prepareStatement("select produto.ID_PRODUTO as idproduto, produto.NOME as nome, sum(carrinho.QUANTIDADE) as total from produto inner join carrinho on produto.ID_PRODUTO = carrinho.ID_PRODUTO group by produto.ID_PRODUTO,produto.NOME order by produto.ID_PRODUTO");
 
+
             resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {

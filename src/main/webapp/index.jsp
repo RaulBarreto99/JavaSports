@@ -879,6 +879,7 @@
                                 faturamento.innerHTML = html;
                             } catch (error) {
                                 alert('Não foi possível carregar as informações do faturamento');
+                                console.log(error)
                                 return false;
                             }
                         }
