@@ -84,15 +84,15 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                        <a href="#"><img src="img/notification/4.jpg" alt="" /></a>
-                        <h2>Java <span class="min-dtn">Sports</span></h2>
+                        <a href="index.jsp"><h2>Java Sports</h2></a>
+                        
                     </div>
                 </div>
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
                     <nav class="sidebar-nav left-sidebar-menu-pro">
                         <ul class="metismenu" id="menu1">
                             <li class="active">
-                                <a class="has-arrow" href="index.html">
+                                <a class="has-arrow" href="index.jsp">
                                     <i class="icon nalika-home icon-wrap"></i>
                                     <span class="mini-click-non">Cadastros</span>
                                 </a>
@@ -106,7 +106,7 @@
                             </li>
 
                             <li id="removable">
-                                <a class="has-arrow" href="estoque.html" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
+                                <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
 
                             </li>
                         </ul>

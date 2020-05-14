@@ -44,7 +44,7 @@ public class RelatorioDAO {
 
                 RelatorioFilial relatorio = new RelatorioFilial();
 
-                relatorio.setId(resultSet.getInt("idfilial"));
+                relatorio.setId(resultSet.getInt("ID_FILIAL"));
                 relatorio.setNome(resultSet.getString("nome"));
                 relatorio.setTotal(resultSet.getDouble("total"));
 
@@ -80,7 +80,7 @@ public class RelatorioDAO {
 
                 RelatorioCliente relatorioCliente = new RelatorioCliente();
 
-                relatorioCliente.setId(resultSet.getInt("idcliente"));
+                relatorioCliente.setId(resultSet.getInt("ID_CLIENTE"));
                 relatorioCliente.setNome(resultSet.getString("nome"));
                 relatorioCliente.setSobrenome(resultSet.getString("sobrenome"));
                 relatorioCliente.setTotal(resultSet.getDouble("total"));
@@ -109,7 +109,8 @@ public class RelatorioDAO {
 
             connection = ConexaoDB.getConexao();
 
-            stmt = connection.prepareStatement("select produto.ID_PRODUTO as idproduto, produto.NOME as nome, sum(carrinho.QUANTIDADE) as total from produto inner join carrinho on produto.ID_PRODUTO = carrinho.ID_PRODUTO group by produto.ID_PRODUTO, produto.NOME order by produto.ID_PRODUTO");
+            stmt = connection.prepareStatement("select produto.ID_PRODUTO as idproduto, produto.NOME as nome, sum(carrinho.QUANTIDADE) as total from produto inner join carrinho on produto.ID_PRODUTO = carrinho.ID_PRODUTO group by produto.ID_PRODUTO,produto.NOME order by produto.ID_PRODUTO");
+
 
             resultSet = stmt.executeQuery();
 
@@ -117,7 +118,7 @@ public class RelatorioDAO {
 
                 RelatorioProduto relatorioProduto = new RelatorioProduto();
 
-                relatorioProduto.setId(resultSet.getInt("idproduto"));
+                relatorioProduto.setId(resultSet.getInt("ID_PRODUTO"));
                 relatorioProduto.setNome(resultSet.getString("nome"));
                 relatorioProduto.setTotal(resultSet.getDouble("total"));
 

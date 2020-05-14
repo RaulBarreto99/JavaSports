@@ -33,14 +33,16 @@ public class VendasDao {
         Connection conexao;
         try {
             conexao = ConexaoDB.getConexao();
-            String sql = "SELECT * FROM produto";
+            String sql = "SELECT * FROM PRODUTO";
             PreparedStatement st = conexao.prepareStatement(sql);
 
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                Produto produto = new Produto(rs.getString("nome"), rs.getString("marca"), rs.getDouble("preco"), rs.getInt("quantidade"));
-                produto.setCodigo(rs.getInt("id_Produto"));
+                Produto produto = new Produto(rs.getString("NOME"), rs.getString("MARCA"), rs.getDouble("PRECO"), rs.getInt("QUANTIDADE"));
+
+                produto.setCodigo(rs.getInt("ID_PRODUTO"));
+
                 produtos.add(produto);
 
             }
