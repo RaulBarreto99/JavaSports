@@ -1,6 +1,5 @@
 create table "ROOT".CLIENTE
 (
-
     ID_CLIENTE BIGINT not null primary key
 
         GENERATED ALWAYS AS IDENTITY
@@ -12,6 +11,20 @@ create table "ROOT".CLIENTE
     TELEFONE VARCHAR(14),
     SEXO VARCHAR(20)
 );
+
+CREATE TABLE USUARIO (
+
+   ID_USUARIO INT not null primary key
+        GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
+
+   NOME VARCHAR(255),
+   LOGIN VARCHAR(255),
+   SENHA VARCHAR(255),
+   EMAIL VARCHAR(255),
+   PERFIL VARCHAR(255)
+);
+
 create table "ROOT".FILIAL(
 	ID_FILIAL BIGINT not null primary key
         GENERATED ALWAYS AS IDENTITY
