@@ -210,24 +210,28 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input required="true"  type="text" class="form-control" placeholder="Nome" name="Name" id="txtCodigo" readonly="true">
+                                                                <input required="true"  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" readonly="true">
+                                                            </div>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                                <input required="true"  type="text" class="form-control" placeholder="Nome" name="NomeUsuario" id="txtNome">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input required="true" type="text" class="form-control" placeholder="Login" name="Login" id="txtNome">
+                                                                <input required="true" type="text" class="form-control" placeholder="Login" name="Login" id="txtLogin">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input required="true" type="text" class="form-control" placeholder="Senha" name="Perfil" id="txtMarca">
+                                                                <input required="true" type="text" class="form-control" placeholder="Senha" name="Senha" id="txtSenha">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                               <input required="true" type="text" class="form-control" placeholder="Email" name="Email" id="txtPreco">
+                                                               <input required="true" type="text" class="form-control" placeholder="Email" name="EmailUsuario" id="txtEmail">
                                                             </div>
                                                            
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input required="true" type="text" class="form-control" placeholder="Perfil" name="Perfil" id="txtQuantidade">
+                                                                <input required="true" type="text" class="form-control" placeholder="Perfil" name="Perfil" id="txtPerfil">
 
                                                             </div>
                                                             
@@ -282,6 +286,7 @@
                                             <table id="tblUsuario" onload="CadastroUsuarioServlet" method="GET">
                                                 <thead>
                                                     <tr>
+                                                        <th>Código</th>
                                                         <th>Nome</th>
                                                         <th>Login</th>
                                                         <th>Senha</th>
@@ -296,18 +301,19 @@
 
                                                 <tbody>
                                                     
-                                                    <c:forEach items="${usuarios}" var="produto">
+                                                    <c:forEach items="${usuarios}" var="usuario">
                                                         
-                                                        <tr id="${usuarios.codigo}">
+                                                        <tr id="${usuario.codigo}">
 
-                                                            <td id="id${produto.codigo}"><c:out value="${produto.codigo}"/></td>
-                                                            <td id="nome${produto.codigo}"><c:out value="${produto.nomeProduto}"/></td>
-                                                            <td id="marca${produto.codigo}"><c:out value="${produto.marca}"/></td>
-                                                            <td id="preco${produto.codigo}"><c:out value="${produto.preco}"/></td>
-                                                            <td id="quantidade${produto.codigo}"><c:out value="${produto.quantidade}"/></td>
+                                                            <td id="id${usuario.codigo}"><c:out value="${usuario.codigo}"/></td>
+                                                            <td id="nome${usuario.codigo}"><c:out value="${usuario.nomeUsuario}"/></td>
+                                                            <td id="login${usuario.codigo}"><c:out value="${usuario.login}"/></td>
+                                                            <td id="senha${usuario.codigo}"><c:out value="${usuario.senha}"/></td>
+                                                            <td id="email${usuario.codigo}"><c:out value="${usuario.email}"/></td>
+                                                            <td id="perfil${usuario.codigo}"><c:out value="${usuario.perfil}"/></td>
                                                             <td>
-                                                                <button data-toggle="tooltip" title="Alterar" onClick="preencher(${produto.codigo})" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroUsuarioServlet?action=excluir&codigo=${produto.codigo}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Alterar" onClick="preencher(${usuario.codigo})" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroUsuarioServlet?action=excluir&codigo=${usuario.codigo}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                             </td>
 
                                                         </tr>

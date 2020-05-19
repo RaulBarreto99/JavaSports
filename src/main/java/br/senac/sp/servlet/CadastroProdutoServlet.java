@@ -35,9 +35,9 @@ public class CadastroProdutoServlet extends HttpServlet {
         if (action.equalsIgnoreCase("excluir")) {
             forward = "/produto.jsp";
             int codigo = Integer.parseInt(request.getParameter("codigo"));
-            boolean excliu = ProdutoDao.excluirProduto(codigo);
+            boolean excluir = ProdutoDao.excluirProduto(codigo);
             String url = "";
-            if (excliu) {
+            if (excluir) {
                 request.setAttribute("msgSucesso", "Produto excluido com sucesso.");
                 request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
                 url = "/sucesso.jsp";
@@ -104,7 +104,7 @@ public class CadastroProdutoServlet extends HttpServlet {
 
             String url = "";
             if (cadastrou) {
-                request.setAttribute("msgSucesso", "Produto cadastro com sucesso.");
+                request.setAttribute("msgSucesso", "Produto cadastrado com sucesso.");
                 request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
                 url = "/sucesso.jsp";
             } else {
