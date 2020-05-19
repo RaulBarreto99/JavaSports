@@ -330,15 +330,17 @@
                                                    
                                                     let id = document.getElementById("id"+id2);
                                                     let nome = document.getElementById("nome"+id2);
-                                                    let marca = document.getElementById("marca"+id2);
-                                                    let preco = document.getElementById("preco"+id2);
-                                                    let quantidade = document.getElementById("quantidade"+id2);
+                                                    let login = document.getElementById("login"+id2);
+                                                    let senha = document.getElementById("senha"+id2);
+                                                    let email = document.getElementById("email"+id2);
+                                                    let perfil = document.getElementById("perfil"+id2);
                                                     
                                                     document.getElementById("txtCodigo").value = id.textContent.trim();
                                                     document.getElementById("txtNome").value = nome.textContent.trim();
-                                                    document.getElementById("txtMarca").value = marca.textContent.trim();
-                                                    document.getElementById("txtPreco").value = preco.textContent.trim();
-                                                    document.getElementById("txtQuantidade").value = quantidade.textContent.trim();
+                                                    document.getElementById("txtLogin").value = login.textContent.trim();
+                                                    document.getElementById("txtSenha").value = senha.textContent.trim();
+                                                    document.getElementById("txtEmail").value = email.textContent.trim();
+                                                    document.getElementById("txtPerfil").value = perfil.textContent.trim();
                                                     
                                                     document.getElementById("btnSalvar").disabled = true;
                                                     document.getElementById("btnAlterar").disabled = false;
@@ -347,9 +349,10 @@
                                                 function limpar(){
                                                     document.getElementById("txtCodigo").value = "";
                                                     document.getElementById("txtNome").value = "";
-                                                    document.getElementById("txtMarca").value = "";
-                                                    document.getElementById("txtPreco").value = "";
-                                                    document.getElementById("txtQuantidade").value = "";
+                                                    document.getElementById("txtLogin").value = "";
+                                                    document.getElementById("txtSenha").value = "";
+                                                    document.getElementById("txtEmail").value = "";
+                                                    document.getElementById("txtPerfil").value = "";
                                                 }
                                             </script>
                                         </div>
