@@ -103,7 +103,7 @@
                                     <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
                                     <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
                                     <li><a title="Cadastrar Filiais" href="CadastroFilialServlet?action=listarFilial"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-
+                                    <li><a title="Cadastrar Usuario" href="CadastroUsuarioServlet?action=listarUsuario"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
                                 </ul>
                         </li>
 

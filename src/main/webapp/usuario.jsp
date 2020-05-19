@@ -1,5 +1,5 @@
 <%-- 
-    Document   : produto
+    Document   : Usuario
     Created on : 06/05/2020, 09:06:07
     Author     : Raul
 --%>
@@ -173,7 +173,7 @@
                                                     <i class="icon nalika-home"></i>
                                                 </div>
                                                 <div class="breadcomb-ctn">
-                                                    <h2>Cadastrar Produtos</h2>
+                                                    <h2>Cadastrar Usuarios</h2>
 
                                                 </div>
                                             </div>
@@ -202,7 +202,7 @@
                                     </ul
                                     <!-- Aqui no Form você deve chamar no action o seu servlet e colocar o metodo post nele, 
                                     já que para cadastrar se trata de um post-->
-                                    <form name = "cadastro produto" action='CadastroProdutoServlet' method='post'>
+                                    <form name = "cadastro usuario" action='CadastroUsuarioServlet' method='post'>
                                         <div id="myTabContent" class="tab-content custom-product-edit">
                                             <div class="product-tab-list tab-pane fade active in" id="description">
                                                 <div class="row">
@@ -210,24 +210,24 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input required="true"  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" readonly="true">
+                                                                <input required="true"  type="text" class="form-control" placeholder="Nome" name="Name" id="txtCodigo" readonly="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input required="true" type="text" class="form-control" placeholder="Nome do produto" name="nomeProduto" id="txtNome">
+                                                                <input required="true" type="text" class="form-control" placeholder="Login" name="Login" id="txtNome">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input required="true" type="text" class="form-control" placeholder="Marca" name="marca" id="txtMarca">
+                                                                <input required="true" type="text" class="form-control" placeholder="Senha" name="Perfil" id="txtMarca">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                               <input required="true" type="number" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
+                                                               <input required="true" type="text" class="form-control" placeholder="Email" name="Email" id="txtPreco">
                                                             </div>
                                                            
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input required="true" type="number" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
+                                                                <input required="true" type="text" class="form-control" placeholder="Perfil" name="Perfil" id="txtQuantidade">
 
                                                             </div>
                                                             
@@ -277,16 +277,16 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="product-status-wrap">
-                                            <h4>Lista de produtos cadastrados</h4>
+                                            <h4>Lista de Usuarios cadastrados</h4>
 
-                                            <table id="tblProduto" onload="CadastroProdutoServlet" method="GET">
+                                            <table id="tblUsuario" onload="CadastroUsuarioServlet" method="GET">
                                                 <thead>
                                                     <tr>
-                                                        <th>Código</th>
-                                                        <th>Nome do produto</th>
-                                                        <th>Marca</th>
-                                                        <th>Preço</th>
-                                                        <th>Quantidade</th>
+                                                        <th>Nome</th>
+                                                        <th>Login</th>
+                                                        <th>Senha</th>
+                                                        <th>Email</th>
+                                                        <th>Perfil</th>
                                                         <th>Ação</th>
 
 
@@ -296,9 +296,9 @@
 
                                                 <tbody>
                                                     
-                                                    <c:forEach items="${produtos}" var="produto">
+                                                    <c:forEach items="${usuarios}" var="produto">
                                                         
-                                                        <tr id="${produto.codigo}">
+                                                        <tr id="${usuarios.codigo}">
 
                                                             <td id="id${produto.codigo}"><c:out value="${produto.codigo}"/></td>
                                                             <td id="nome${produto.codigo}"><c:out value="${produto.nomeProduto}"/></td>
@@ -307,7 +307,7 @@
                                                             <td id="quantidade${produto.codigo}"><c:out value="${produto.quantidade}"/></td>
                                                             <td>
                                                                 <button data-toggle="tooltip" title="Alterar" onClick="preencher(${produto.codigo})" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroProdutoServlet?action=excluir&codigo=${produto.codigo}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroUsuarioServlet?action=excluir&codigo=${produto.codigo}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                             </td>
 
                                                         </tr>
