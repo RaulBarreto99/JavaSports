@@ -5,8 +5,8 @@
  */
 package br.senac.sp.servlet;
 
-import br.senac.sp.dao.ProdutoDao;
-import br.senac.sp.entidade.Produto;
+import br.senac.sp.dao.UsuarioDAO;
+import br.senac.sp.entidade.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -21,39 +21,40 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Raul
  */
-@WebServlet(name = "CadastroProdutoServlet", urlPatterns = {"/CadastroProdutoServlet"})
-public class CadastroProdutoServlet extends HttpServlet {
+@WebServlet(name = "CadastroUsuarioServlet", urlPatterns = {"/CadastroUsuarioServlet"})
+
+public class CadastroUsuarioServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String forward = "";
-        forward = "produto.jsp";
+        forward = "usuario.jsp";
 
         String action = request.getParameter("action");
 
         if (action.equalsIgnoreCase("excluir")) {
-            forward = "/produto.jsp";
+            forward = "/usuario.jsp";
             int codigo = Integer.parseInt(request.getParameter("codigo"));
-            boolean excluir = ProdutoDao.excluirProduto(codigo);
+            boolean excluir = UsuarioDAO.excluirUsuario(codigo);
             String url = "";
             if (excluir) {
-                request.setAttribute("msgSucesso", "Produto excluido com sucesso.");
-                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
+                request.setAttribute("msgSucesso", "Usuário excluido com sucesso.");
+                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
                 url = "/sucesso.jsp";
             } else {
                 url = "/erro.jsp";
-                request.setAttribute("msgErro", "Não foi possivel excluir o produto.");
-                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
+                request.setAttribute("msgErro", "Não foi possivel excluir o usuário.");
+                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
         }
 
-        if (action.equalsIgnoreCase("listarProduto")) {
-            forward = "produto.jsp";
-            List<Produto> lista = ProdutoDao.listarProduto();
-            request.setAttribute("produtos", lista);
+        if (action.equalsIgnoreCase("listarUsuario")) {
+            forward = "usuario.jsp";
+            List<Usuario> lista = UsuarioDAO.listarUsuario();
+            request.setAttribute("usuarios", lista);
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
         }
@@ -67,50 +68,52 @@ public class CadastroProdutoServlet extends HttpServlet {
         if (action.equalsIgnoreCase("alterar")) {
             String codigo = request.getParameter("codigo");
             
-            String nomeProduto = request.getParameter("nomeProduto");
-            String marca = request.getParameter("marca");
-            String preco = request.getParameter("preco");
-            String quantidade = request.getParameter("quantidade");
+            String nomeUsuario = request.getParameter("NomeUsuario");
+            String login = request.getParameter("Login");
+            String senha = request.getParameter("Senha");
+            String email = request.getParameter("EmailUsuario");
+            String perfil = request.getParameter("Perfil");
             
-            Produto produto = new Produto(nomeProduto, marca, Double.parseDouble(preco), Integer.parseInt(quantidade));
+            Usuario usuario = new Usuario(nomeUsuario, login, senha, email, perfil);
 
-            boolean cadastrou = ProdutoDao.alterarProduto(produto, Integer.parseInt(codigo));
+            boolean cadastrou = UsuarioDAO.alterarUsuario(usuario, Integer.parseInt(codigo));
             PrintWriter out = response.getWriter();
 
             String url = "";
             if (cadastrou) {
-                request.setAttribute("msgSucesso", "Produto alterado com sucesso.");
-                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
+                request.setAttribute("msgSucesso", "Usuário alterado com sucesso.");
+                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
                 url = "/sucesso.jsp";
             } else {
                 url = "/erro.jsp";
-                request.setAttribute("msgErro", "Não foi possivel alterar o produto.");
-                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
+                request.setAttribute("msgErro", "Não foi possivel alterar o usuário.");
+                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
         } else if (action.equalsIgnoreCase("")) {
 
             //String codigo = request.getParameter("codigo");
-            String nomeProduto = request.getParameter("nomeProduto");
-            String marca = request.getParameter("marca");
-            String preco = request.getParameter("preco");
-            String quantidade = request.getParameter("quantidade");
+            String nomeUsuario = request.getParameter("NomeUsuario");
+            String login = request.getParameter("Login");
+            String senha = request.getParameter("Senha");
+            String email = request.getParameter("EmailUsuario");
+            String perfil = request.getParameter("Perfil");
 
-            Produto produto = new Produto(nomeProduto, marca, Double.parseDouble(preco), Integer.parseInt(quantidade));
+            Usuario usuario = new Usuario(nomeUsuario, login, senha, email, perfil);
 
-            boolean cadastrou = ProdutoDao.cadastrarProduto(produto);
+            boolean cadastrou = UsuarioDAO.cadastrarUsuario(usuario);
             PrintWriter out = response.getWriter();
 
             String url = "";
             if (cadastrou) {
-                request.setAttribute("msgSucesso", "Produto cadastrado com sucesso.");
-                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
+                request.setAttribute("msgSucesso", "Usuário cadastrado com sucesso.");
+                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
                 url = "/sucesso.jsp";
             } else {
                 url = "/erro.jsp";
-                request.setAttribute("msgErro", "Não foi possivel cadasrar o produto.");
-                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
+                request.setAttribute("msgErro", "Não foi possivel cadasrar o usuário.");
+                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
