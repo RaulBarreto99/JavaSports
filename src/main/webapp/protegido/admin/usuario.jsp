@@ -213,10 +213,6 @@
                                                                 <input required="true"  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" readonly="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input required="true"  type="text" class="form-control" placeholder="Nome" name="NomeUsuario" id="txtNome">
-                                                            </div>
-                                                            <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
                                                                 <input required="true" type="text" class="form-control" placeholder="Login" name="Login" id="txtLogin">
                                                             </div>
@@ -287,7 +283,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Código</th>
-                                                        <th>Nome</th>
                                                         <th>Login</th>
                                                         <th>Senha</th>
                                                         <th>Email</th>
@@ -306,7 +301,6 @@
                                                         <tr id="${usuario.codigo}">
 
                                                             <td id="id${usuario.codigo}"><c:out value="${usuario.codigo}"/></td>
-                                                            <td id="nome${usuario.codigo}"><c:out value="${usuario.nomeUsuario}"/></td>
                                                             <td id="login${usuario.codigo}"><c:out value="${usuario.login}"/></td>
                                                             <td id="senha${usuario.codigo}"><c:out value="${usuario.senha}"/></td>
                                                             <td id="email${usuario.codigo}"><c:out value="${usuario.email}"/></td>
@@ -329,14 +323,12 @@
                                                     document.getElementById("action").value = "alterar";
                                                    
                                                     let id = document.getElementById("id"+id2);
-                                                    let nome = document.getElementById("nome"+id2);
                                                     let login = document.getElementById("login"+id2);
                                                     let senha = document.getElementById("senha"+id2);
                                                     let email = document.getElementById("email"+id2);
                                                     let perfil = document.getElementById("perfil"+id2);
                                                     
                                                     document.getElementById("txtCodigo").value = id.textContent.trim();
-                                                    document.getElementById("txtNome").value = nome.textContent.trim();
                                                     document.getElementById("txtLogin").value = login.textContent.trim();
                                                     document.getElementById("txtSenha").value = senha.textContent.trim();
                                                     document.getElementById("txtEmail").value = email.textContent.trim();
@@ -348,7 +340,6 @@
                                                 
                                                 function limpar(){
                                                     document.getElementById("txtCodigo").value = "";
-                                                    document.getElementById("txtNome").value = "";
                                                     document.getElementById("txtLogin").value = "";
                                                     document.getElementById("txtSenha").value = "";
                                                     document.getElementById("txtEmail").value = "";

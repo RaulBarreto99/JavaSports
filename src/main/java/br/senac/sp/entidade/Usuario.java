@@ -1,24 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.sp.entidade;
 
-/**
- *
- * @author Raul
- */
+import at.favre.lib.crypto.bcrypt.BCrypt;
+import br.senac.sp.utils.PerfilEnum;
+
 public class Usuario {
+    
     private int codigo;
-    private String nomeUsuario;
     private String login;
     private String senha;
     private String email;
     private String perfil;
+    private boolean isAdmin;
 
-    public Usuario(String nomeUsuario, String login, String senha, String email, String perfil) {
-        this.nomeUsuario = nomeUsuario;
+    public Usuario(String login, String senha, String email, String perfil) {
         this.login = login;
         this.senha = senha;
         this.email = email;
@@ -27,6 +21,15 @@ public class Usuario {
 
     public Usuario() {
     }
+    
+    public String encodeSenha(String senhaAberta) {
+        return BCrypt.withDefaults().hashToString(12, senhaAberta.toCharArray());
+    }
+    
+    public boolean validarSenha(String senhaAberta) {
+        BCrypt.Result result = BCrypt.verifyer().verify(senhaAberta.toCharArray(), this.getSenha());
+        return result.verified;
+    }
 
     public int getCodigo() {
         return codigo;
@@ -34,14 +37,6 @@ public class Usuario {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public String getNomeUsuario() {
-        return nomeUsuario;
-    }
-
-    public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
     }
 
     public String getLogin() {
@@ -75,6 +70,19 @@ public class Usuario {
     public void setPerfil(String perfil) {
         this.perfil = perfil;
     }
+
+    public boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    public boolean isAdmin() {
+        return PerfilEnum.admin.equals(this.getPerfil());
+    }
+    
     
     
 }

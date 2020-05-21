@@ -24,19 +24,19 @@ public class CadastroClienteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String forward = "";
-        forward = "cliente.jsp";
+        forward = "/protegido/cliente.jsp";
 
         String action = request.getParameter("action");
 
         if (action.equalsIgnoreCase("excluir")) {
-            forward = "/cliente.jsp";
+            forward = "/protegido/cliente.jsp";
             int id = Integer.parseInt(request.getParameter("id"));
             boolean excliu = ClienteDAO.excluirCliente(id);
             String url = "";
             if (excliu) {
-                url = "/sucesso.jsp";
+                url = "/protegido/sucesso.jsp";
             } else {
-                url = "/erro.jsp";
+                url = "/protegido/erro.jsp";
             }
             request.setAttribute("msgSucesso", "Cliente Excluido com sucesso");
             request.setAttribute("forward", "/xNexus-java-sports/CadastroClienteServlet?action=listarCliente");
@@ -45,7 +45,7 @@ public class CadastroClienteServlet extends HttpServlet {
         }
 
         if (action.equalsIgnoreCase("listarCliente")) {
-            forward = "cliente.jsp";
+            forward = "/protegido/cliente.jsp";
             List<Cliente> lista = ClienteDAO.listarCliente();
             request.setAttribute("clientes", lista);
             RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -89,9 +89,9 @@ public class CadastroClienteServlet extends HttpServlet {
 
             String url = "";
             if (alterou) {
-                url = "/sucesso.jsp";
+                url = "/protegido/sucesso.jsp";
             } else {
-                url = "/erro.jsp";
+                url = "/protegido/erro.jsp";
             }
             request.setAttribute("msgSucesso", "Cliente Alterado com Sucesso");
             request.setAttribute("forward", "/xNexus-java-sports/CadastroClienteServlet?action=listarCliente");
@@ -121,9 +121,9 @@ public class CadastroClienteServlet extends HttpServlet {
 
         String url = "";
         if (cadastrou) {
-            url = "/sucesso.jsp";
+            url = "/protegido/sucesso.jsp";
         } else {
-            url = "/erro.jsp";
+            url = "/protegido/erro.jsp";
         }
         request.setAttribute("msgSucesso", "Cliente Cadastrado com Sucesso");
         request.setAttribute("forward", "/xNexus-java-sports/CadastroClienteServlet?action=listarCliente");

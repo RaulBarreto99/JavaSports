@@ -33,16 +33,16 @@ public class CadastroProdutoServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action.equalsIgnoreCase("excluir")) {
-            forward = "/produto.jsp";
+            forward = "/protegido/produto.jsp";
             int codigo = Integer.parseInt(request.getParameter("codigo"));
             boolean excluir = ProdutoDao.excluirProduto(codigo);
             String url = "";
             if (excluir) {
                 request.setAttribute("msgSucesso", "Produto excluido com sucesso.");
                 request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
-                url = "/sucesso.jsp";
+                url = "/protegido/sucesso.jsp";
             } else {
-                url = "/erro.jsp";
+                url = "/protegido/erro.jsp";
                 request.setAttribute("msgErro", "Não foi possivel excluir o produto.");
                 request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
             }
@@ -51,7 +51,7 @@ public class CadastroProdutoServlet extends HttpServlet {
         }
 
         if (action.equalsIgnoreCase("listarProduto")) {
-            forward = "produto.jsp";
+            forward = "/protegido/produto.jsp";
             List<Produto> lista = ProdutoDao.listarProduto();
             request.setAttribute("produtos", lista);
             RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -81,9 +81,9 @@ public class CadastroProdutoServlet extends HttpServlet {
             if (cadastrou) {
                 request.setAttribute("msgSucesso", "Produto alterado com sucesso.");
                 request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
-                url = "/sucesso.jsp";
+                url = "/protegido/sucesso.jsp";
             } else {
-                url = "/erro.jsp";
+                url = "/protegido/erro.jsp";
                 request.setAttribute("msgErro", "Não foi possivel alterar o produto.");
                 request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
             }
@@ -106,9 +106,9 @@ public class CadastroProdutoServlet extends HttpServlet {
             if (cadastrou) {
                 request.setAttribute("msgSucesso", "Produto cadastrado com sucesso.");
                 request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
-                url = "/sucesso.jsp";
+                url = "/protegido/sucesso.jsp";
             } else {
-                url = "/erro.jsp";
+                url = "/protegido/erro.jsp";
                 request.setAttribute("msgErro", "Não foi possivel cadasrar o produto.");
                 request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
             }

@@ -35,7 +35,7 @@ public class CadastroFilialServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action.equalsIgnoreCase("listarfilial")) {
-            forward = "/filial.jsp";
+            forward = "/protegido/filial.jsp";
 
             List<Filial> lista = FilialDAO.listarFilial();
             request.setAttribute("filiais", lista);
@@ -45,16 +45,16 @@ public class CadastroFilialServlet extends HttpServlet {
         }
 
         if (action.equalsIgnoreCase("excluir")) {
-            forward = "/filial.jsp";
+            forward = "/protegido/filial.jsp";
             int id = Integer.parseInt(request.getParameter("id"));
             boolean excliu = FilialDAO.excluirFilial(id);
             String url = "";
             if (excliu) {
                 request.setAttribute("msgSucesso", "Filial excluida com sucesso.");
                 request.setAttribute("forward", "CadastroFilialServlet?action=listarFilial");
-                url = "/sucesso.jsp";
+                url = "/protegido/sucesso.jsp";
             } else {
-                url = "/erro.jsp";
+                url = "/protegido/erro.jsp";
                 request.setAttribute("msgErro", "Não foi possivel excluir a filial.");
                 request.setAttribute("forward", "CadastroFilialServlet?action=listarFilial");
             }
@@ -91,9 +91,9 @@ public class CadastroFilialServlet extends HttpServlet {
             if (cadastrou) {
                 request.setAttribute("msgSucesso", "Filial alterada com sucesso.");
                 request.setAttribute("forward", "CadastroFilialServlet?action=listarFilial");
-                url = "/sucesso.jsp";
+                url = "/protegido/sucesso.jsp";
             } else {
-                url = "/erro.jsp";
+                url = "/protegido/erro.jsp";
                 request.setAttribute("msgErro", "Não foi possivel alterar a filial.");
                 request.setAttribute("forward", "CadastroFilialServlet?action=listarFilial");
             }
@@ -131,9 +131,9 @@ public class CadastroFilialServlet extends HttpServlet {
             if (cadastrou) {
                 request.setAttribute("msgSucesso", "Filial cadastrada com sucesso.");
                 request.setAttribute("forward", "CadastroFilialServlet?action=listarFilial");
-                url = "/sucesso.jsp";
+                url = "/protegido/sucesso.jsp";
             } else {
-                url = "/erro.jsp";
+                url = "/protegido/erro.jsp";
                 request.setAttribute("msgErro", "Não foi possivel cadastrar a filial.");
                 request.setAttribute("forward", "CadastroFilialServlet?action=listarFilial");
             }

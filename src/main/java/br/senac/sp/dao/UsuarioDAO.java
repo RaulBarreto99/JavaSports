@@ -24,14 +24,14 @@ public class UsuarioDAO {
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "INSERT INTO usuario VALUES (default,?,?,?,?,?)";
+            String sql = "INSERT INTO usuario VALUES (default,?,?,?,?)";
             PreparedStatement PreparedStatement = connection.prepareStatement(sql);
 
-            PreparedStatement.setString(1, usuario.getNomeUsuario());
-            PreparedStatement.setString(2, usuario.getLogin());
-            PreparedStatement.setString(3, usuario.getSenha());
-            PreparedStatement.setString(4, usuario.getEmail());
-            PreparedStatement.setString(5, usuario.getPerfil());
+            
+            PreparedStatement.setString(1, usuario.getLogin());
+            PreparedStatement.setString(2, usuario.getSenha());
+            PreparedStatement.setString(3, usuario.getEmail());
+            PreparedStatement.setString(4, usuario.getPerfil().toString());
             PreparedStatement.execute();
             cadastrou = true;
         } catch (SQLException ex) {
@@ -45,15 +45,14 @@ public class UsuarioDAO {
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "UPDATE usuario SET NOME = ?,LOGIN = ?,SENHA = ?,EMAIL = ?,PERFIL = ? WHERE ID_USUARIO = ?";
+            String sql = "UPDATE usuario SET LOGIN = ?,SENHA = ?,EMAIL = ?,PERFIL = ? WHERE ID_USUARIO = ?";
             PreparedStatement PreparedStatement = connection.prepareStatement(sql);
 
-            PreparedStatement.setString(1, usuario.getNomeUsuario());
-            PreparedStatement.setString(2, usuario.getLogin());
-            PreparedStatement.setString(3, usuario.getSenha());
-            PreparedStatement.setString(4, usuario.getEmail());
-            PreparedStatement.setString(5, usuario.getPerfil());
-            PreparedStatement.setInt(6, codigo);
+            PreparedStatement.setString(1, usuario.getLogin());
+            PreparedStatement.setString(2, usuario.getSenha());
+            PreparedStatement.setString(3, usuario.getEmail());
+            PreparedStatement.setString(4, usuario.getPerfil().toString());
+            PreparedStatement.setInt(5, codigo);
             PreparedStatement.execute();
             alterou = true;
         } catch (SQLException ex) {
@@ -69,7 +68,7 @@ public class UsuarioDAO {
         boolean excluiu = false;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "delete  from usuario where ID_USUARIO = ?";
+            String sql = "delete from usuario where ID_USUARIO = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, codigo);
             preparedStatement.execute();
@@ -101,7 +100,6 @@ public class UsuarioDAO {
                 Usuario usuario = new Usuario();
 
                 usuario.setCodigo(rs.getInt("id_usuario"));
-                usuario.setNomeUsuario(rs.getString("nome"));
                 usuario.setLogin(rs.getString("login"));
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setEmail(rs.getString("email"));
