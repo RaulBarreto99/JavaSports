@@ -12,18 +12,19 @@ create table "ROOT".CLIENTE
     SEXO VARCHAR(20)
 );
 
-CREATE TABLE USUARIO (
-
+CREATE TABLE USUARIOSISTEMA (
    ID_USUARIO INT not null primary key
         GENERATED ALWAYS AS IDENTITY
         (START WITH 1, INCREMENT BY 1),
-
    NOME VARCHAR(255),
-   LOGIN VARCHAR(255),
+   USUARIO VARCHAR(255),
    SENHA VARCHAR(255),
-   EMAIL VARCHAR(255),
    PERFIL VARCHAR(255)
 );
+
+
+insert into usuariosistema (nome, usuario, senha, perfil) values  ('Administrator', 'admin', '$2a$12$QOCya.5hab5l10NK7H27PufZwF5gnJ3DQjqB7qDFZntV08YG4FvXm', 'admin');
+insert into usuariosistema (nome, usuario, senha, perfil) values  ('Mike Wilson', 'mike', '$2a$12$LRiaGx0f6hKD7ffdF0huquyeKchRVI0A10fWOx.uIN37bC/RSd9OS', 'vendedor');
 
 create table "ROOT".FILIAL(
 	ID_FILIAL BIGINT not null primary key
