@@ -24,12 +24,12 @@ public class CadastroClienteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String forward = "";
-        forward = "/protegido/cliente.jsp";
+        forward = "/protegido/admin/cliente.jsp";
 
         String action = request.getParameter("action");
 
         if (action.equalsIgnoreCase("excluir")) {
-            forward = "/protegido/cliente.jsp";
+            forward = "/protegido/admin/cliente.jsp";
             int id = Integer.parseInt(request.getParameter("id"));
             boolean excliu = ClienteDAO.excluirCliente(id);
             String url = "";
@@ -45,7 +45,7 @@ public class CadastroClienteServlet extends HttpServlet {
         }
 
         if (action.equalsIgnoreCase("listarCliente")) {
-            forward = "/protegido/cliente.jsp";
+            forward = "/protegido/admin/cliente.jsp";
             List<Cliente> lista = ClienteDAO.listarCliente();
             request.setAttribute("clientes", lista);
             RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -64,7 +64,7 @@ public class CadastroClienteServlet extends HttpServlet {
 
         if (action.equalsIgnoreCase("alterar")) {
             
-            forward = "cliente.jsp";
+            forward = "/protegido/admin/cliente.jsp";
             int id = Integer.parseInt(request.getParameter("id").trim());
             String nome = request.getParameter("nome");
             String sobrenome = request.getParameter("sobrenome");

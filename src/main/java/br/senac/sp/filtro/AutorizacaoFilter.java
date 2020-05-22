@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.sp.filtro;
 
-import br.senac.sp.entidade.Usuario;
+import br.senac.sp.entidade.UsuarioSistema;
+import br.senac.sp.utils.PerfilEnum;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -37,7 +33,7 @@ public class AutorizacaoFilter implements Filter {
         }
         
         // 2) Usuario esta logado -> Verifica se tem papel necessario para acesso
-        Usuario usuario = (Usuario) sessao.getAttribute("usuario");
+        UsuarioSistema usuario = (UsuarioSistema) sessao.getAttribute("usuario");
         
         if (verificarAcesso(usuario, httpRequest)) {
             // Usuario tem permissao de acesso -> Requisição pode seguir para servlet
@@ -57,7 +53,7 @@ public class AutorizacaoFilter implements Filter {
     public void init(FilterConfig filterConfig) {
     }
     
-    private boolean verificarAcesso(Usuario usuario, HttpServletRequest httpRequest) {
+    private boolean verificarAcesso(UsuarioSistema usuario, HttpServletRequest httpRequest) {
         String urlAcessada = httpRequest.getRequestURI();
         if (urlAcessada.contains("/protegido/admin/")) {
             if (usuario.isAdmin()) {

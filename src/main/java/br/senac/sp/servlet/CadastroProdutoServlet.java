@@ -28,7 +28,7 @@ public class CadastroProdutoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String forward = "";
-        forward = "produto.jsp";
+        forward = "/protegido/produto.jsp";
 
         String action = request.getParameter("action");
 

@@ -5,8 +5,8 @@
  */
 package br.senac.sp.servlet;
 
-import br.senac.sp.dao.UsuarioDAO;
-import br.senac.sp.entidade.Usuario;
+import br.senac.sp.dao.UsuarioSistemaDAO;
+import br.senac.sp.entidade.UsuarioSistema;
 import br.senac.sp.utils.PerfilEnum;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,7 +37,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
         if (action.equalsIgnoreCase("excluir")) {
             forward = "/protegido/admin/usuario.jsp";
             int codigo = Integer.parseInt(request.getParameter("codigo"));
-            boolean excluir = UsuarioDAO.excluirUsuario(codigo);
+            boolean excluir = UsuarioSistemaDAO.excluirUsuario(codigo);
             String url = "";
             if (excluir) {
                 request.setAttribute("msgSucesso", "Usuário excluido com sucesso.");
@@ -54,7 +54,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
 
         if (action.equalsIgnoreCase("listarUsuario")) {
             forward = "/protegido/admin/usuario.jsp";
-            List<Usuario> lista = UsuarioDAO.listarUsuario();
+            List<UsuarioSistema> lista = UsuarioSistemaDAO.listarUsuario();
             request.setAttribute("usuarios", lista);
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
@@ -75,9 +75,9 @@ public class CadastroUsuarioServlet extends HttpServlet {
             String email = request.getParameter("EmailUsuario");
             String perfil = request.getParameter("Perfil");
             
-            Usuario usuario = new Usuario(login, senha, email, perfil);
+            UsuarioSistema usuario = new UsuarioSistema(login, senha, email, perfil);
 
-            boolean cadastrou = UsuarioDAO.alterarUsuario(usuario, Integer.parseInt(codigo));
+            boolean cadastrou = UsuarioSistemaDAO.alterarUsuario(usuario, Integer.parseInt(codigo));
             PrintWriter out = response.getWriter();
 
             String url = "";
@@ -101,9 +101,9 @@ public class CadastroUsuarioServlet extends HttpServlet {
             String email = request.getParameter("EmailUsuario");
             String perfil = request.getParameter("Perfil");
 
-            Usuario usuario = new Usuario(login, senha, email, perfil);
+            UsuarioSistema usuario = new UsuarioSistema(login, senha, email, perfil);
 
-            boolean cadastrou = UsuarioDAO.cadastrarUsuario(usuario);
+            boolean cadastrou = UsuarioSistemaDAO.cadastrarUsuario(usuario);
             PrintWriter out = response.getWriter();
 
             String url = "";
