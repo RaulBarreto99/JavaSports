@@ -13,8 +13,20 @@
         <servlet-class>br.senac.sp.servlet.CadastroClienteServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListarClientes</servlet-name>
-        <servlet-class>br.senac.sp.servlet.ListarClientes</servlet-class>
+        <servlet-name>CadastroProdutoServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.CadastroProdutoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastroFilialServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.CadastroFilialServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastroUsuarioServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.CadastroUsuarioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VendasServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.VendasServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -26,11 +38,23 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>CadastroClienteServlet</servlet-name>
-        <url-pattern>/protegido/admin/CadastroClienteServlet</url-pattern>
+        <url-pattern>/protegido/funcionario/CadastroClienteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListarClientes</servlet-name>
-        <url-pattern>/protegido/ListarClientes</url-pattern>
+        <servlet-name>CadastroProdutoServlet</servlet-name>
+        <url-pattern>/protegido/funcionario/CadastroProdutoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastroFilialServlet</servlet-name>
+        <url-pattern>/protegido/funcionario/CadastroFilialServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastroUsuarioServlet</servlet-name>
+        <url-pattern>/protegido/funcionario/CadastroUsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VendasServlet</servlet-name>
+        <url-pattern>/protegido/funcionario/VendasServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>

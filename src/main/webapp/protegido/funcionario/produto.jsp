@@ -1,5 +1,5 @@
 <%-- 
-    Document   : Usuario
+    Document   : produto
     Created on : 06/05/2020, 09:06:07
     Author     : Raul
 --%>
@@ -100,16 +100,18 @@
                                     <span class="mini-click-non">Cadastros</span>
                                 </a>
                                 <ul class="submenu-angle" aria-expanded="true">
-                                    <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
-                                    <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
-                                    <li><a title="Cadastrar Filiais" href="CadastroFilialServlet?action=listarFilial"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-                                    <li><a title="Cadastrar Usuario" href="CadastroUsuarioServlet?action=listarUsuario"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroClienteServlet?action=listarCliente"/>"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroProdutoServlet?action=listarProduto"/>"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/VendasServlet?action=listarVendas"/>"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroFilialServlet?action=listarFilial"/>"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroUsuarioServlet?action=listarUsuario"/>"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
                                 </ul>
                             </li>
 
                             <li id="removable">
-                                <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
+                                <a class="has-arrow" href="<c:url value="/protegido/funcionario/estoque.jsp"/>" aria-expanded="false"><i
+                                        class="icon nalika-new-file icon-wrap"></i> <span
+                                        class="mini-click-non">Estoque</span></a>
 
                             </li>
                         </ul>
@@ -173,7 +175,7 @@
                                                     <i class="icon nalika-home"></i>
                                                 </div>
                                                 <div class="breadcomb-ctn">
-                                                    <h2>Cadastrar Usuarios</h2>
+                                                    <h2>Cadastrar Produtos</h2>
 
                                                 </div>
                                             </div>
@@ -202,7 +204,7 @@
                                     </ul
                                     <!-- Aqui no Form você deve chamar no action o seu servlet e colocar o metodo post nele, 
                                     já que para cadastrar se trata de um post-->
-                                    <form name = "cadastro usuario" action='CadastroUsuarioServlet' method='post'>
+                                    <form name = "cadastro produto" action='CadastroProdutoServlet' method='post'>
                                         <div id="myTabContent" class="tab-content custom-product-edit">
                                             <div class="product-tab-list tab-pane fade active in" id="description">
                                                 <div class="row">
@@ -214,20 +216,20 @@
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input required="true" type="text" class="form-control" placeholder="Login" name="Login" id="txtLogin">
+                                                                <input required="true" type="text" class="form-control" placeholder="Nome do produto" name="nomeProduto" id="txtNome">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input required="true" type="text" class="form-control" placeholder="Senha" name="Senha" id="txtSenha">
+                                                                <input required="true" type="text" class="form-control" placeholder="Marca" name="marca" id="txtMarca">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                               <input required="true" type="text" class="form-control" placeholder="Email" name="EmailUsuario" id="txtEmail">
+                                                               <input required="true" type="number" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
                                                             </div>
                                                            
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input required="true" type="text" class="form-control" placeholder="Perfil" name="Perfil" id="txtPerfil">
+                                                                <input required="true" type="number" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
 
                                                             </div>
                                                             
@@ -277,16 +279,16 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="product-status-wrap">
-                                            <h4>Lista de Usuarios cadastrados</h4>
+                                            <h4>Lista de produtos cadastrados</h4>
 
-                                            <table id="tblUsuario" onload="CadastroUsuarioServlet" method="GET">
+                                            <table id="tblProduto" onload="CadastroProdutoServlet" method="GET">
                                                 <thead>
                                                     <tr>
                                                         <th>Código</th>
-                                                        <th>Login</th>
-                                                        <th>Senha</th>
-                                                        <th>Email</th>
-                                                        <th>Perfil</th>
+                                                        <th>Nome do produto</th>
+                                                        <th>Marca</th>
+                                                        <th>Preço</th>
+                                                        <th>Quantidade</th>
                                                         <th>Ação</th>
 
 
@@ -296,18 +298,18 @@
 
                                                 <tbody>
                                                     
-                                                    <c:forEach items="${usuarios}" var="usuario">
+                                                    <c:forEach items="${produtos}" var="produto">
                                                         
-                                                        <tr id="${usuario.codigo}">
+                                                        <tr id="${produto.codigo}">
 
-                                                            <td id="id${usuario.codigo}"><c:out value="${usuario.codigo}"/></td>
-                                                            <td id="login${usuario.codigo}"><c:out value="${usuario.login}"/></td>
-                                                            <td id="senha${usuario.codigo}"><c:out value="${usuario.senha}"/></td>
-                                                            <td id="email${usuario.codigo}"><c:out value="${usuario.email}"/></td>
-                                                            <td id="perfil${usuario.codigo}"><c:out value="${usuario.perfil}"/></td>
+                                                            <td id="id${produto.codigo}"><c:out value="${produto.codigo}"/></td>
+                                                            <td id="nome${produto.codigo}"><c:out value="${produto.nomeProduto}"/></td>
+                                                            <td id="marca${produto.codigo}"><c:out value="${produto.marca}"/></td>
+                                                            <td id="preco${produto.codigo}"><c:out value="${produto.preco}"/></td>
+                                                            <td id="quantidade${produto.codigo}"><c:out value="${produto.quantidade}"/></td>
                                                             <td>
-                                                                <button data-toggle="tooltip" title="Alterar" onClick="preencher(${usuario.codigo})" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroUsuarioServlet?action=excluir&codigo=${usuario.codigo}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Alterar" onClick="preencher(${produto.codigo})" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroProdutoServlet?action=excluir&codigo=${produto.codigo}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                             </td>
 
                                                         </tr>
@@ -323,16 +325,16 @@
                                                     document.getElementById("action").value = "alterar";
                                                    
                                                     let id = document.getElementById("id"+id2);
-                                                    let login = document.getElementById("login"+id2);
-                                                    let senha = document.getElementById("senha"+id2);
-                                                    let email = document.getElementById("email"+id2);
-                                                    let perfil = document.getElementById("perfil"+id2);
+                                                    let nome = document.getElementById("nome"+id2);
+                                                    let marca = document.getElementById("marca"+id2);
+                                                    let preco = document.getElementById("preco"+id2);
+                                                    let quantidade = document.getElementById("quantidade"+id2);
                                                     
                                                     document.getElementById("txtCodigo").value = id.textContent.trim();
-                                                    document.getElementById("txtLogin").value = login.textContent.trim();
-                                                    document.getElementById("txtSenha").value = senha.textContent.trim();
-                                                    document.getElementById("txtEmail").value = email.textContent.trim();
-                                                    document.getElementById("txtPerfil").value = perfil.textContent.trim();
+                                                    document.getElementById("txtNome").value = nome.textContent.trim();
+                                                    document.getElementById("txtMarca").value = marca.textContent.trim();
+                                                    document.getElementById("txtPreco").value = preco.textContent.trim();
+                                                    document.getElementById("txtQuantidade").value = quantidade.textContent.trim();
                                                     
                                                     document.getElementById("btnSalvar").disabled = true;
                                                     document.getElementById("btnAlterar").disabled = false;
@@ -340,10 +342,10 @@
                                                 
                                                 function limpar(){
                                                     document.getElementById("txtCodigo").value = "";
-                                                    document.getElementById("txtLogin").value = "";
-                                                    document.getElementById("txtSenha").value = "";
-                                                    document.getElementById("txtEmail").value = "";
-                                                    document.getElementById("txtPerfil").value = "";
+                                                    document.getElementById("txtNome").value = "";
+                                                    document.getElementById("txtMarca").value = "";
+                                                    document.getElementById("txtPreco").value = "";
+                                                    document.getElementById("txtQuantidade").value = "";
                                                 }
                                             </script>
                                         </div>

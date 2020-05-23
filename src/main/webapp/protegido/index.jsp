@@ -97,16 +97,16 @@
                                     <span class="mini-click-non">Cadastros</span>
                                 </a>
                                 <ul class="submenu-angle" aria-expanded="true">
-                                    <li><a href="<c:url value="/protegido/admin/CadastroClienteServlet?action=listarCliente"/>"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
-                                    <li><a href="<c:url value="/CadastroProdutoServlet?action=listarProduto"/>"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a href="<c:url value="/VendasServlet?action=listarVendas"/>"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
-                                    <li><a href="<c:url value="/CadastroFilialServlet?action=listarFilial"/>"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-                                    <li><a href="<c:url value="/CadastroUsuarioServlet?action=listarUsuario"/>"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroClienteServlet?action=listarCliente"/>"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroProdutoServlet?action=listarProduto"/>"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/VendasServlet?action=listarVendas"/>"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroFilialServlet?action=listarFilial"/>"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroUsuarioServlet?action=listarUsuario"/>"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
                                 </ul>
                             </li>
 
                             <li id="removable">
-                                <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i
+                                <a class="has-arrow" href="<c:url value="/protegido/funcionario/estoque.jsp"/>" aria-expanded="false"><i
                                         class="icon nalika-new-file icon-wrap"></i> <span
                                         class="mini-click-non">Estoque</span></a>
 

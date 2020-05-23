@@ -30,12 +30,12 @@ public class CadastroFilialServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String forward = "";
-        forward = "filial.jsp";
+        forward = "/protegido/funcionario/filial.jsp";
 
         String action = request.getParameter("action");
 
         if (action.equalsIgnoreCase("listarfilial")) {
-            forward = "/protegido/filial.jsp";
+            forward = "/protegido/funcionario/filial.jsp";
 
             List<Filial> lista = FilialDAO.listarFilial();
             request.setAttribute("filiais", lista);
@@ -45,7 +45,7 @@ public class CadastroFilialServlet extends HttpServlet {
         }
 
         if (action.equalsIgnoreCase("excluir")) {
-            forward = "/protegido/filial.jsp";
+            forward = "/protegido/funcionario/filial.jsp";
             int id = Integer.parseInt(request.getParameter("id"));
             boolean excliu = FilialDAO.excluirFilial(id);
             String url = "";

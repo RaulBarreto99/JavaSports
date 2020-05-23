@@ -65,6 +65,12 @@ public class UsuarioSistema {
         return PerfilEnum.admin.equals(this.getPerfil());
     }
     
+    public boolean isFuncionario(){
+        return PerfilEnum.funcionario.equals(this.getPerfil());
+    }
     
+    public boolean isGerente(){
+        return PerfilEnum.gerente.equals(this.getPerfil());
+    }
     
 }

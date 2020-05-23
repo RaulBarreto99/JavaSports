@@ -60,7 +60,7 @@ public class VendasServlet extends HttpServlet {
 
         try {
             if (action.equals("listarVendas")) {
-                forward = "/protegido/listarVendas.jsp";
+                forward = "/protegido/funcionario/listarVendas.jsp";
 
                 List<Venda> vendas = dao.getVendas();
 
@@ -89,7 +89,7 @@ public class VendasServlet extends HttpServlet {
             } else if (action.equals("carregarAtributosVenda")) {
                 produtos = dao.getProdutos();
                 clientes = dao.getClientes();
-                forward = "/protegido/cadastrarVenda.jsp";
+                forward = "/protegido/funcionario/cadastrarVenda.jsp";
                 request.setAttribute("valorTotal", this.valorTotal);
                 request.setAttribute("idFilial", this.idFilial);
                 request.setAttribute("cpfCliente", this.cpfCliente);
@@ -99,7 +99,7 @@ public class VendasServlet extends HttpServlet {
                 view.forward(request, response);
             }
         } catch (Exception e) {
-            forward = "/protegido/cadastrarVenda.jsp";
+            forward = "/protegido/funcionario/cadastrarVenda.jsp";
             produtos = dao.getProdutos();
             clientes = dao.getClientes();
             request.setAttribute("valorTotal", 0.0);
@@ -129,7 +129,7 @@ public class VendasServlet extends HttpServlet {
                 request.setAttribute("carrinho", vendaDetalhada.getCarrinho());
 
                 VendasServlet.this.destroy();
-                RequestDispatcher view = request.getRequestDispatcher("/protegido/detalharVenda.jsp");
+                RequestDispatcher view = request.getRequestDispatcher("/protegido/funcionario/detalharVenda.jsp");
                 view.forward(request, response);
             }
         } catch (Exception ex) {
@@ -181,7 +181,7 @@ public class VendasServlet extends HttpServlet {
             v.setCarrinho(this.carrinho);
             System.out.println(v.toString());
 
-            RequestDispatcher view = request.getRequestDispatcher("/protegido/cadastrarVenda.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/protegido/funcionario/cadastrarVenda.jsp");
             view.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
@@ -214,7 +214,7 @@ public class VendasServlet extends HttpServlet {
             request.setAttribute("valorTotal", this.valorTotal);
             request.setAttribute("carrinho", this.carrinho);
 
-            RequestDispatcher view = request.getRequestDispatcher("/protegido/cadastrarVenda.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/protegido/funcionario/cadastrarVenda.jsp");
             view.forward(request, response);
         } else {
             throw new ServletException(retornoValidacao);

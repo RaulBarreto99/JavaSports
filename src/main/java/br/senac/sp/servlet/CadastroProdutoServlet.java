@@ -28,12 +28,12 @@ public class CadastroProdutoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String forward = "";
-        forward = "/protegido/produto.jsp";
+        forward = "/protegido/funcionario/produto.jsp";
 
         String action = request.getParameter("action");
 
         if (action.equalsIgnoreCase("excluir")) {
-            forward = "/protegido/produto.jsp";
+            forward = "/protegido/funcionario/produto.jsp";
             int codigo = Integer.parseInt(request.getParameter("codigo"));
             boolean excluir = ProdutoDao.excluirProduto(codigo);
             String url = "";
@@ -51,7 +51,7 @@ public class CadastroProdutoServlet extends HttpServlet {
         }
 
         if (action.equalsIgnoreCase("listarProduto")) {
-            forward = "/protegido/produto.jsp";
+            forward = "/protegido/funcionario/produto.jsp";
             List<Produto> lista = ProdutoDao.listarProduto();
             request.setAttribute("produtos", lista);
             RequestDispatcher view = request.getRequestDispatcher(forward);

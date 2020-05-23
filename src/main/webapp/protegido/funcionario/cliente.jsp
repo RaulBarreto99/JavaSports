@@ -99,20 +99,20 @@
                                 <span class="mini-click-non">Cadastros</span>
                             </a>
                             <ul class="submenu-angle" aria-expanded="true">
-                                    <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
-                                    <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
-                                    <li><a title="Cadastrar Filiais" href="CadastroFilialServlet?action=listarFilial"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-                                    <li><a title="Cadastrar Usuario" href="CadastroUsuarioServlet?action=listarUsuario"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroClienteServlet?action=listarCliente"/>"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroProdutoServlet?action=listarProduto"/>"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/VendasServlet?action=listarVendas"/>"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroFilialServlet?action=listarFilial"/>"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroUsuarioServlet?action=listarUsuario"/>"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
                                 </ul>
-                        </li>
+                            </li>
 
-                        <li id="removable">
-                            <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i
-                                    class="icon nalika-new-file icon-wrap"></i> <span
-                                    class="mini-click-non">Estoque</span></a>
+                            <li id="removable">
+                                <a class="has-arrow" href="<c:url value="/protegido/funcionario/estoque.jsp"/>" aria-expanded="false"><i
+                                        class="icon nalika-new-file icon-wrap"></i> <span
+                                        class="mini-click-non">Estoque</span></a>
 
-                        </li>
+                            </li>
                     </ul>
                 </nav>
             </div>
@@ -204,7 +204,7 @@
 
                                 </ul <!-- Aqui no Form você deve chamar no action o seu servlet e colocar o metodo post
                                     nele, já que para cadastrar se trata de um post-->
-                                <form name="cadastrar" action='${pageContext.request.contextPath}/protegido/admin/CadastroClienteServlet' method='post' id="cadastrar">
+                                <form name="cadastrar" action='CadastroClienteServlet' method='post' id="cadastrar">
                                     <div id="myTabContent" class="tab-content custom-product-edit">
                                         <div class="product-tab-list tab-pane fade active in" id="description">
                                             <div class="row">

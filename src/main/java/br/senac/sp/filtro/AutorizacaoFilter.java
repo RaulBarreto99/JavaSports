@@ -55,16 +55,24 @@ public class AutorizacaoFilter implements Filter {
     
     private boolean verificarAcesso(UsuarioSistema usuario, HttpServletRequest httpRequest) {
         String urlAcessada = httpRequest.getRequestURI();
-        if (urlAcessada.contains("/protegido/admin/")) {
-            if (usuario.isAdmin()) {
+        
+        if(urlAcessada.contains("/protegido/funcionario/gerente/admin/")){
+            if(usuario.isAdmin()){
+                return true;
+            }
+        }else if(urlAcessada.contains("/protegido/funcionario/gerente/")){
+            if(usuario.isAdmin() || usuario.isGerente()){
+                return true;
+            }
+        }else if(urlAcessada.contains("/protegido/funcionario/")) {
+            if (usuario.isAdmin() || usuario.isGerente() || usuario.isFuncionario()) {
                 return true;
             }
         } else {
              if (urlAcessada.contains("/protegido/")) {
                  return true;
              }
-        }
-            
+        }       
         return false;
     }
 

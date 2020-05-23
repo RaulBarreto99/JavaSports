@@ -1,12 +1,14 @@
 <%-- 
-    Document   : detalharVenda
-    Created on : 10/05/2020, 19:21:50
+    Document   : vendas
+    Created on : 23/04/2020, 22:07:58
     Author     : lucas
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -86,30 +88,38 @@
                         
                     </div>
                 </div>
-                <div class="left-custom-menu-adp-wrap comment-scrollbar">
+    
+<div class="left-custom-menu-adp-wrap comment-scrollbar">
                     <nav class="sidebar-nav left-sidebar-menu-pro">
                         <ul class="metismenu" id="menu1">
                             <li class="active">
-                                <a class="has-arrow" href="index.jsp">
+                                <a class="has-arrow" href="/xNexus-java-sports">
                                     <i class="icon nalika-home icon-wrap"></i>
                                     <span class="mini-click-non">Cadastros</span>
                                 </a>
                                 <ul class="submenu-angle" aria-expanded="true">
-                                    <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
-                                    <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
-                                    <li><a title="Cadastrar Filiais" href="CadastroFilialServlet?action=listarFilial"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroClienteServlet?action=listarCliente"/>"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroProdutoServlet?action=listarProduto"/>"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/VendasServlet?action=listarVendas"/>"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroFilialServlet?action=listarFilial"/>"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroUsuarioServlet?action=listarUsuario"/>"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
                                 </ul>
                             </li>
 
                             <li id="removable">
-                                 <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
+                                <a class="has-arrow" href="<c:url value="/protegido/funcionario/estoque.jsp"/>" aria-expanded="false"><i
+                                        class="icon nalika-new-file icon-wrap"></i> <span
+                                        class="mini-click-non">Estoque</span></a>
 
                             </li>
                         </ul>
                     </nav>
                 </div>
+
+
+
+
+
             </nav>
         </div>
         <!-- Start Welcome area -->
@@ -182,7 +192,7 @@
                                                                                             <i class="icon nalika-home"></i>
                                                                                         </div>
                                                                                         <div class="breadcomb-ctn">
-                                                                                            <h2>Detalhar Vendas</h2>
+                                                                                            <h2>Vendas Cadastradas</h2>
 
                                                                                         </div>
                                                                                     </div>
@@ -204,49 +214,40 @@
                                                                 <div class="container-fluid">
                                                                     <div class="row">
                                                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                            
-                                                                            <div class="product-status-wrap" style="color:white">
-                                                                                
-                                                                                <h4>Informações da Venda</h4>
-
-                                                                                <br>
-                                                                                <p><b>Id da Venda: </b> ${vendaDetalhada.idVenda}</p>
-                                                                                <p><b>Nome do Cliente: </b> ${vendaDetalhada.nomeCliente}</p>
-                                                                                <p><b>Nome da Filial: </b> ${vendaDetalhada.nomeFilial}</p>
-                                                                                <p><b>Data Venda: </b> ${vendaDetalhada.dataVenda}</p>
-                                                                                <p><b>Valor Total: </b> R$ ${vendaDetalhada.valorTotal}</p>
-                                                                            </div>                                                                                
-                                                                        </div>                                                                            
-                                                                    </div>
-                                                                    
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                             <div class="product-status-wrap">
-                                                                                <h4>Produtos Vendidos</h4>
+                                                                                <h4>Lista de vendas</h4>
 
-                                                                                <table>
+                                                                                <table onload="VendasServlet" method="GET">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>Id da Produto</th>
-                                                                                            <th>Nome do Produto</th>
-                                                                                            <th>Marca</th>
-                                                                                            <th>Preço</th>
-                                                                                            <th>Quantidade Vendida</th>
+                                                                                            <th>Id da Venda</th>
+                                                                                            <th>Id do Cliente</th>
+                                                                                            <th>Id da filial</th>
                                                                                             <th>Valor Total</th>
-                                                                                       </tr>
+                                                                                            <th>Data da Venda</th>
+                                                                                            <th>Detalhar Venda</th>
+
+
+                                                                                        </tr>
                                                                                     </thead>
 
 
                                                                                     <tbody>
-                                                                                        <c:forEach items="${carrinho}" var="item">
+                                                                                        <c:forEach items="${vendas}" var="venda">
                                                                                             <tr>
 
-                                                                                                <td><c:out value="${item.idProduto}"/></td>
-                                                                                                <td><c:out value="${item.nome}"/></td>
-                                                                                                <td><c:out value="${item.marca}"/></td>
-                                                                                                <td><c:out value="${item.preco}"/></td>
-                                                                                                <td><c:out value="${item.quantidade}"/></td>
-                                                                                                <td><c:out value="${item.valorTotalItem}"/></td>
+                                                                                                <td><c:out value="${venda.id}"/></td>
+                                                                                                <td><c:out value="${venda.idCliente}"/></td>
+                                                                                                <td><c:out value="${venda.idFilial}"/></td>
+                                                                                                <td><c:out value="${venda.valorTotal}"/></td>
+                                                                                                <td><c:out value="${venda.dataVenda}"/></td>
+
+                                                                                                <td>
+                                                                                                    <form action="VendasServlet?id=${venda.id}&action=detalharVenda" method="post">
+                                                                                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                                                    </form
+                                                                                                </td>
+
                                                                                             </tr>
                                                                                         </c:forEach>
                                                                                     </tbody>
@@ -256,10 +257,10 @@
                                                                                 <div class="row m-t-xl">
                                                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-5">
                                                                                         <div class="text-right custom-pro-edt-ds">
-                                                                                            
-                                                                                           
-                                                                                                <a href="VendasServlet?action=listarVendas" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Voltar</a>
-                                                                                            
+                                                                                            <form action="VendasServlet">
+                                                                                                <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Nova Venda
+                                                                                                </button>
+                                                                                            </form>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>

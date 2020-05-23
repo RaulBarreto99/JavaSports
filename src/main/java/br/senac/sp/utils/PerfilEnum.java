@@ -5,7 +5,7 @@ package br.senac.sp.utils;
  * @author tscarton
  */
 public enum PerfilEnum {
-    admin("admin"), vendedor("vendedor");
+    admin("admin"), funcionario("funcionario"), gerente("gerente");
      
     private final String perfil;
     
