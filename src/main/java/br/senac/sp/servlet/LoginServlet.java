@@ -2,7 +2,7 @@ package br.senac.sp.servlet;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import br.senac.sp.dao.UsuarioSistemaDAO;
-import br.senac.sp.entidade.UsuarioSistema;
+import br.senac.sp.entidade.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         String usuario = request.getParameter("usuario");
         String senha = request.getParameter("senha");
        
-        UsuarioSistema usuarioLogado = UsuarioSistemaDAO.getUsuarioSistemaByUsuario(usuario);
+        Usuario usuarioLogado = UsuarioSistemaDAO.getUsuarioSistemaByUsuario(usuario);
         
         if (usuarioLogado != null && usuarioLogado.validarSenha(senha)) {
             HttpSession sessao = request.getSession();

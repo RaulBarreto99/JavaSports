@@ -1,6 +1,6 @@
 package br.senac.sp.filtro;
 
-import br.senac.sp.entidade.UsuarioSistema;
+import br.senac.sp.entidade.Usuario;
 import br.senac.sp.utils.PerfilEnum;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -33,13 +33,14 @@ public class AutorizacaoFilter implements Filter {
         }
         
         // 2) Usuario esta logado -> Verifica se tem papel necessario para acesso
-        UsuarioSistema usuario = (UsuarioSistema) sessao.getAttribute("usuario");
+        Usuario usuario = (Usuario) sessao.getAttribute("usuario");
         
         if (verificarAcesso(usuario, httpRequest)) {
             // Usuario tem permissao de acesso -> Requisição pode seguir para servlet
             chain.doFilter(request, response);
         } else {
             // Mostra erro de acesso não autorizado
+            
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/naoAutorizado.jsp");
         }
 
@@ -53,16 +54,20 @@ public class AutorizacaoFilter implements Filter {
     public void init(FilterConfig filterConfig) {
     }
     
-    private boolean verificarAcesso(UsuarioSistema usuario, HttpServletRequest httpRequest) {
+    private boolean verificarAcesso(Usuario usuario, HttpServletRequest httpRequest) {
         String urlAcessada = httpRequest.getRequestURI();
         
-        if(urlAcessada.contains("/protegido/funcionario/gerente/admin/")){
+        if(urlAcessada.contains("admin")){
             if(usuario.isAdmin()){
                 return true;
+            }else{
+                return false;
             }
-        }else if(urlAcessada.contains("/protegido/funcionario/gerente/")){
+        }else if(urlAcessada.contains("gerente")){
             if(usuario.isAdmin() || usuario.isGerente()){
                 return true;
+            }else{
+                return false;
             }
         }else if(urlAcessada.contains("/protegido/funcionario/")) {
             if (usuario.isAdmin() || usuario.isGerente() || usuario.isFuncionario()) {

@@ -74,7 +74,7 @@ public class VendasServlet extends HttpServlet {
                     salvarVenda(request, response);
                 } catch (ServletException ex) {
                     request.setAttribute("msgErro", ex.getMessage());
-                    request.setAttribute("forward", "/xNexus-java-sports/VendasServlet?action=carregarAtributosVenda");
+                    request.setAttribute("forward", "VendasServlet?action=carregarAtributosVenda");
 
                     Logger.getLogger(VendasServlet.class.getName()).log(Level.SEVERE, null, ex);
                     RequestDispatcher view = request.getRequestDispatcher("/protegido/erro.jsp");
@@ -136,7 +136,7 @@ public class VendasServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher("/protegido/erro.jsp");
 
             request.setAttribute("msgErro", ex.getMessage());
-            request.setAttribute("forward", "/xNexus-java-sports/VendasServlet?action=carregarAtributosVenda");
+            request.setAttribute("forward", "VendasServlet?action=carregarAtributosVenda");
 
             Logger.getLogger(VendasServlet.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -242,7 +242,7 @@ public class VendasServlet extends HttpServlet {
             zerarVariaveis();
 
             request.setAttribute("msgSucesso", "Venda Cadastrada com Sucesso");
-            request.setAttribute("forward", "/xNexus-java-sports/VendasServlet?action=listarVendas");
+            request.setAttribute("forward", "VendasServlet?action=listarVendas");
             RequestDispatcher view = request.getRequestDispatcher("/protegido/sucesso.jsp");
             view.forward(request, response);
         } else {
@@ -250,7 +250,7 @@ public class VendasServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher("/protegido/erro.jsp");
 
             request.setAttribute("msgErro", "Não foi possivel Cadastrar a nova venda.");
-            request.setAttribute("forward", "/xNexus-java-sports/VendasServlet?action=carregarAtributosVenda");
+            request.setAttribute("forward", "VendasServlet?action=carregarAtributosVenda");
             view.forward(request, response);
         }
 

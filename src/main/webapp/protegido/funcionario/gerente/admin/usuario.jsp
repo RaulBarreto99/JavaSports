@@ -103,8 +103,8 @@
                                     <li><a href="<c:url value="/protegido/funcionario/CadastroClienteServlet?action=listarCliente"/>"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
                                     <li><a href="<c:url value="/protegido/funcionario/CadastroProdutoServlet?action=listarProduto"/>"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
                                     <li><a href="<c:url value="/protegido/funcionario/VendasServlet?action=listarVendas"/>"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
-                                    <li><a href="<c:url value="/protegido/funcionario/CadastroFilialServlet?action=listarFilial"/>"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-                                    <li><a href="<c:url value="/protegido/funcionario/CadastroUsuarioServlet?action=listarUsuario"/>"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/gerente/admin/CadastroFilialServlet?action=listarFilial"/>"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/gerente/admin/CadastroUsuarioServlet?action=listarUsuario"/>"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
                                 </ul>
                             </li>
 
@@ -212,7 +212,7 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input required="true"  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" readonly="true">
+                                                                <input required="true"  type="text" class="form-control" placeholder="Código" name="id" id="txtCodigo" readonly="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
@@ -253,7 +253,6 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="text-center custom-pro-edt-ds">
                                                         <button type="submit"  class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnSalvar">Salvar</button>
-                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnAlterar" disabled="true">Alterar</button>
                                                         <button type="button" class="btn btn-ctl-bt waves-effect waves-light" id="btnLimpar" onclick="limpar()">Limpar</button>
 
                                                     </div>
@@ -286,8 +285,6 @@
                                                     <tr>
                                                         <th>Código</th>
                                                         <th>Login</th>
-                                                        <th>Senha</th>
-                                                        <th>Email</th>
                                                         <th>Perfil</th>
                                                         <th>Ação</th>
 
@@ -300,16 +297,14 @@
                                                     
                                                     <c:forEach items="${usuarios}" var="usuario">
                                                         
-                                                        <tr id="${usuario.codigo}">
+                                                        <tr id="${usuario.id}">
 
-                                                            <td id="id${usuario.codigo}"><c:out value="${usuario.codigo}"/></td>
-                                                            <td id="login${usuario.codigo}"><c:out value="${usuario.login}"/></td>
-                                                            <td id="senha${usuario.codigo}"><c:out value="${usuario.senha}"/></td>
-                                                            <td id="email${usuario.codigo}"><c:out value="${usuario.email}"/></td>
-                                                            <td id="perfil${usuario.codigo}"><c:out value="${usuario.perfil}"/></td>
+                                                            <td id="id${usuario.id}"><c:out value="${usuario.id}"/></td>
+                                                            <td id="login${usuario.id}"><c:out value="${usuario.login}"/></td>
+                                                            <td id="perfil${usuario.id}"><c:out value="${usuario.perfil}"/></td>
                                                             <td>
-                                                                <button data-toggle="tooltip" title="Alterar" onClick="preencher(${usuario.codigo})" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroUsuarioServlet?action=excluir&codigo=${usuario.codigo}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                               
+                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroUsuarioServlet?action=excluir&id=${usuario.id}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                             </td>
 
                                                         </tr>

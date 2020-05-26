@@ -6,7 +6,7 @@
 package br.senac.sp.servlet;
 
 import br.senac.sp.dao.UsuarioSistemaDAO;
-import br.senac.sp.entidade.UsuarioSistema;
+import br.senac.sp.entidade.Usuario;
 import br.senac.sp.utils.PerfilEnum;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -36,7 +36,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
 
         if (action.equalsIgnoreCase("excluir")) {
             forward = "/protegido/admin/usuario.jsp";
-            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            int codigo = Integer.parseInt(request.getParameter("id"));
             boolean excluir = UsuarioSistemaDAO.excluirUsuario(codigo);
             String url = "";
             if (excluir) {
@@ -53,8 +53,8 @@ public class CadastroUsuarioServlet extends HttpServlet {
         }
 
         if (action.equalsIgnoreCase("listarUsuario")) {
-            forward = "/protegido/admin/usuario.jsp";
-            List<UsuarioSistema> lista = UsuarioSistemaDAO.listarUsuario();
+            forward = "/protegido/funcionario/gerente/admin/usuario.jsp";
+            List<Usuario> lista = UsuarioSistemaDAO.listarUsuario();
             request.setAttribute("usuarios", lista);
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
@@ -64,61 +64,61 @@ public class CadastroUsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
-
-        if (action.equalsIgnoreCase("alterar")) {
-            String codigo = request.getParameter("codigo");
-            
-            String nomeUsuario = request.getParameter("NomeUsuario");
-            String login = request.getParameter("Login");
-            String senha = request.getParameter("Senha");
-            String email = request.getParameter("EmailUsuario");
-            String perfil = request.getParameter("Perfil");
-            
-            UsuarioSistema usuario = new UsuarioSistema(login, senha, email, perfil);
-
-            boolean cadastrou = UsuarioSistemaDAO.alterarUsuario(usuario, Integer.parseInt(codigo));
-            PrintWriter out = response.getWriter();
-
-            String url = "";
-            if (cadastrou) {
-                request.setAttribute("msgSucesso", "Usuário alterado com sucesso.");
-                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
-                url = "/protegido/sucesso.jsp";
-            } else {
-                url = "/protegido/erro.jsp";
-                request.setAttribute("msgErro", "Não foi possivel alterar o usuário.");
-                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
-            }
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-            dispatcher.forward(request, response);
-        } else if (action.equalsIgnoreCase("")) {
-
-            //String codigo = request.getParameter("codigo");
-            String nomeUsuario = request.getParameter("NomeUsuario");
-            String login = request.getParameter("Login");
-            String senha = request.getParameter("Senha");
-            String email = request.getParameter("EmailUsuario");
-            String perfil = request.getParameter("Perfil");
-
-            UsuarioSistema usuario = new UsuarioSistema(login, senha, email, perfil);
-
-            boolean cadastrou = UsuarioSistemaDAO.cadastrarUsuario(usuario);
-            PrintWriter out = response.getWriter();
-
-            String url = "";
-            if (cadastrou) {
-                request.setAttribute("msgSucesso", "Usuário cadastrado com sucesso.");
-                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
-                url = "/protegido/sucesso.jsp";
-            } else {
-                url = "/protegido/erro.jsp";
-                request.setAttribute("msgErro", "Não foi possivel cadasrar o usuário.");
-                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
-            }
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-            dispatcher.forward(request, response);
-        }
+//        String action = request.getParameter("action");
+//
+//        if (action.equalsIgnoreCase("alterar")) {
+//            String codigo = request.getParameter("codigo");
+//            
+//            String nomeUsuario = request.getParameter("NomeUsuario");
+//            String login = request.getParameter("Login");
+//            String senha = request.getParameter("Senha");
+//            String email = request.getParameter("EmailUsuario");
+//            String perfil = request.getParameter("Perfil");
+//            
+//            UsuarioSistema usuario = new UsuarioSistema(login, senha, email, perfil);
+//
+//            boolean cadastrou = UsuarioSistemaDAO.alterarUsuario(usuario, Integer.parseInt(codigo));
+//            PrintWriter out = response.getWriter();
+//
+//            String url = "";
+//            if (cadastrou) {
+//                request.setAttribute("msgSucesso", "Usuário alterado com sucesso.");
+//                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
+//                url = "/protegido/sucesso.jsp";
+//            } else {
+//                url = "/protegido/erro.jsp";
+//                request.setAttribute("msgErro", "Não foi possivel alterar o usuário.");
+//                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
+//            }
+//            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+//            dispatcher.forward(request, response);
+//        } else if (action.equalsIgnoreCase("")) {
+//
+//            //String codigo = request.getParameter("codigo");
+//            String nomeUsuario = request.getParameter("NomeUsuario");
+//            String login = request.getParameter("Login");
+//            String senha = request.getParameter("Senha");
+//            String email = request.getParameter("EmailUsuario");
+//            String perfil = request.getParameter("Perfil");
+//
+//            UsuarioSistema usuario = new UsuarioSistema(login, senha, email, perfil);
+//
+//            boolean cadastrou = UsuarioSistemaDAO.cadastrarUsuario(usuario);
+//            PrintWriter out = response.getWriter();
+//
+//            String url = "";
+//            if (cadastrou) {
+//                request.setAttribute("msgSucesso", "Usuário cadastrado com sucesso.");
+//                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
+//                url = "/protegido/sucesso.jsp";
+//            } else {
+//                url = "/protegido/erro.jsp";
+//                request.setAttribute("msgErro", "Não foi possivel cadasrar o usuário.");
+//                request.setAttribute("forward", "CadastroUsuarioServlet?action=listarUsuario");
+//            }
+//            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+//            dispatcher.forward(request, response);
+//        }
     }
 
     @Override

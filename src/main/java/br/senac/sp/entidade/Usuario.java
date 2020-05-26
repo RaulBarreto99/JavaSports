@@ -3,14 +3,17 @@ package br.senac.sp.entidade;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import br.senac.sp.utils.PerfilEnum;
 
-public class UsuarioSistema {
+public class Usuario {
     
     private long id;
     private String nome;
-    private String usuario;
+    private String login;
     private String senha;
     private PerfilEnum perfil;
     private boolean isAdmin;
+
+    public Usuario() {
+    }
     
     public String encodeSenha(String senhaAberta) {
         return BCrypt.withDefaults().hashToString(12, senhaAberta.toCharArray());
@@ -53,12 +56,12 @@ public class UsuarioSistema {
         this.perfil = perfil;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setLogin(String usuario) {
+        this.login = usuario;
     }
 
     public boolean isAdmin() {

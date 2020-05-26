@@ -46,11 +46,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CadastroFilialServlet</servlet-name>
-        <url-pattern>/protegido/funcionario/CadastroFilialServlet</url-pattern>
+        <url-pattern>/protegido/funcionario/gerente/admin/CadastroFilialServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CadastroUsuarioServlet</servlet-name>
-        <url-pattern>/protegido/funcionario/CadastroUsuarioServlet</url-pattern>
+        <url-pattern>/protegido/funcionario/gerente/admin/CadastroUsuarioServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>VendasServlet</servlet-name>
