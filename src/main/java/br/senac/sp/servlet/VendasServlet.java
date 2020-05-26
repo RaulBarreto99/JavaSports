@@ -60,7 +60,7 @@ public class VendasServlet extends HttpServlet {
 
         try {
             if (action.equals("listarVendas")) {
-                forward = "/listarVendas.jsp";
+                forward = "/protegido/funcionario/listarVendas.jsp";
 
                 List<Venda> vendas = dao.getVendas();
 
@@ -74,10 +74,10 @@ public class VendasServlet extends HttpServlet {
                     salvarVenda(request, response);
                 } catch (ServletException ex) {
                     request.setAttribute("msgErro", ex.getMessage());
-                    request.setAttribute("forward", "/xNexus-java-sports/VendasServlet?action=carregarAtributosVenda");
+                    request.setAttribute("forward", "VendasServlet?action=carregarAtributosVenda");
 
                     Logger.getLogger(VendasServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    RequestDispatcher view = request.getRequestDispatcher("/erro.jsp");
+                    RequestDispatcher view = request.getRequestDispatcher("/protegido/erro.jsp");
                     try {
                         view.forward(request, response);
                         //Logger.getLogger(VendasServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,7 +89,7 @@ public class VendasServlet extends HttpServlet {
             } else if (action.equals("carregarAtributosVenda")) {
                 produtos = dao.getProdutos();
                 clientes = dao.getClientes();
-                forward = "/cadastrarVenda.jsp";
+                forward = "/protegido/funcionario/cadastrarVenda.jsp";
                 request.setAttribute("valorTotal", this.valorTotal);
                 request.setAttribute("idFilial", this.idFilial);
                 request.setAttribute("cpfCliente", this.cpfCliente);
@@ -99,7 +99,7 @@ public class VendasServlet extends HttpServlet {
                 view.forward(request, response);
             }
         } catch (Exception e) {
-            forward = "/cadastrarVenda.jsp";
+            forward = "/protegido/funcionario/cadastrarVenda.jsp";
             produtos = dao.getProdutos();
             clientes = dao.getClientes();
             request.setAttribute("valorTotal", 0.0);
@@ -129,14 +129,14 @@ public class VendasServlet extends HttpServlet {
                 request.setAttribute("carrinho", vendaDetalhada.getCarrinho());
 
                 VendasServlet.this.destroy();
-                RequestDispatcher view = request.getRequestDispatcher("/detalharVenda.jsp");
+                RequestDispatcher view = request.getRequestDispatcher("/protegido/funcionario/detalharVenda.jsp");
                 view.forward(request, response);
             }
         } catch (Exception ex) {
-            RequestDispatcher view = request.getRequestDispatcher("/erro.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/protegido/erro.jsp");
 
             request.setAttribute("msgErro", ex.getMessage());
-            request.setAttribute("forward", "/xNexus-java-sports/VendasServlet?action=carregarAtributosVenda");
+            request.setAttribute("forward", "VendasServlet?action=carregarAtributosVenda");
 
             Logger.getLogger(VendasServlet.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -181,7 +181,7 @@ public class VendasServlet extends HttpServlet {
             v.setCarrinho(this.carrinho);
             System.out.println(v.toString());
 
-            RequestDispatcher view = request.getRequestDispatcher("/cadastrarVenda.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/protegido/funcionario/cadastrarVenda.jsp");
             view.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
@@ -214,7 +214,7 @@ public class VendasServlet extends HttpServlet {
             request.setAttribute("valorTotal", this.valorTotal);
             request.setAttribute("carrinho", this.carrinho);
 
-            RequestDispatcher view = request.getRequestDispatcher("/cadastrarVenda.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/protegido/funcionario/cadastrarVenda.jsp");
             view.forward(request, response);
         } else {
             throw new ServletException(retornoValidacao);
@@ -242,15 +242,15 @@ public class VendasServlet extends HttpServlet {
             zerarVariaveis();
 
             request.setAttribute("msgSucesso", "Venda Cadastrada com Sucesso");
-            request.setAttribute("forward", "/xNexus-java-sports/VendasServlet?action=listarVendas");
-            RequestDispatcher view = request.getRequestDispatcher("/sucesso.jsp");
+            request.setAttribute("forward", "VendasServlet?action=listarVendas");
+            RequestDispatcher view = request.getRequestDispatcher("/protegido/sucesso.jsp");
             view.forward(request, response);
         } else {
 
-            RequestDispatcher view = request.getRequestDispatcher("/erro.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/protegido/erro.jsp");
 
             request.setAttribute("msgErro", "Não foi possivel Cadastrar a nova venda.");
-            request.setAttribute("forward", "/xNexus-java-sports/VendasServlet?action=carregarAtributosVenda");
+            request.setAttribute("forward", "VendasServlet?action=carregarAtributosVenda");
             view.forward(request, response);
         }
 

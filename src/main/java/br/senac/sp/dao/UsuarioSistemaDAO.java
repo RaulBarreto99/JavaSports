@@ -1,37 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.sp.dao;
 
 import br.senac.sp.db.ConexaoDB;
 import br.senac.sp.entidade.Usuario;
+import br.senac.sp.utils.PerfilEnum;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Raul
  */
-public class UsuarioDAO {
+public class UsuarioSistemaDAO {
     public static boolean cadastrarUsuario(Usuario usuario) {
         boolean cadastrou = false;
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "INSERT INTO usuario VALUES (default,?,?,?,?,?)";
+            String sql = "INSERT INTO USUARIOSISTEMA VALUES (default,?,?,?,?)";
             PreparedStatement PreparedStatement = connection.prepareStatement(sql);
 
-            PreparedStatement.setString(1, usuario.getNomeUsuario());
-            PreparedStatement.setString(2, usuario.getLogin());
-            PreparedStatement.setString(3, usuario.getSenha());
-            PreparedStatement.setString(4, usuario.getEmail());
-            PreparedStatement.setString(5, usuario.getPerfil());
+            
+            PreparedStatement.setString(1, usuario.getLogin());
+            PreparedStatement.setString(2, usuario.getSenha());
+            PreparedStatement.setString(3, usuario.getPerfil().toString());
             PreparedStatement.execute();
             cadastrou = true;
         } catch (SQLException ex) {
@@ -40,20 +37,16 @@ public class UsuarioDAO {
         return cadastrou;
     }
 
-    public static boolean alterarUsuario(Usuario usuario, int codigo) {
+    public static boolean alterarSenha(Usuario usuario, int codigo) {
         boolean alterou = false;
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "UPDATE usuario SET NOME = ?,LOGIN = ?,SENHA = ?,EMAIL = ?,PERFIL = ? WHERE ID_USUARIO = ?";
+            String sql = "UPDATE USUARIOSISTEMA SET SENHA = ? WHERE ID_USUARIO = ?";
             PreparedStatement PreparedStatement = connection.prepareStatement(sql);
 
-            PreparedStatement.setString(1, usuario.getNomeUsuario());
-            PreparedStatement.setString(2, usuario.getLogin());
-            PreparedStatement.setString(3, usuario.getSenha());
-            PreparedStatement.setString(4, usuario.getEmail());
-            PreparedStatement.setString(5, usuario.getPerfil());
-            PreparedStatement.setInt(6, codigo);
+            PreparedStatement.setString(1, usuario.getSenha());
+            PreparedStatement.setInt(2, codigo);
             PreparedStatement.execute();
             alterou = true;
         } catch (SQLException ex) {
@@ -69,7 +62,7 @@ public class UsuarioDAO {
         boolean excluiu = false;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "delete  from usuario where ID_USUARIO = ?";
+            String sql = "delete from USUARIOSISTEMA where ID_USUARIO = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, codigo);
             preparedStatement.execute();
@@ -90,7 +83,7 @@ public class UsuarioDAO {
             connection = ConexaoDB.getConexao();
 
             pstmt = connection.prepareStatement(
-                    "SELECT * FROM usuario ORDER BY id_usuario");
+                    "SELECT * FROM USUARIOSISTEMA ORDER BY id_usuario");
 
             rs = pstmt.executeQuery();
 
@@ -100,12 +93,12 @@ public class UsuarioDAO {
 
                 Usuario usuario = new Usuario();
 
-                usuario.setCodigo(rs.getInt("id_usuario"));
-                usuario.setNomeUsuario(rs.getString("nome"));
-                usuario.setLogin(rs.getString("login"));
+                usuario.setId(rs.getInt("id_usuario"));
+                usuario.setLogin(rs.getString("usuario"));
                 usuario.setSenha(rs.getString("senha"));
-                usuario.setEmail(rs.getString("email"));
-                usuario.setPerfil(rs.getString("perfil"));
+                
+                
+                usuario.setPerfil(PerfilEnum.valueOf(rs.getString("perfil")));
 
                 lista.add(usuario);
 
@@ -118,5 +111,30 @@ public class UsuarioDAO {
             return null;
 
         }
+    }
+
+    public static Usuario getUsuarioSistemaByUsuario(String usuario) {
+        Usuario usuarioSistema = null;
+        Connection con;
+        try {
+            con = ConexaoDB.getConexao();
+            String sql = "select * from USUARIOSISTEMA where usuario=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, usuario);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                usuarioSistema = new Usuario();
+                String login = rs.getString("usuario");
+                String senha = rs.getString("senha");
+                String perfil = rs.getString("perfil");
+                usuarioSistema.setLogin(login);
+                usuarioSistema.setSenha(senha);
+                usuarioSistema.setPerfil(PerfilEnum.valueOf(perfil));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return usuarioSistema;
     }
 }

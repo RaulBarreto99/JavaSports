@@ -18,56 +18,56 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- favicon
                     ============================================ -->
-        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/img/favicon.ico">
         <!-- Google Fonts
                     ============================================ -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
         <!-- Bootstrap CSS
                     ============================================ -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
         <!-- Bootstrap CSS
                     ============================================ -->
-        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
         <!-- nalika Icon CSS
                 ============================================ -->
-        <link rel="stylesheet" href="css/nalika-icon.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/nalika-icon.css">
         <!-- owl.carousel CSS
                     ============================================ -->
-        <link rel="stylesheet" href="css/owl.carousel.css">
-        <link rel="stylesheet" href="css/owl.theme.css">
-        <link rel="stylesheet" href="css/owl.transitions.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.theme.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.transitions.css">
         <!-- animate CSS
                     ============================================ -->
-        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
         <!-- normalize CSS
                     ============================================ -->
-        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/normalize.css">
         <!-- meanmenu icon CSS
                     ============================================ -->
-        <link rel="stylesheet" href="css/meanmenu.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/meanmenu.min.css">
         <!-- main CSS
                     ============================================ -->
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
         <!-- morrisjs CSS
                     ============================================ -->
-        <link rel="stylesheet" href="css/morrisjs/morris.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/morrisjs/morris.css">
         <!-- mCustomScrollbar CSS
                     ============================================ -->
-        <link rel="stylesheet" href="css/scrollbar/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/scrollbar/jquery.mCustomScrollbar.min.css">
         <!-- metisMenu CSS
                     ============================================ -->
-        <link rel="stylesheet" href="css/metisMenu/metisMenu.min.css">
-        <link rel="stylesheet" href="css/metisMenu/metisMenu-vertical.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/metisMenu/metisMenu.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/metisMenu/metisMenu-vertical.css">
         <!-- calendar CSS
                     ============================================ -->
-        <link rel="stylesheet" href="css/calendar/fullcalendar.min.css">
-        <link rel="stylesheet" href="css/calendar/fullcalendar.print.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar/fullcalendar.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar/fullcalendar.print.min.css">
         <!-- style CSS
                     ============================================ -->
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css">
         <!-- responsive CSS
                     ============================================ -->
-        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.css">
         <!-- modernizr JS
                     ============================================ -->
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
@@ -100,16 +100,18 @@
                                     <span class="mini-click-non">Cadastros</span>
                                 </a>
                                 <ul class="submenu-angle" aria-expanded="true">
-                                    <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
-                                    <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
-                                    <li><a title="Cadastrar Filiais" href="CadastroFilialServlet?action=listarFilial"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-                                    <li><a title="Cadastrar Usuario" href="CadastroUsuarioServlet?action=listarUsuario"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroClienteServlet?action=listarCliente"/>"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/CadastroProdutoServlet?action=listarProduto"/>"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/VendasServlet?action=listarVendas"/>"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/gerente/admin/CadastroFilialServlet?action=listarFilial"/>"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a href="<c:url value="/protegido/funcionario/gerente/admin/CadastroUsuarioServlet?action=listarUsuario"/>"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
                                 </ul>
                             </li>
 
                             <li id="removable">
-                                <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
+                                <a class="has-arrow" href="<c:url value="/protegido/funcionario/estoque.jsp"/>" aria-expanded="false"><i
+                                        class="icon nalika-new-file icon-wrap"></i> <span
+                                        class="mini-click-non">Estoque</span></a>
 
                             </li>
                         </ul>
@@ -202,7 +204,7 @@
                                     </ul
                                     <!-- Aqui no Form você deve chamar no action o seu servlet e colocar o metodo post nele, 
                                     já que para cadastrar se trata de um post-->
-                                    <form name = "cadastro usuario" action='CadastroUsuarioServlet' method='post'>
+                                    <form name = "cadastro usuario" action='${pageContext.request.contextPath}/protegido/admin/CadastroUsuarioServlet' method='post'>
                                         <div id="myTabContent" class="tab-content custom-product-edit">
                                             <div class="product-tab-list tab-pane fade active in" id="description">
                                                 <div class="row">
@@ -210,11 +212,7 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input required="true"  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" readonly="true">
-                                                            </div>
-                                                            <div class="input-group mg-b-pro-edt">
-                                                                <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input required="true"  type="text" class="form-control" placeholder="Nome" name="NomeUsuario" id="txtNome">
+                                                                <input required="true"  type="text" class="form-control" placeholder="Código" name="id" id="txtCodigo" readonly="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
@@ -255,7 +253,6 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="text-center custom-pro-edt-ds">
                                                         <button type="submit"  class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnSalvar">Salvar</button>
-                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnAlterar" disabled="true">Alterar</button>
                                                         <button type="button" class="btn btn-ctl-bt waves-effect waves-light" id="btnLimpar" onclick="limpar()">Limpar</button>
 
                                                     </div>
@@ -287,10 +284,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Código</th>
-                                                        <th>Nome</th>
                                                         <th>Login</th>
-                                                        <th>Senha</th>
-                                                        <th>Email</th>
                                                         <th>Perfil</th>
                                                         <th>Ação</th>
 
@@ -303,17 +297,14 @@
                                                     
                                                     <c:forEach items="${usuarios}" var="usuario">
                                                         
-                                                        <tr id="${usuario.codigo}">
+                                                        <tr id="${usuario.id}">
 
-                                                            <td id="id${usuario.codigo}"><c:out value="${usuario.codigo}"/></td>
-                                                            <td id="nome${usuario.codigo}"><c:out value="${usuario.nomeUsuario}"/></td>
-                                                            <td id="login${usuario.codigo}"><c:out value="${usuario.login}"/></td>
-                                                            <td id="senha${usuario.codigo}"><c:out value="${usuario.senha}"/></td>
-                                                            <td id="email${usuario.codigo}"><c:out value="${usuario.email}"/></td>
-                                                            <td id="perfil${usuario.codigo}"><c:out value="${usuario.perfil}"/></td>
+                                                            <td id="id${usuario.id}"><c:out value="${usuario.id}"/></td>
+                                                            <td id="login${usuario.id}"><c:out value="${usuario.login}"/></td>
+                                                            <td id="perfil${usuario.id}"><c:out value="${usuario.perfil}"/></td>
                                                             <td>
-                                                                <button data-toggle="tooltip" title="Alterar" onClick="preencher(${usuario.codigo})" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroUsuarioServlet?action=excluir&codigo=${usuario.codigo}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                               
+                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroUsuarioServlet?action=excluir&id=${usuario.id}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                             </td>
 
                                                         </tr>
@@ -329,14 +320,12 @@
                                                     document.getElementById("action").value = "alterar";
                                                    
                                                     let id = document.getElementById("id"+id2);
-                                                    let nome = document.getElementById("nome"+id2);
                                                     let login = document.getElementById("login"+id2);
                                                     let senha = document.getElementById("senha"+id2);
                                                     let email = document.getElementById("email"+id2);
                                                     let perfil = document.getElementById("perfil"+id2);
                                                     
                                                     document.getElementById("txtCodigo").value = id.textContent.trim();
-                                                    document.getElementById("txtNome").value = nome.textContent.trim();
                                                     document.getElementById("txtLogin").value = login.textContent.trim();
                                                     document.getElementById("txtSenha").value = senha.textContent.trim();
                                                     document.getElementById("txtEmail").value = email.textContent.trim();
@@ -348,7 +337,6 @@
                                                 
                                                 function limpar(){
                                                     document.getElementById("txtCodigo").value = "";
-                                                    document.getElementById("txtNome").value = "";
                                                     document.getElementById("txtLogin").value = "";
                                                     document.getElementById("txtSenha").value = "";
                                                     document.getElementById("txtEmail").value = "";
