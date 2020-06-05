@@ -18,59 +18,59 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- favicon
                     ============================================ -->
-        <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="../../img/favicon.ico">
         <!-- Google Fonts
                     ============================================ -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
         <!-- Bootstrap CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../css/bootstrap.min.css">
         <!-- Bootstrap CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../css/font-awesome.min.css">
         <!-- nalika Icon CSS
                 ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/nalika-icon.css">
+        <link rel="stylesheet" href="../../css/nalika-icon.css">
         <!-- owl.carousel CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.theme.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.transitions.css">
+        <link rel="stylesheet" href="../../css/owl.carousel.css">
+        <link rel="stylesheet" href="../../css/owl.theme.css">
+        <link rel="stylesheet" href="../../css/owl.transitions.css">
         <!-- animate CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
+        <link rel="stylesheet" href="../../css/animate.css">
         <!-- normalize CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/normalize.css">
+        <link rel="stylesheet" href="../../css/normalize.css">
         <!-- meanmenu icon CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/meanmenu.min.css">
+        <link rel="stylesheet" href="../../css/meanmenu.min.css">
         <!-- main CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+        <link rel="stylesheet" href="../../css/main.css">
         <!-- morrisjs CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/morrisjs/morris.css">
+        <link rel="stylesheet" href="../../css/morrisjs/morris.css">
         <!-- mCustomScrollbar CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/scrollbar/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="../../css/scrollbar/jquery.mCustomScrollbar.min.css">
         <!-- metisMenu CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/metisMenu/metisMenu.min.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/metisMenu/metisMenu-vertical.css">
+        <link rel="stylesheet" href="../../css/metisMenu/metisMenu.min.css">
+        <link rel="stylesheet" href="../../css/metisMenu/metisMenu-vertical.css">
         <!-- calendar CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar/fullcalendar.min.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar/fullcalendar.print.min.css">
+        <link rel="stylesheet" href="../../css/calendar/fullcalendar.min.css">
+        <link rel="stylesheet" href="../../css/calendar/fullcalendar.print.min.css">
         <!-- style CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css">
+        <link rel="stylesheet" href="../../style.css">
         <!-- responsive CSS
                     ============================================ -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.css">
+        <link rel="stylesheet" href="../../css/responsive.css">
         <!-- modernizr JS
                     ============================================ -->
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="../../js/vendor/modernizr-2.8.3.min.js"></script>
 
 
     </head>
@@ -87,8 +87,8 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                       <a href="/xNexus-java-sports"><h2>Java Sports</h2></a>
-                        
+                        <a href="/xNexus-java-sports/protegido/index.jsp"><h2>Java Sports</h2></a>
+
                     </div>
                 </div>
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
@@ -224,15 +224,15 @@
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                               <input required="true" type="number" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
+                                                                <input required="true" type="number" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
                                                             </div>
-                                                           
+
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
                                                                 <input required="true" type="number" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
 
                                                             </div>
-                                                            
+
                                                             <input type="text" name="action" id="action" hidden="true">
 
                                                         </div>
@@ -297,9 +297,9 @@
 
 
                                                 <tbody>
-                                                    
+
                                                     <c:forEach items="${produtos}" var="produto">
-                                                        
+
                                                         <tr id="${produto.codigo}">
 
                                                             <td id="id${produto.codigo}"><c:out value="${produto.codigo}"/></td>
@@ -309,7 +309,7 @@
                                                             <td id="quantidade${produto.codigo}"><c:out value="${produto.quantidade}"/></td>
                                                             <td>
                                                                 <button data-toggle="tooltip" title="Alterar" onClick="preencher(${produto.codigo})" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location='CadastroProdutoServlet?action=excluir&codigo=${produto.codigo}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Deletar" onClick="javascript:window.location = 'CadastroProdutoServlet?action=excluir&codigo=${produto.codigo}'" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                             </td>
 
                                                         </tr>
@@ -317,30 +317,30 @@
                                                 </tbody>
 
                                             </table>
-                                            
-                                            
+
+
                                             <script>
-                                                
-                                                function preencher(id2){
+
+                                                function preencher(id2) {
                                                     document.getElementById("action").value = "alterar";
-                                                   
-                                                    let id = document.getElementById("id"+id2);
-                                                    let nome = document.getElementById("nome"+id2);
-                                                    let marca = document.getElementById("marca"+id2);
-                                                    let preco = document.getElementById("preco"+id2);
-                                                    let quantidade = document.getElementById("quantidade"+id2);
-                                                    
+
+                                                    let id = document.getElementById("id" + id2);
+                                                    let nome = document.getElementById("nome" + id2);
+                                                    let marca = document.getElementById("marca" + id2);
+                                                    let preco = document.getElementById("preco" + id2);
+                                                    let quantidade = document.getElementById("quantidade" + id2);
+
                                                     document.getElementById("txtCodigo").value = id.textContent.trim();
                                                     document.getElementById("txtNome").value = nome.textContent.trim();
                                                     document.getElementById("txtMarca").value = marca.textContent.trim();
                                                     document.getElementById("txtPreco").value = preco.textContent.trim();
                                                     document.getElementById("txtQuantidade").value = quantidade.textContent.trim();
-                                                    
+
                                                     document.getElementById("btnSalvar").disabled = true;
                                                     document.getElementById("btnAlterar").disabled = false;
                                                 }
-                                                
-                                                function limpar(){
+
+                                                function limpar() {
                                                     document.getElementById("txtCodigo").value = "";
                                                     document.getElementById("txtNome").value = "";
                                                     document.getElementById("txtMarca").value = "";
@@ -353,69 +353,75 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="footer-copyright-area">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="footer-copy-right">
-                                            <p>JavaSports desenvolvido por Xnexus</a></p>
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="footer-copy-right">
+                                <p>Integrantes</p>
+                                <p>Daniel Leite - Ederson Souza - Lucas Augusto - Lucas Paixão - Raul Barreto</p>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
 
-                    <!-- jquery
-                                ============================================ -->
-                    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-                    <!-- bootstrap JS
-                                ============================================ -->
-                    <script src="js/bootstrap.min.js"></script>
-                    <!-- wow JS
-                                ============================================ -->
-                    <script src="js/wow.min.js"></script>
-                    <!-- price-slider JS
-                                ============================================ -->
-                    <script src="js/jquery-price-slider.js"></script>
-                    <!-- meanmenu JS
-                                ============================================ -->
-                    <script src="js/jquery.meanmenu.js"></script>
-                    <!-- owl.carousel JS
-                                ============================================ -->
-                    <script src="js/owl.carousel.min.js"></script>
-                    <!-- sticky JS
-                                ============================================ -->
-                    <script src="js/jquery.sticky.js"></script>
-                    <!-- scrollUp JS
-                                ============================================ -->
-                    <script src="js/jquery.scrollUp.min.js"></script>
-                    <!-- mCustomScrollbar JS
-                                ============================================ -->
-                    <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-                    <script src="js/scrollbar/mCustomScrollbar-active.js"></script>
-                    <!-- metisMenu JS
-                                ============================================ -->
-                    <script src="js/metisMenu/metisMenu.min.js"></script>
-                    <script src="js/metisMenu/metisMenu-active.js"></script>
-                    <!-- morrisjs JS
-                                ============================================ -->
-                    <script src="js/sparkline/jquery.sparkline.min.js"></script>
-                    <script src="js/sparkline/jquery.charts-sparkline.js"></script>
-                    <!-- calendar JS
-                                ============================================ -->
-                    <script src="js/calendar/moment.min.js"></script>
-                    <script src="js/calendar/fullcalendar.min.js"></script>
-                    <script src="js/calendar/fullcalendar-active.js"></script>
-                    <!-- tab JS
-                                ============================================ -->
-                    <script src="js/tab.js"></script>
-                    <!-- plugins JS
-                                ============================================ -->
-                    <script src="js/plugins.js"></script>
-                    <!-- main JS
-                                ============================================ -->
-                    <script src="js/main.js"></script>
-                    </body>
+    </div> 
 
-                    </html>
+    <!-- jquery
+                ============================================ -->
+    <script src="../../js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- bootstrap JS
+                ============================================ -->
+    <script src="../../js/bootstrap.min.js"></script>
+    <!-- wow JS
+                ============================================ -->
+    <script src="../../js/wow.min.js"></script>
+    <!-- price-slider JS
+                ============================================ -->
+    <script src="../../js/jquery-price-slider.js"></script>
+    <!-- meanmenu JS
+                ============================================ -->
+    <script src="../../js/jquery.meanmenu.js"></script>
+    <!-- owl.carousel JS
+                ============================================ -->
+    <script src="../../js/owl.carousel.min.js"></script>
+    <!-- sticky JS
+                ============================================ -->
+    <script src="../../js/jquery.sticky.js"></script>
+    <!-- scrollUp JS
+                ============================================ -->
+    <script src="../../js/jquery.scrollUp.min.js"></script>
+    <!-- mCustomScrollbar JS
+                ============================================ -->
+    <script src="../../js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../../js/scrollbar/mCustomScrollbar-active.js"></script>
+    <!-- metisMenu JS
+                ============================================ -->
+    <script src="../../js/metisMenu/metisMenu.min.js"></script>
+    <script src="../../js/metisMenu/metisMenu-active.js"></script>
+    <!-- morrisjs JS
+                ============================================ -->
+    <script src="../../js/sparkline/jquery.sparkline.min.js"></script>
+    <script src="../../js/sparkline/jquery.charts-sparkline.js"></script>
+    <!-- calendar JS
+                ============================================ -->
+    <script src="../../js/calendar/moment.min.js"></script>
+    <script src="../../js/calendar/fullcalendar.min.js"></script>
+    <script src="../../js/calendar/fullcalendar-active.js"></script>
+    <!-- tab JS
+                ============================================ -->
+    <script src="../../js/tab.js"></script>
+    <!-- plugins JS
+                ============================================ -->
+    <script src="../../js/plugins.js"></script>
+    <!-- main JS
+                ============================================ -->
+    <script src="../../js/main.js"></script>
+</body>
+
+</html>

@@ -25,10 +25,10 @@ public class UsuarioSistemaDAO {
             String sql = "INSERT INTO USUARIOSISTEMA VALUES (default,?,?,?,?)";
             PreparedStatement PreparedStatement = connection.prepareStatement(sql);
 
-            
-            PreparedStatement.setString(1, usuario.getLogin());
-            PreparedStatement.setString(2, usuario.getSenha());
-            PreparedStatement.setString(3, usuario.getPerfil().toString());
+            PreparedStatement.setString(1, usuario.getNome());
+            PreparedStatement.setString(2, usuario.getLogin());
+            PreparedStatement.setString(3, usuario.getSenha());
+            PreparedStatement.setString(4, usuario.getPerfil().toString());
             PreparedStatement.execute();
             cadastrou = true;
         } catch (SQLException ex) {
@@ -94,6 +94,7 @@ public class UsuarioSistemaDAO {
                 Usuario usuario = new Usuario();
 
                 usuario.setId(rs.getInt("id_usuario"));
+                usuario.setNome(rs.getString("nome"));
                 usuario.setLogin(rs.getString("usuario"));
                 usuario.setSenha(rs.getString("senha"));
                 
@@ -127,6 +128,9 @@ public class UsuarioSistemaDAO {
                 String login = rs.getString("usuario");
                 String senha = rs.getString("senha");
                 String perfil = rs.getString("perfil");
+                String nome = rs.getString("nome");
+                
+                usuarioSistema.setNome(nome);
                 usuarioSistema.setLogin(login);
                 usuarioSistema.setSenha(senha);
                 usuarioSistema.setPerfil(PerfilEnum.valueOf(perfil));

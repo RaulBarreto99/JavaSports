@@ -12,6 +12,9 @@ public enum PerfilEnum {
     PerfilEnum(String perfil){
         this.perfil = perfil;
     }
+    
+    
+    
     public String getPerfil(){
         return this.perfil;
     }
