@@ -13,6 +13,15 @@ public class Usuario {
     private boolean isAdmin;
 
     public Usuario() {
+        
+    }
+    
+    
+    public Usuario(String nome, String login,String senha,String perfil) {
+        this.nome = nome;
+        this.login = login;
+        this.senha = encodeSenha(senha);
+        this.perfil = PerfilEnum.valueOf(perfil);
     }
     
     public String encodeSenha(String senhaAberta) {
@@ -23,14 +32,6 @@ public class Usuario {
         BCrypt.Result result = BCrypt.verifyer().verify(senhaAberta.toCharArray(), this.getSenha());
         return result.verified;
     }
-    
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
@@ -38,6 +39,17 @@ public class Usuario {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    
+    
+    
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getSenha() {
