@@ -22,10 +22,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author lucas
- */
+
 public class VendasController {
 
     private List<ItemCarrinhoDto> carrinho;

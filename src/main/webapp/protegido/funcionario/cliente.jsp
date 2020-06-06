@@ -284,10 +284,10 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="text-center custom-pro-edt-ds">
                                                         <input type="hidden" name="action" value="cadastrar" id="action">
-                                                        <button type="submit" onclick="validar()"
+                                                        <button type="submit" onclick="validar()" id ="btnSalvar"
                                                                 class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
                                                         <input type="hidden" name="action" value="alterar" id="action">
-                                                        <button type="submit"
+                                                        <button type="submit" id="brnAlterar"
                                                                 class="btn btn-ctl-bt waves-effect waves-light m-r-10">Alterar</button>
                                                         <button type="button" onClick="limpar()"
                                                                 class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
@@ -331,10 +331,6 @@
                                                                 form.telefone.focus();
                                                                 return false;
                                                             }
-
-
-
-
 
                                                         }
                                                     </script>
@@ -441,6 +437,8 @@
                                                     document.getElementById("txtsexo").value = sexo.textContent.trim();
                                                     document.getElementById("action").value = "alterar";
                                                     console.log(dataNascimento.textContent);
+                                                    document.getElementById("btnSalvar").disabled = true;
+                                                    document.getElementById("btnAlterar").disabled = false;
                                                 }
                                             </script>
 
