@@ -5,8 +5,6 @@ package br.senac.sp.dao;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import br.senac.sp.db.ConexaoDB;
 import br.senac.sp.entidade.Cliente;
 import br.senac.sp.entidade.Filial;
@@ -25,9 +23,9 @@ public class FilialDAO {
         try {
             connection = ConexaoDB.getConexao();
             String sql = "insert into filial values (default,?,?,?,?,?,?,?,?,?)";
-            
+
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            
+
             preparedStatement.setString(1, filial.getNome());
             preparedStatement.setString(2, filial.getBairro());
             preparedStatement.setString(3, filial.getCep());
@@ -40,13 +38,13 @@ public class FilialDAO {
 
             preparedStatement.execute();
             cadastrou = true;
-            
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return cadastrou;
     }
-    
+
     public static List<Filial> listarFilial() {
 
         Connection connection;
@@ -57,10 +55,7 @@ public class FilialDAO {
             connection = ConexaoDB.getConexao();
 
             pstmt = connection.prepareStatement(
-
-             
                     "SELECT * FROM filial ORDER BY id_filial");
-
 
             rs = pstmt.executeQuery();
 
@@ -69,7 +64,6 @@ public class FilialDAO {
             while (rs.next()) {
 
                 Filial Filial = new Filial();
-
 
                 Filial.setId(rs.getInt("id_filial"));
 
@@ -93,12 +87,12 @@ public class FilialDAO {
 
         }
     }
-    
+
     public static boolean excluirFilial(int id) {
         Connection connection;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        
+
         boolean excluiu = false;
         try {
             connection = ConexaoDB.getConexao();
@@ -115,16 +109,16 @@ public class FilialDAO {
         return excluiu;
 
     }
-    
-     public static boolean alterarFilial(Filial filial, int Id) {
+
+    public static boolean alterarFilial(Filial filial, int Id) {
         boolean alterou = false;
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
             String sql = "update filial set nome = ?, bairro = ?, cep = ?, pais = ?, rua = ?,complemento = ?, numero = ?, uf = ?, cidade = ? where ID_FILIAL = ?";
-            
+
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            
+
             preparedStatement.setString(1, filial.getNome());
             preparedStatement.setString(2, filial.getBairro());
             preparedStatement.setString(3, filial.getCep());
@@ -138,7 +132,7 @@ public class FilialDAO {
 
             preparedStatement.execute();
             alterou = true;
-            
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

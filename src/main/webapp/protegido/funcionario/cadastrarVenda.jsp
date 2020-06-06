@@ -85,7 +85,7 @@
                 <div class="nalika-profile">
                     <div class="profile-dtl">
                         <a href="/xNexus-java-sports/protegido/index.jsp"><h2>Java Sports</h2></a>
-                        
+
                     </div>
                 </div>
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
@@ -189,12 +189,12 @@
 
                                                                     <div class="input-group mg-b-pro-edt">
                                                                         <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                        <input type="number" class="form-control" name="idFilial" placeholder="Id da filial" value="${idFilial}" required="true" min="1">
+                                                                        <input type="number" onchange="monitoraCampos()" class="form-control" id="idFilial" name="idFilial" placeholder="Id da filial" value="${idFilial}" required="true" min="1">
                                                                     </div>
 
                                                                     <div class="input-group mg-b-pro-edt">
                                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                        <input type="number" class="form-control" id="idCliente" name="cpfCliente" placeholder="CPF do cliente" value="${cpfCliente}" required="true" min="1">
+                                                                        <input type="number" onchange="monitoraCampos()" class="form-control" id="cpfCliente" name="cpfCliente" placeholder="CPF do cliente" value="${cpfCliente}" required="true" min="1">
                                                                     </div>
 
                                                                 </div>
@@ -296,8 +296,8 @@
                                                         <td name="quantidade${item.idItemCarrinho}"><c:out value="${item.quantidade}"/></td>
 
                                                         <td>
-                                                                <!--<button data-toggle="tooltip" title="Trash" class="pd-setting-ed" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>-->
-                                                                <a data-toggle="tooltip" title="Trash" class="pd-setting-ed" href="VendasServlet?id=${item.idItemCarrinho}&action=excluir"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                            <!--<button data-toggle="tooltip" title="Trash" class="pd-setting-ed" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>-->
+                                                            <a data-toggle="tooltip" title="Trash" class="pd-setting-ed" href="VendasServlet?id=${item.idItemCarrinho}&action=excluir"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -334,76 +334,105 @@
 
 
     </div>
-    
+
     <div class="footer-copyright-area">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="footer-copy-right">
-                                            <p>Integrantes</p>
-                                            <p>Daniel Leite ● Ederson Souza ● Lucas Augusto ● Lucas Paixão ● Raul Barreto</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-copy-right">
+                        <p>Integrantes</p>
+                        <p>Daniel Leite ● Ederson Souza ● Lucas Augusto ● Lucas Paixão ● Raul Barreto</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
 
-    <!-- jquery
-                ============================================ -->
-    <script src="../../js/vendor/jquery-1.12.4.min.js"></script>
-    <!-- bootstrap JS
-                ============================================ -->
-    <script src="../../js/bootstrap.min.js"></script>
-    <!-- wow JS
-                ============================================ -->
-    <script src="../../js/wow.min.js"></script>
-    <!-- price-slider JS
-                ============================================ -->
-    <script src="../../js/jquery-price-slider.js"></script>
-    <!-- meanmenu JS
-                ============================================ -->
-    <script src="../../js/jquery.meanmenu.js"></script>
-    <!-- owl.carousel JS
-                ============================================ -->
-    <script src="../../js/owl.carousel.min.js"></script>
-    <!-- sticky JS
-                ============================================ -->
-    <script src="../../js/jquery.sticky.js"></script>
-    <!-- scrollUp JS
-                ============================================ -->
-    <script src="../../js/jquery.scrollUp.min.js"></script>
-    <!-- mCustomScrollbar JS
-                ============================================ -->
-    <script src="../../js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="../../js/scrollbar/mCustomScrollbar-active.js"></script>
-    <!-- metisMenu JS
-                ============================================ -->
-    <script src="../../js/metisMenu/metisMenu.min.js"></script>
-    <script src="../../js/metisMenu/metisMenu-active.js"></script>
-    <!-- morrisjs JS
-                ============================================ -->
-    <script src="../../js/sparkline/jquery.sparkline.min.js"></script>
-    <script src="../../js/sparkline/jquery.charts-sparkline.js"></script>
-    <!-- calendar JS
-                ============================================ -->
-    <script src="../../js/calendar/moment.min.js"></script>
-    <script src="../../js/calendar/fullcalendar.min.js"></script>
-    <script src="../../js/calendar/fullcalendar-active.js"></script>
-    <!-- tab JS
-                ============================================ -->
-    <script src="../../js/tab.js"></script>
-    <!-- plugins JS
-                ============================================ -->
-    <script src="../../js/plugins.js"></script>
-    <!-- main JS
-                ============================================ -->
-    <script src="../../js/main.js"></script>
 
-    <script src="../../js/classes/VendasViewJS.js"></script>
-    <script>
-        let vendasViewJS = new VendasViewJS();
+<script>
 
-    </script>
+    async function monitoraCampos() {
+        const idFilial = parseInt(document.getElementById("idFilial").value);
+        const cpfCliente = document.getElementById("cpfCliente").value;
+
+        if (cpfCliente && idFilial) {
+            const host = window.location.host;
+            const protocol = window.location.protocol;
+            let url = '';
+
+            if (host[host.length - 1] == "/") {
+                url = protocol + "//" + host + "xNexus-java-sports/protegido/funcionario/VendasServlet?action=salvarCampos&idFilial=" + idFilial + "&cpfCliente=" + cpfCliente;
+
+            } else {
+                url = protocol + "//" + host + "/xNexus-java-sports/protegido/funcionario/VendasServlet?action=salvarCampos&idFilial=" + idFilial + "&cpfCliente=" + cpfCliente;
+            }
+
+            console.log(idFilial);
+
+            let res = await fetch(url, {
+                method: "POST"
+            });
+            console.log(res.text());
+        }
+    }
+</script>
+
+<!-- jquery
+            ============================================ -->
+<script src="../../js/vendor/jquery-1.12.4.min.js"></script>
+<!-- bootstrap JS
+            ============================================ -->
+<script src="../../js/bootstrap.min.js"></script>
+<!-- wow JS
+            ============================================ -->
+<script src="../../js/wow.min.js"></script>
+<!-- price-slider JS
+            ============================================ -->
+<script src="../../js/jquery-price-slider.js"></script>
+<!-- meanmenu JS
+            ============================================ -->
+<script src="../../js/jquery.meanmenu.js"></script>
+<!-- owl.carousel JS
+            ============================================ -->
+<script src="../../js/owl.carousel.min.js"></script>
+<!-- sticky JS
+            ============================================ -->
+<script src="../../js/jquery.sticky.js"></script>
+<!-- scrollUp JS
+            ============================================ -->
+<script src="../../js/jquery.scrollUp.min.js"></script>
+<!-- mCustomScrollbar JS
+            ============================================ -->
+<script src="../../js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../js/scrollbar/mCustomScrollbar-active.js"></script>
+<!-- metisMenu JS
+            ============================================ -->
+<script src="../../js/metisMenu/metisMenu.min.js"></script>
+<script src="../../js/metisMenu/metisMenu-active.js"></script>
+<!-- morrisjs JS
+            ============================================ -->
+<script src="../../js/sparkline/jquery.sparkline.min.js"></script>
+<script src="../../js/sparkline/jquery.charts-sparkline.js"></script>
+<!-- calendar JS
+            ============================================ -->
+<script src="../../js/calendar/moment.min.js"></script>
+<script src="../../js/calendar/fullcalendar.min.js"></script>
+<script src="../../js/calendar/fullcalendar-active.js"></script>
+<!-- tab JS
+            ============================================ -->
+<script src="../../js/tab.js"></script>
+<!-- plugins JS
+            ============================================ -->
+<script src="../../js/plugins.js"></script>
+<!-- main JS
+            ============================================ -->
+<script src="../../js/main.js"></script>
+
+<script src="../../js/classes/VendasViewJS.js"></script>
+<script>
+    let vendasViewJS = new VendasViewJS();
+
+</script>
 </body>
 </html>
