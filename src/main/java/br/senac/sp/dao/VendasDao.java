@@ -9,6 +9,7 @@ import br.senac.sp.db.ConexaoDB;
 import br.senac.sp.dto.ItemCarrinhoDto;
 import br.senac.sp.dto.VendaDetalhadaDto;
 import br.senac.sp.entidade.Cliente;
+import br.senac.sp.entidade.Filial;
 import br.senac.sp.entidade.Produto;
 import br.senac.sp.entidade.Venda;
 import java.sql.Connection;
@@ -177,6 +178,48 @@ public class VendasDao {
             return false;
         }
 
+    }
+    
+    public List<Filial> getFiliais(){
+        Connection connection;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            connection = ConexaoDB.getConexao();
+
+            pstmt = connection.prepareStatement("SELECT * FROM filial ORDER BY id_filial");
+            
+            rs = pstmt.executeQuery();
+
+            List lista = new ArrayList<>();
+
+            while (rs.next()) {
+
+                Filial Filial = new Filial();
+
+
+                Filial.setId(rs.getInt("id_filial"));
+
+                Filial.setNome(rs.getString("nome"));
+                Filial.setBairro(rs.getString("bairro"));
+                Filial.setCep(rs.getString("cep"));
+                Filial.setPais(rs.getString("pais"));
+                Filial.setRua(rs.getString("rua"));
+                Filial.setComplemento(rs.getString("complemento"));
+                Filial.setNumero(rs.getString("numero"));
+                Filial.setUf(rs.getString("uf"));
+                Filial.setCidade(rs.getString("cidade"));
+
+                lista.add(Filial);
+            }
+            return lista;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+
+        }
     }
     
     public static List<Cliente> getClientes() {
