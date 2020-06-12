@@ -23,6 +23,8 @@ public class CadastroClienteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        ClienteDAO clienteDAO = new ClienteDAO();
         String forward = "";
         forward = "/protegido/funcionario/cliente.jsp";
 
@@ -31,7 +33,7 @@ public class CadastroClienteServlet extends HttpServlet {
         if (action.equalsIgnoreCase("excluir")) {
             forward = "/protegido/funcionario/cliente.jsp";
             int id = Integer.parseInt(request.getParameter("id"));
-            boolean excliu = ClienteDAO.excluirCliente(id);
+            boolean excliu = clienteDAO.delete(id);
             String url = "";
             if (excliu) {
                 request.setAttribute("msgSucesso", "Cliente Excluido com sucesso");
@@ -48,7 +50,7 @@ public class CadastroClienteServlet extends HttpServlet {
 
         if (action.equalsIgnoreCase("listarCliente")) {
             forward = "/protegido/funcionario/cliente.jsp";
-            List<Cliente> lista = ClienteDAO.listarCliente();
+            List<Object> lista = clienteDAO.getAll();
             request.setAttribute("clientes", lista);
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
@@ -61,6 +63,8 @@ public class CadastroClienteServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String action = request.getParameter("action");
+        
+        ClienteDAO clienteDAO = new ClienteDAO();
 
         if (action.equalsIgnoreCase("alterar")) {
             int id = Integer.parseInt(request.getParameter("id").trim());
@@ -81,7 +85,7 @@ public class CadastroClienteServlet extends HttpServlet {
             cliente.setTelefone(telefone);
             cliente.setSexo(sexo);
 
-            boolean alterou = ClienteDAO.alterarCliente(cliente);
+            boolean alterou = clienteDAO.update(cliente);
             PrintWriter out = response.getWriter();
 
             String url = "";
@@ -115,7 +119,7 @@ public class CadastroClienteServlet extends HttpServlet {
             cliente.setTelefone(telefone);
             cliente.setSexo(sexo);
 
-            boolean cadastrou = ClienteDAO.cadastrarCliente(cliente);
+            boolean cadastrou = clienteDAO.insert(cliente);
             PrintWriter out = response.getWriter();
 
             String url = "";

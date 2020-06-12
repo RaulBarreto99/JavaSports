@@ -16,8 +16,11 @@ import java.util.logging.Logger;
  *
  * @author Raul
  */
-public class UsuarioSistemaDAO {
-    public static boolean cadastrarUsuario(Usuario usuario) {
+public class UsuarioSistemaDAO implements InterfaceDAO{
+    
+    @Override
+    public boolean insert(Object object) {
+        Usuario usuario = (Usuario) object;
         boolean cadastrou = false;
         Connection connection;
         try {
@@ -37,25 +40,13 @@ public class UsuarioSistemaDAO {
         return cadastrou;
     }
 
-    public static boolean alterarSenha(Usuario usuario, int codigo) {
-        boolean alterou = false;
-        Connection connection;
-        try {
-            connection = ConexaoDB.getConexao();
-            String sql = "UPDATE USUARIOSISTEMA SET SENHA = ? WHERE ID_USUARIO = ?";
-            PreparedStatement PreparedStatement = connection.prepareStatement(sql);
-
-            PreparedStatement.setString(1, usuario.getSenha());
-            PreparedStatement.setInt(2, codigo);
-            PreparedStatement.execute();
-            alterou = true;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return alterou;
+    @Override
+    public boolean update(Object object) {
+        return false;
     }
 
-    public static boolean excluirUsuario(int codigo) {
+    @Override
+    public boolean delete(int codigo) {
         Connection connection;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -74,7 +65,8 @@ public class UsuarioSistemaDAO {
 
     }
 
-    public static List<Usuario> listarUsuario() {
+    @Override
+    public List<Object> getAll() {
         Connection connection;
         PreparedStatement pstmt = null;
         ResultSet rs = null;

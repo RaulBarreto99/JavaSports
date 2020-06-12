@@ -29,6 +29,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        UsuarioSistemaDAO usuarioDAO = new UsuarioSistemaDAO();
         String forward = "";
         forward = "usuario.jsp";
 
@@ -37,7 +38,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
         if (action.equalsIgnoreCase("excluir")) {
             forward = "/protegido/admin/usuario.jsp";
             int codigo = Integer.parseInt(request.getParameter("id"));
-            boolean excluir = UsuarioSistemaDAO.excluirUsuario(codigo);
+            boolean excluir = usuarioDAO.delete(codigo);
             String url = "";
             if (excluir) {
                 request.setAttribute("msgSucesso", "Usuário excluido com sucesso.");
@@ -54,7 +55,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
 
         if (action.equalsIgnoreCase("listarUsuario")) {
             forward = "/protegido/funcionario/gerente/admin/usuario.jsp";
-            List<Usuario> lista = UsuarioSistemaDAO.listarUsuario();
+            List<Object> lista = usuarioDAO.getAll();
 
             String[] perfis = {"Funcionario", "Gerente", "Admin"};
 
@@ -68,6 +69,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        UsuarioSistemaDAO usuarioDAO = new UsuarioSistemaDAO();
         String action = request.getParameter("action");
 
         //String codigo = request.getParameter("codigo");
@@ -79,7 +81,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
         Usuario usuario = new Usuario(nome, login, senha, perfil
         );
 
-        boolean cadastrou = UsuarioSistemaDAO.cadastrarUsuario(usuario);
+        boolean cadastrou = usuarioDAO.insert(usuario);
         PrintWriter out = response.getWriter();
 
         String url = "";

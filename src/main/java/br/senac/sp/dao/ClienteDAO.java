@@ -14,9 +14,114 @@ import java.util.List;
  *
  * @author Ederson_Souza
  */
-public class ClienteDAO {
-    
-    public static boolean cadastrarCliente(Cliente cliente) {
+public class ClienteDAO implements InterfaceDAO {
+//
+//    public boolean insert(Cliente cliente) {
+//        boolean cadastrou = false;
+//        Connection connection;
+//        try {
+//            connection = ConexaoDB.getConexao();
+//            String sql = "insert into cliente values (default,?,?,?,?,?,?)";
+//            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//            preparedStatement.setString(1, cliente.getNome());
+//            preparedStatement.setString(2, cliente.getSobrenome());
+//            preparedStatement.setString(3, cliente.getDataNascimento());
+//            preparedStatement.setString(4, cliente.getCpf());
+//            preparedStatement.setString(5, cliente.getTelefone());
+//            preparedStatement.setString(6, cliente.getSexo());
+//            preparedStatement.execute();
+//            cadastrou = true;
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//        return cadastrou;
+//    }
+//
+//    public List<?> getAll() {
+//
+//        Connection connection;
+//        PreparedStatement pstmt = null;
+//        ResultSet rs = null;
+//
+//        try {
+//            connection = ConexaoDB.getConexao();
+//
+//            pstmt = connection.prepareStatement(
+//                    "SELECT * FROM cliente ORDER BY id_cliente");
+//
+//            rs = pstmt.executeQuery();
+//
+//            List lista = new ArrayList<>();
+//
+//            while (rs.next()) {
+//
+//                Cliente cliente = new Cliente();
+//
+//                cliente.setId(rs.getInt("id_cliente"));
+//                cliente.setNome(rs.getString("nome"));
+//                cliente.setSobrenome(rs.getString("sobrenome"));
+//                cliente.setDataNascimento(rs.getString("dataNascimento"));
+//                cliente.setCpf(rs.getString("cpf"));
+//                cliente.setTelefone(rs.getString("telefone"));
+//                cliente.setSexo(rs.getString("sexo"));
+//
+//                lista.add(cliente);
+//
+//            }
+//
+//            return lista;
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            return null;
+//
+//        }
+//    }
+//
+//    public boolean delete(int id) {
+//        Connection connection;
+//        PreparedStatement pstmt = null;
+//        ResultSet rs = null;
+//        boolean excluiu = false;
+//        try {
+//            connection = ConexaoDB.getConexao();
+//            String sql = "delete  from cliente where ID_CLIENTE = ?";
+//            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//            preparedStatement.setInt(1, id);
+//            preparedStatement.execute();
+//            excluiu = true;
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//        return excluiu;
+//
+//    }
+//
+//    public boolean update(Cliente cliente) {
+//        boolean alterou = false;
+//        Connection connection;
+//        try {
+//            connection = ConexaoDB.getConexao();
+//            String sql = "update cliente set nome = ?, sobrenome = ?, dataNascimento = ?,cpf = ?,telefone = ?, sexo = ? where ID_CLIENTE = ?";
+//            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//            preparedStatement.setString(1, cliente.getNome());
+//            preparedStatement.setString(2, cliente.getSobrenome());
+//            preparedStatement.setString(3, cliente.getDataNascimento());
+//            preparedStatement.setString(4, cliente.getCpf());
+//            preparedStatement.setString(5, cliente.getTelefone());
+//            preparedStatement.setString(6, cliente.getSexo());
+//            preparedStatement.setInt(7, cliente.getId());
+//            preparedStatement.executeUpdate();
+//            alterou = true;
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//        return alterou;
+//    }
+
+    @Override
+    public boolean insert(Object object) {
+        Cliente cliente = (Cliente) object;
         boolean cadastrou = false;
         Connection connection;
         try {
@@ -36,69 +141,13 @@ public class ClienteDAO {
         }
         return cadastrou;
     }
-    
-    public static List<Cliente> listarCliente() {
-        
-        Connection connection;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        
-        try {
-            connection = ConexaoDB.getConexao();
-            
-            pstmt = connection.prepareStatement(
-                    "SELECT * FROM cliente ORDER BY id_cliente");
-            
-            rs = pstmt.executeQuery();
-            
-            List lista = new ArrayList<>();
-            
-            while (rs.next()) {
-                
-                Cliente cliente = new Cliente();
-                
-                cliente.setId(rs.getInt("id_cliente"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setSobrenome(rs.getString("sobrenome"));
-                cliente.setDataNascimento(rs.getString("dataNascimento"));
-                cliente.setCpf(rs.getString("cpf"));
-                cliente.setTelefone(rs.getString("telefone"));
-                cliente.setSexo(rs.getString("sexo"));
-                
-                lista.add(cliente);
-                
-            }
-            
-            return lista;
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-            
-        }
-    }
-    
-    public static boolean excluirCliente(int id) {
-        Connection connection;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        boolean excluiu = false;
-        try {
-            connection = ConexaoDB.getConexao();
-            String sql = "delete  from cliente where ID_CLIENTE = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, id);
-            preparedStatement.execute();
-            excluiu = true;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return excluiu;
-        
-    }
 
-    public static boolean alterarCliente(Cliente cliente) {
-          boolean alterou = false;
+    @Override
+    public boolean update(Object object) {
+        
+        Cliente cliente = (Cliente) object;
+        
+        boolean alterou = false;
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
@@ -118,6 +167,65 @@ public class ClienteDAO {
         }
         return alterou;
     }
-    
-    
+
+    @Override
+    public boolean delete(int id) {
+        Connection connection;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        boolean excluiu = false;
+        try {
+            connection = ConexaoDB.getConexao();
+            String sql = "delete  from cliente where ID_CLIENTE = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.execute();
+            excluiu = true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return excluiu;
+    }
+
+    @Override
+    public List<Object> getAll() {
+        Connection connection;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            connection = ConexaoDB.getConexao();
+
+            pstmt = connection.prepareStatement(
+                    "SELECT * FROM cliente ORDER BY id_cliente");
+
+            rs = pstmt.executeQuery();
+
+            List lista = new ArrayList<>();
+
+            while (rs.next()) {
+
+                Cliente cliente = new Cliente();
+
+                cliente.setId(rs.getInt("id_cliente"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setSobrenome(rs.getString("sobrenome"));
+                cliente.setDataNascimento(rs.getString("dataNascimento"));
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setSexo(rs.getString("sexo"));
+
+                lista.add(cliente);
+
+            }
+
+            return lista;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+
+        }
+    }
+
 }

@@ -5,15 +5,8 @@
  */
 package br.senac.sp.entidade;
 
-/**
- *
- * @author oz500
- */
-public class RelatorioProduto {
-    private int id;
-    private String nome;
-    private double total;
-
+public class RelatorioProduto extends Relatorio{
+    
     public RelatorioProduto(int id, String nome, double total) {
         this.id = id;
         this.nome = nome;
@@ -24,29 +17,20 @@ public class RelatorioProduto {
     
     }
     
-    public int getId() {
-        return id;
-    }
 
+    @Override
     public void setId(int id) {
-        this.id = id;
+        if (id > 0) {
+            this.id = id;
+        }
+
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
+    @Override
     public void setTotal(double total) {
-        this.total = total;
+        if (total >= 0) {
+            this.total = total;
+        }
     }
-    
     
 }

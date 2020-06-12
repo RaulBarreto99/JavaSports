@@ -31,7 +31,7 @@ public class Venda {
         this.id = id;
     }
 
-    public List<ItemCarrinhoDto> getProdutosVendidos() {
+    public List<ItemCarrinhoDto> getProdutosVendidos () {
         return produtosVendidos;
     }
 

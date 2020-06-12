@@ -9,12 +9,9 @@ package br.senac.sp.entidade;
  *
  * @author oz500
  */
-public class RelatorioCliente {
-    
-    private int id;
-    private String nome;
-    private String sobrenome;
-    private double total;
+public class RelatorioCliente extends Relatorio {
+
+    protected String sobrenome;
 
     public RelatorioCliente(int id, String nome, String sobrenome, double total) {
         this.id = id;
@@ -22,33 +19,31 @@ public class RelatorioCliente {
         this.sobrenome = sobrenome;
         this.total = total;
     }
-    
-    public RelatorioCliente(){
-        
+
+    public RelatorioCliente() {
+
     }
 
-    public double getTotal() {
-        return total;
-    }
-
+    @Override
     public void setTotal(double total) {
-        this.total = total;
+        if (total >= 0) {
+            this.total = total;
+        }
+
     }
 
-    public int getId() {
-        return id;
-    }
-
+    @Override
     public void setId(int id) {
-        this.id = id;
+        if (id > 0) {
+            this.id = id;
+        }
     }
 
-    public String getNome() {
-        return nome;
-    }
-
+    @Override
     public void setNome(String nome) {
-        this.nome = nome;
+        if(nome != null){
+            this.nome = nome;
+        }
     }
 
     public String getSobrenome() {
@@ -58,5 +53,9 @@ public class RelatorioCliente {
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Relatorio{" + "id = " + id + ", nome = " + nome + ", sobrenome = " + sobrenome + ", total=" + total + "}";
+    }
 }

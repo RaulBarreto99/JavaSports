@@ -244,7 +244,7 @@
                                                                                             <tr>
 
                                                                                                 <td><c:out value="${item.idProduto}"/></td>
-                                                                                                <td><c:out value="${item.nome}"/></td>
+                                                                                                <td><c:out value="${item.nomeProduto}"/></td>
                                                                                                 <td><c:out value="${item.marca}"/></td>
                                                                                                 <td><c:out value="${item.preco}"/></td>
                                                                                                 <td><c:out value="${item.quantidade}"/></td>

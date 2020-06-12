@@ -6,6 +6,7 @@
 package br.senac.sp.dto;
 
 import br.senac.sp.dto.ItemCarrinhoDto;
+import br.senac.sp.entidade.Venda;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author lucas
  */
-public class VendaDetalhadaDto {
+public class VendaDetalhadaDto{
     private int idVenda;
     private String nomeCliente;
     private String nomeFilial;

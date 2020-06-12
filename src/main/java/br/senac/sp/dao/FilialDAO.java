@@ -15,9 +15,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilialDAO {
+public class FilialDAO implements InterfaceDAO {
 
-    public static boolean cadastrarFilial(Filial filial) {
+    @Override
+    public boolean insert(Object object) {
+        Filial filial = (Filial) object;
         boolean cadastrou = false;
         Connection connection;
         try {
@@ -45,7 +47,8 @@ public class FilialDAO {
         return cadastrou;
     }
 
-    public static List<Filial> listarFilial() {
+    @Override
+    public List<Object> getAll() {
 
         Connection connection;
         PreparedStatement pstmt = null;
@@ -88,7 +91,8 @@ public class FilialDAO {
         }
     }
 
-    public static boolean excluirFilial(int id) {
+    @Override
+    public boolean delete(int id) {
         Connection connection;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -110,7 +114,9 @@ public class FilialDAO {
 
     }
 
-    public static boolean alterarFilial(Filial filial, int Id) {
+    @Override
+    public boolean update(Object object) {
+        Filial filial = (Filial) object;
         boolean alterou = false;
         Connection connection;
         try {
@@ -128,7 +134,7 @@ public class FilialDAO {
             preparedStatement.setString(7, filial.getNumero());
             preparedStatement.setString(8, filial.getUf());
             preparedStatement.setString(9, filial.getCidade());
-            preparedStatement.setInt(10, Id);
+            preparedStatement.setInt(10, filial.getId());
 
             preparedStatement.execute();
             alterou = true;

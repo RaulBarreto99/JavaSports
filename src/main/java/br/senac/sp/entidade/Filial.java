@@ -35,6 +35,19 @@ public class Filial {
         this.numero = numero;
         this.complemento = complemento;
     }
+    
+    public Filial(int id, String nome, String cep, String pais, String cidade, String uf, String bairro, String rua, String numero, String complemento) {
+        this.id = id;
+        this.nome = nome;
+        this.cep = cep;
+        this.pais = pais;
+        this.cidade = cidade;
+        this.uf = uf;
+        this.bairro = bairro;
+        this.rua = rua;
+        this.numero = numero;
+        this.complemento = complemento;
+    }
 
     public Filial() {
         

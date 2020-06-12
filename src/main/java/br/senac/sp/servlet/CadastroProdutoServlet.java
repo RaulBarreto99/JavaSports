@@ -27,6 +27,7 @@ public class CadastroProdutoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ProdutoDao produtoDao = new ProdutoDao();
         String forward = "";
         forward = "/protegido/funcionario/produto.jsp";
 
@@ -35,7 +36,7 @@ public class CadastroProdutoServlet extends HttpServlet {
         if (action.equalsIgnoreCase("excluir")) {
             forward = "/protegido/funcionario/produto.jsp";
             int codigo = Integer.parseInt(request.getParameter("codigo"));
-            boolean excluir = ProdutoDao.excluirProduto(codigo);
+            boolean excluir = produtoDao.delete(codigo);
             String url = "";
             if (excluir) {
                 request.setAttribute("msgSucesso", "Produto excluido com sucesso.");
@@ -52,7 +53,7 @@ public class CadastroProdutoServlet extends HttpServlet {
 
         if (action.equalsIgnoreCase("listarProduto")) {
             forward = "/protegido/funcionario/produto.jsp";
-            List<Produto> lista = ProdutoDao.listarProduto();
+            List<Object> lista = produtoDao.getAll();
             request.setAttribute("produtos", lista);
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
@@ -63,6 +64,7 @@ public class CadastroProdutoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
+        ProdutoDao produtoDao = new ProdutoDao();
 
         if (action.equalsIgnoreCase("alterar")) {
             String codigo = request.getParameter("codigo");
@@ -72,9 +74,9 @@ public class CadastroProdutoServlet extends HttpServlet {
             String preco = request.getParameter("preco");
             String quantidade = request.getParameter("quantidade");
             
-            Produto produto = new Produto(nomeProduto, marca, Double.parseDouble(preco), Integer.parseInt(quantidade));
+            Produto produto = new Produto(Integer.parseInt(codigo), nomeProduto, marca, Double.parseDouble(preco), Integer.parseInt(quantidade));
 
-            boolean cadastrou = ProdutoDao.alterarProduto(produto, Integer.parseInt(codigo));
+            boolean cadastrou = produtoDao.update(produto);
             PrintWriter out = response.getWriter();
 
             String url = "";
@@ -99,7 +101,7 @@ public class CadastroProdutoServlet extends HttpServlet {
 
             Produto produto = new Produto(nomeProduto, marca, Double.parseDouble(preco), Integer.parseInt(quantidade));
 
-            boolean cadastrou = ProdutoDao.cadastrarProduto(produto);
+            boolean cadastrou = produtoDao.insert(produto);
             PrintWriter out = response.getWriter();
 
             String url = "";

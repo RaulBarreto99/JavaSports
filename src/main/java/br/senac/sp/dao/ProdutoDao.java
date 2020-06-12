@@ -18,9 +18,11 @@ import java.util.List;
  *
  * @author Raul
  */
-public class ProdutoDao {
+public class ProdutoDao implements InterfaceDAO{
 
-    public static boolean cadastrarProduto(Produto produto) {
+    @Override
+    public boolean insert(Object object) {
+        Produto produto = (Produto) object;
         boolean cadastrou = false;
         Connection connection;
         try {
@@ -40,7 +42,9 @@ public class ProdutoDao {
         return cadastrou;
     }
 
-    public static boolean alterarProduto(Produto produto, int codigo) {
+    @Override
+    public boolean update(Object object) {
+        Produto produto = (Produto) object;
         boolean alterou = false;
         Connection connection;
         try {
@@ -52,7 +56,7 @@ public class ProdutoDao {
             PreparedStatement.setString(2, produto.getMarca());
             PreparedStatement.setLong(3, (long) produto.getPreco());
             PreparedStatement.setInt(4, (int) produto.getQuantidade());
-            PreparedStatement.setInt(5, codigo);
+            PreparedStatement.setInt(5, produto.getCodigo());
             PreparedStatement.execute();
             alterou = true;
         } catch (SQLException ex) {
@@ -61,7 +65,8 @@ public class ProdutoDao {
         return alterou;
     }
 
-    public static boolean excluirProduto(int codigo) {
+    @Override
+    public boolean delete(int codigo) {
         Connection connection;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -80,7 +85,8 @@ public class ProdutoDao {
 
     }
 
-    public static List<Produto> listarProduto() {
+    @Override
+    public List<Object> getAll() {
         Connection connection;
         PreparedStatement pstmt = null;
         ResultSet rs = null;

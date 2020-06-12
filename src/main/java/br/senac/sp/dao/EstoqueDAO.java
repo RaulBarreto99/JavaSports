@@ -42,11 +42,11 @@ public class EstoqueDAO {
                 
                 Estoque estoque = new Estoque();
                 
-                estoque.setIdProduto(resultSet.getInt("ID_PRODUTO"));
+                estoque.setCodigo(resultSet.getInt("ID_PRODUTO"));
                 estoque.setNomeProduto(resultSet.getString("nome"));
-                estoque.setMarcaProduto(resultSet.getString("marca"));
-                estoque.setPrecoProduto(resultSet.getDouble("preco"));
-                estoque.setQuantidadeProduto(resultSet.getInt("quantidade"));
+                estoque.setMarca(resultSet.getString("marca"));
+                estoque.setPreco(resultSet.getDouble("preco"));
+                estoque.setQuantidade(resultSet.getInt("quantidade"));
                 
                 produtoList.add(estoque);
             }
