@@ -21,7 +21,7 @@ public class ClienteDAO {
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "insert into cliente values (default,?,?,?,?,?,?)";
+            String sql = "insert into CLIENTE values (default,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getSobrenome());
@@ -47,7 +47,7 @@ public class ClienteDAO {
             connection = ConexaoDB.getConexao();
             
             pstmt = connection.prepareStatement(
-                    "SELECT * FROM cliente ORDER BY id_cliente");
+                    "SELECT * FROM CLIENTE ORDER BY id_cliente");
             
             rs = pstmt.executeQuery();
             
@@ -85,7 +85,7 @@ public class ClienteDAO {
         boolean excluiu = false;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "delete  from cliente where ID_CLIENTE = ?";
+            String sql = "delete from CLIENTE where ID_CLIENTE = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             preparedStatement.execute();
@@ -102,7 +102,7 @@ public class ClienteDAO {
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "update cliente set nome = ?, sobrenome = ?, dataNascimento = ?,cpf = ?,telefone = ?, sexo = ? where ID_CLIENTE = ?";
+            String sql = "update CLIENTE set nome = ?, sobrenome = ?, dataNascimento = ?,cpf = ?,telefone = ?, sexo = ? where ID_CLIENTE = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getSobrenome());

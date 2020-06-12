@@ -82,7 +82,7 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                        <a href="/xNexus-java-sports/protegido/index.jsp"><h2>Java Sports</h2></a>
+                        <a href="/protegido/index.jsp"><h2>Java Sports</h2></a>
                         
                     </div>
                 </div>

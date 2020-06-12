@@ -34,7 +34,7 @@ public class EstoqueDAO {
             
             connection = ConexaoDB.getConexao();
             
-            stmt = connection.prepareStatement("SELECT * FROM produto ORDER BY ID_PRODUTO");
+            stmt = connection.prepareStatement("SELECT * FROM PRODUTO ORDER BY ID_PRODUTO");
             
             resultSet = stmt.executeQuery();
             

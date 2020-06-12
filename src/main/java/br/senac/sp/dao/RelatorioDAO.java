@@ -36,7 +36,7 @@ public class RelatorioDAO {
 
             connection = ConexaoDB.getConexao();
 
-            stmt = connection.prepareStatement("select filial.ID_FILIAL, filial.NOME as nome, sum(venda.TOTAL) as total from filial inner join venda on filial.ID_FILIAL = venda.ID_FILIAL group by filial.ID_FILIAL, filial.NOME order by filial.ID_FILIAL");
+            stmt = connection.prepareStatement("select FILIAL.ID_FILIAL, FILIAL.NOME as nome, sum(VENDA.TOTAL) as total from FILIAL inner join VENDA on FILIAL.ID_FILIAL = VENDA.ID_FILIAL group by FILIAL.ID_FILIAL, FILIAL.NOME order by FILIAL.ID_FILIAL");
 
             resultSet = stmt.executeQuery();
 
@@ -72,7 +72,7 @@ public class RelatorioDAO {
 
             connection = ConexaoDB.getConexao();
 
-            stmt = connection.prepareStatement("select cliente.ID_CLIENTE, cliente.NOME as nome, cliente.SOBRENOME as sobrenome, sum(venda.TOTAL) total from cliente inner join venda on cliente.ID_CLIENTE = venda.ID_CLIENTE group by cliente.ID_CLIENTE, cliente.NOME, cliente.SOBRENOME order by cliente.ID_CLIENTE");
+            stmt = connection.prepareStatement("select CLIENTE.ID_CLIENTE, CLIENTE.NOME as nome, CLIENTE.SOBRENOME as sobrenome, sum(VENDA.TOTAL) total from CLIENTE inner join VENDA on CLIENTE.ID_CLIENTE = VENDA.ID_CLIENTE group by CLIENTE.ID_CLIENTE, CLIENTE.NOME, CLIENTE.SOBRENOME order by CLIENTE.ID_CLIENTE");
 
             resultSet = stmt.executeQuery();
 
@@ -109,7 +109,7 @@ public class RelatorioDAO {
 
             connection = ConexaoDB.getConexao();
 
-            stmt = connection.prepareStatement("select produto.ID_PRODUTO, produto.NOME as nome, sum(carrinho.QUANTIDADE) as total from produto inner join carrinho on produto.ID_PRODUTO = carrinho.ID_PRODUTO group by produto.ID_PRODUTO,produto.NOME order by produto.ID_PRODUTO");
+            stmt = connection.prepareStatement("select PRODUTO.ID_PRODUTO, PRODUTO.NOME as nome, sum(CARRINHO.QUANTIDADE) as total from PRODUTO inner join CARRINHO on PRODUTO.ID_PRODUTO = CARRINHO.ID_PRODUTO group by PRODUTO.ID_PRODUTO,PRODUTO.NOME order by PRODUTO.ID_PRODUTO");
 
 
             resultSet = stmt.executeQuery();

@@ -188,7 +188,7 @@ public class VendasDao {
         try {
             connection = ConexaoDB.getConexao();
 
-            pstmt = connection.prepareStatement("SELECT * FROM filial ORDER BY id_filial");
+            pstmt = connection.prepareStatement("SELECT * FROM FILIAL ORDER BY id_filial");
             
             rs = pstmt.executeQuery();
 
@@ -232,7 +232,7 @@ public class VendasDao {
             connection = ConexaoDB.getConexao();
             
             pstmt = connection.prepareStatement(
-                    "SELECT * FROM cliente ORDER BY id_cliente");
+                    "SELECT * FROM CLIENTE ORDER BY id_cliente");
             
             rs = pstmt.executeQuery();
             

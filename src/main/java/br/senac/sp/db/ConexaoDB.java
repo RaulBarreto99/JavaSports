@@ -15,16 +15,17 @@ public class ConexaoDB {
 
     static {
         try {
-            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConexaoDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static Connection getConexao() throws SQLException {
-        String dbURL = "jdbc:derby://localhost:1527/javasports;useTimezone=true;serverTimezone=UTC;useSSL=false;charset=UTF8";
-        String user = "root";
-        String password = "root";
+     public static Connection getConexao() throws SQLException {
+        String dbURL = "jdbc:mysql://aad85kky30rh46.ctkpeaskramz.us-west-1.rds.amazonaws.com:3306/javasport?autoReconnect=true&useSSL=false";
+        String user = "admin";
+        String password = "xnexus2020";
+        System.out.println(dbURL);
         return DriverManager.getConnection(dbURL, user, password);
     }
 

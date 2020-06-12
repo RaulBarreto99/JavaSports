@@ -22,8 +22,9 @@ public class FilialDAO {
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "insert into filial values (default,?,?,?,?,?,?,?,?,?)";
-
+            
+            String sql = "insert into FILIAL values (default,?,?,?,?,?,?,?,?,?)";
+            
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, filial.getNome());
@@ -54,8 +55,8 @@ public class FilialDAO {
         try {
             connection = ConexaoDB.getConexao();
 
-            pstmt = connection.prepareStatement(
-                    "SELECT * FROM filial ORDER BY id_filial");
+            pstmt = connection.prepareStatement("SELECT * FROM FILIAL ORDER BY id_filial");
+
 
             rs = pstmt.executeQuery();
 
@@ -64,6 +65,7 @@ public class FilialDAO {
             while (rs.next()) {
 
                 Filial Filial = new Filial();
+
 
                 Filial.setId(rs.getInt("id_filial"));
 
@@ -97,7 +99,7 @@ public class FilialDAO {
         try {
             connection = ConexaoDB.getConexao();
 
-            String sql = "delete from filial where ID_FILIAL = ?";
+            String sql = "delete from FILIAL where ID_FILIAL = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
@@ -115,8 +117,9 @@ public class FilialDAO {
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "update filial set nome = ?, bairro = ?, cep = ?, pais = ?, rua = ?,complemento = ?, numero = ?, uf = ?, cidade = ? where ID_FILIAL = ?";
 
+            String sql = "update FILIAL set nome = ?, bairro = ?, cep = ?, pais = ?, rua = ?,complemento = ?, numero = ?, uf = ?, cidade = ? where ID_FILIAL = ?";
+            
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, filial.getNome());

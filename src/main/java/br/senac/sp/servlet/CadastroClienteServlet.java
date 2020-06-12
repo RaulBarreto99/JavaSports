@@ -35,12 +35,12 @@ public class CadastroClienteServlet extends HttpServlet {
             String url = "";
             if (excliu) {
                 request.setAttribute("msgSucesso", "Cliente Excluido com sucesso");
-                request.setAttribute("forward", "/xNexus-java-sports/protegido/funcionario/CadastroClienteServlet?action=listarCliente");
+                request.setAttribute("forward", "/protegido/funcionario/CadastroClienteServlet?action=listarCliente");
                 url = "/protegido/sucesso.jsp";
             } else {
                 url = "/protegido/erro.jsp";
                 request.setAttribute("msgSucesso", "Cliente Excluido com sucesso");
-                request.setAttribute("forward", "/xNexus-java-sports/protegido/funcionario/CadastroClienteServlet?action=listarCliente");
+                request.setAttribute("forward", "/protegido/funcionario/CadastroClienteServlet?action=listarCliente");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
@@ -87,12 +87,12 @@ public class CadastroClienteServlet extends HttpServlet {
             String url = "";
             if (alterou) {
                 request.setAttribute("msgSucesso", "Cliente Alterado com Sucesso");
-                request.setAttribute("forward", "/xNexus-java-sports/protegido/funcionario/CadastroClienteServlet?action=listarCliente");
+                request.setAttribute("forward", "/protegido/funcionario/CadastroClienteServlet?action=listarCliente");
                 url = "/protegido/sucesso.jsp";
             } else {
                 url = "/protegido/erro.jsp";
                 request.setAttribute("msgSucesso", "Cliente Alterado com Sucesso");
-                request.setAttribute("forward", "/xNexus-java-sports/protegido/funcionario/CadastroClienteServlet?action=listarCliente");
+                request.setAttribute("forward", "/protegido/funcionario/CadastroClienteServlet?action=listarCliente");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
@@ -121,12 +121,12 @@ public class CadastroClienteServlet extends HttpServlet {
             String url = "";
             if (cadastrou) {
                 request.setAttribute("msgSucesso", "Cliente Cadastrado com Sucesso");
-                request.setAttribute("forward", "/xNexus-java-sports/protegido/funcionario/CadastroClienteServlet?action=listarCliente");
+                request.setAttribute("forward", "/protegido/funcionario/CadastroClienteServlet?action=listarCliente");
                 url = "/protegido/sucesso.jsp";
             } else {
                 url = "/protegido/erro.jsp";
                 request.setAttribute("msgSucesso", "Cliente Cadastrado com Sucesso");
-                request.setAttribute("forward", "/xNexus-java-sports/protegido/funcionario/CadastroClienteServlet?action=listarCliente");
+                request.setAttribute("forward", "/protegido/funcionario/CadastroClienteServlet?action=listarCliente");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);

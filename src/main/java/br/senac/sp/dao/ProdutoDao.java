@@ -25,7 +25,7 @@ public class ProdutoDao {
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "INSERT INTO produto VALUES (default,?,?,?,?)";
+            String sql = "INSERT INTO PRODUTO VALUES (default,?,?,?,?)";
             PreparedStatement PreparedStatement = connection.prepareStatement(sql);
 
             PreparedStatement.setString(1, produto.getNomeProduto());
@@ -45,7 +45,7 @@ public class ProdutoDao {
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "UPDATE produto SET nome = ?,marca = ?,preco = ?,quantidade = ? WHERE ID_PRODUTO = ?";
+            String sql = "UPDATE PRODUTO SET nome = ?,marca = ?,preco = ?,quantidade = ? WHERE ID_PRODUTO = ?";
             PreparedStatement PreparedStatement = connection.prepareStatement(sql);
 
             PreparedStatement.setString(1, produto.getNomeProduto());
@@ -68,7 +68,7 @@ public class ProdutoDao {
         boolean excluiu = false;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "delete  from produto where ID_PRODUTO = ?";
+            String sql = "delete from PRODUTO where ID_PRODUTO = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, codigo);
             preparedStatement.execute();
@@ -89,7 +89,7 @@ public class ProdutoDao {
             connection = ConexaoDB.getConexao();
 
             pstmt = connection.prepareStatement(
-                    "SELECT * FROM produto ORDER BY id_produto");
+                    "SELECT * FROM PRODUTO ORDER BY id_produto");
 
             rs = pstmt.executeQuery();
 

@@ -102,6 +102,7 @@
                                     <li><a href="<c:url value="/protegido/funcionario/VendasServlet?action=listarVendas"/>"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
                                     <li><a href="<c:url value="/protegido/funcionario/gerente/admin/CadastroFilialServlet?action=listarFilial"/>"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
                                     <li><a href="<c:url value="/protegido/funcionario/gerente/admin/CadastroUsuarioServlet?action=listarUsuario"/>"><span class="mini-sub-pro">Cadastrar Usuario</span></a></li>
+                                    <li><a href=""><span class="mini-sub-pro">Logout</span></a></li>
                                 </ul>
                             </li>
 
@@ -590,10 +591,8 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="actions graph-rp">
-                                                <div class="btn-group" data-toggle="buttons">
-                                                    <label class="btn btn-grey active">
-                                                        <input type="radio" name="options" class="toggle" id="option1" checked="">Exportar</label>
-
+                                                <div class="btn-group" data-toggle="buttons" >
+                                                    <label class="btn btn-grey active" id="exportar">Exportar</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -663,9 +662,9 @@
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                         <div class="actions graph-rp">
 
-                                                            <a href="#" class="btn btn-dark btn-circle active tip-top" data-toggle="tooltip" title="Exportar">
-                                                                <i class="fa fa-reply" aria-hidden="true"></i>
-                                                            </a>
+                                                            <div class="btn-group" data-toggle="buttons" >
+                                                                <label class="btn btn-grey active" id="exportarFaturamento">Exportar</label>
+                                                            </div>
 
                                                         </div>
                                                     </div>
@@ -709,9 +708,9 @@
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                         <div class="actions graph-rp">
 
-                                                            <a href="#" class="btn btn-dark btn-circle active tip-top" data-toggle="tooltip" title="Exportar">
-                                                                <i class="fa fa-reply" aria-hidden="true"></i>
-                                                            </a>
+                                                            <div class="btn-group" data-toggle="buttons" >
+                                                                <label class="btn btn-grey active" id="exportarProdutos">Exportar</label>
+                                                            </div>
 
                                                         </div>
                                                     </div>
@@ -756,47 +755,49 @@
                             </div>
                         </div>
                     </div> 
-                    
+
                     <script src="../js/vendor/jquery-1.12.4.min.js"></script>
-                    
+
                     <script src="../js/bootstrap.min.js"></script>
-                    
+
                     <script src="../js/wow.min.js"></script>
-                    
+
                     <script src="../js/jquery-price-slider.js"></script>
-                    
+
                     <script src="../js/jquery.meanmenu.js"></script>
-                    
+
                     <script src="../js/owl.carousel.min.js"></script>
-                    
+
                     <script src="../js/jquery.sticky.js"></script>
-                    
+
                     <script src="../js/jquery.scrollUp.min.js"></script>
-                    
+
                     <script src="../js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
                     <script src="../js/scrollbar/mCustomScrollbar-active.js"></script>
-                    
+
                     <script src="../js/metisMenu/metisMenu.min.js"></script>
                     <script src="../js/metisMenu/metisMenu-active.js"></script>
-                    
+
                     <script src="../js/sparkline/jquery.sparkline.min.js"></script>
                     <script src="../js/sparkline/jquery.charts-sparkline.js"></script>
-                    
+
                     <script src="../js/calendar/moment.min.js"></script>
                     <script src="../js/calendar/fullcalendar.min.js"></script>
                     <script src="../js/calendar/fullcalendar-active.js"></script>
-                    
+
                     <script src="../js/flot/jquery.flot.js"></script>
                     <script src="../js/flot/jquery.flot.resize.js"></script>
                     <script src="../js/flot/curvedLines.js"></script>
                     <script src="../js/flot/flot-active.js"></script>
-                    
+
                     <script src="../js/plugins.js"></script>
-                    
-                                
+
+
                     <script src="../js/main.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
                     <script src="../js/grafico-api/chartjs.js"></script>
+                    <script src="https://unpkg.com/jspdf@1.5.3/dist/jspdf.min.js"></script>
+                    <script src="https://unpkg.com/jspdf-autotable@3.5.3/dist/jspdf.plugin.autotable.js"></script>
                     <script>
                         function montarGrafico(nameId, type, labels, valores, nomeGrafico) {
                             try {
@@ -851,15 +852,15 @@
                         async function faturamento() {
                             try {
                                 var faturamento = document.getElementById('infoFaturamento');
-                                var valores = await getInfoGrafico();    
+                                var valores = await getInfoGrafico();
                                 var resultado = JSON.parse(valores);
                                 console.log(resultado == false)
-                                if(resultado == false){
+                                if (resultado == false) {
                                     alert("Para exibir os relatórios, cadastre pelo menos uma filial, um cliente, um produto e realize uma venda!");
                                 }
                                 var html = '';
                                 resultado.forEach(function (elementos) {
-                                    
+
                                     html += "<div class='analytics-rounded mg-b-30 res-mg-t-30'>";
                                     html += "<div class='analytics-rounded-content'>";
                                     html += "<h5>" + elementos.nome + "</h5>";
@@ -883,10 +884,10 @@
                                 var url = '';
 
                                 if (host[host.length - 1] == "/") {
-                                    url = protocol + "//" + host + "xNexus-java-sports/RelatorioFilialServlet";
+                                    url = protocol + "//" + host + "RelatorioFilialServlet";
 
                                 } else {
-                                    url = protocol + "//" + host + "/xNexus-java-sports/RelatorioFilialServlet";
+                                    url = protocol + "//" + host + "/RelatorioFilialServlet";
                                 }
 
                                 var res = await fetch(url);
@@ -910,11 +911,11 @@
                                     totalFaturamento.push(e.total);
                                     total += e.total;
                                 });
-                                
+
                                 var percent = totalFaturamento.map(function (numero) {
                                     return eval((numero / total * 100).toFixed(2));
                                 });
-                                
+
                                 montarGrafico('relFaturamento', 'pie', labels, percent, 'Faturamento');
 
                             } catch (error) {
@@ -949,10 +950,10 @@
                                 var url = '';
 
                                 if (host[host.length - 1] == "/") {
-                                    url = protocol + "//" + host + "xNexus-java-sports/RelatorioClienteServlet";
+                                    url = protocol + "//" + host + "RelatorioClienteServlet";
 
                                 } else {
-                                    url = protocol + "//" + host + "/xNexus-java-sports/RelatorioClienteServlet";
+                                    url = protocol + "//" + host + "/RelatorioClienteServlet";
                                 }
 
 
@@ -991,10 +992,10 @@
                                 var url = '';
 
                                 if (host[host.length - 1] == "/") {
-                                    url = protocol + "//" + host + "xNexus-java-sports/RelatorioProdutoServlet";
+                                    url = protocol + "//" + host + "RelatorioProdutoServlet";
 
                                 } else {
-                                    url = protocol + "//" + host + "/xNexus-java-sports/RelatorioProdutoServlet";
+                                    url = protocol + "//" + host + "/RelatorioProdutoServlet";
                                 }
 
 
@@ -1009,14 +1010,14 @@
                     <script>
                         main();
                         async function main() {
-                            try{
+                            try {
                                 await faturamento();
                                 await armazenaDados();
                                 await armezenaDadosGraficoCliente();
                                 await gerarGraficoProduto();
                                 await carregaQuantidadeProduto();
                                 await carregaTotalVenda();
-                            }catch(error){
+                            } catch (error) {
                                 return false;
                             }
                         }
@@ -1055,6 +1056,85 @@
                                 return false;
                             }
                         }
+                    </script>
+                    <script>
+
+                        var exportar = document.getElementById("exportar");
+                        var faturamento = document.getElementById("exportarFaturamento");
+                        var produto = document.getElementById("exportarProdutos");
+                        
+                        exportar.addEventListener("click", async function () {
+                            var clientes = await montaGraficoCliente();
+                            var c = JSON.parse(clientes);
+                            var total = 0;
+                            var head = ["ID", "NOME", "SOBRENOME", "TOTAL"]
+                            var doc = new jsPDF();
+                            var globala = [];
+                            for (var cliente of c) {
+                                var array = new Array();
+                                array.push(cliente.id);
+                                array.push(cliente.nome);
+                                array.push(cliente.sobrenome);
+                                array.push('R$ ' + (cliente.total).toFixed(2).replace('.', ','));
+                                globala.push(array);
+                                total += cliente.total;
+                            }
+                            console.log(globala);
+                            doc.autoTable({
+                                head: [["ID", "NOME", "SOBRENOME", "TOTAL"]],
+                                body: globala,
+                                foot: [["TOTAL", "", "", "R$ " + (total).toFixed(2).replace('.', ',')]]
+                            })
+                            doc.save('relatorioCliente.pdf');
+                        });
+                        
+                        
+                        faturamento.addEventListener("click", async function(){
+                            var fatura = await getInfoGrafico();
+                            var f = JSON.parse(fatura);
+                            var total = 0;
+                            var doc = new jsPDF();
+                            var globala = [];
+                            for (var faturamento of f) {
+                                var array = new Array();
+                                array.push(faturamento.id);
+                                array.push(faturamento.nome);
+                                array.push('R$ ' + (faturamento.total).toFixed(2).replace('.', ','));
+                                globala.push(array);
+                                total += faturamento.total;
+                            }
+                            
+                            doc.autoTable({
+                                head: [["ID", "FILIAL", "TOTAL"]],
+                                body: globala,
+                                foot: [["TOTAL", "", "R$ " + (total).toFixed(2).replace('.', ',')]]
+                            })
+                            doc.save('relatorioFaturamento.pdf');
+                        })
+                        
+                        produto.addEventListener("click", async function(){
+                            var produtos = await montaGraficoProduto();
+                            var p = JSON.parse(produtos);
+                            var total = 0;
+                            var doc = new jsPDF();
+                            var globala = [];
+                            for (var prod of p) {
+                                var array = new Array();
+                                array.push(prod.id);
+                                array.push(prod.nome);
+                                array.push(prod.total);
+                                globala.push(array);
+                                total += prod.total;
+                            }
+                            
+                            doc.autoTable({
+                                head: [["ID", "PRODUTO", "QUANTIDADE"]],
+                                body: globala,
+                                foot: [["TOTAL", "", total]]
+                            })
+                            doc.save('relatorioProduto.pdf');
+                        })
+
                     </script>
                     </body>
 

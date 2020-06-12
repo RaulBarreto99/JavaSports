@@ -23,17 +23,18 @@ async function carregaProduto() {
         var url = '';
 
         if (host[host.length - 1] == "/") {
-            url = protocol + "//" + host + "xNexus-java-sports/EstoqueProdutoServlet";
+            url = protocol + "//" + host + "EstoqueProdutoServlet";
 
         } else {
-            url = protocol + "//" + host + "/xNexus-java-sports/EstoqueProdutoServlet";
+            url = protocol + "//" + host + "/EstoqueProdutoServlet";
         }
 
         var listaProdutos = await fetch(url);
         return listaProdutos.text();
 
     } catch (error) {
-        console.log('Houve um erro');
+        alert("Houve um problema ao carregar o estoque", error);
+        console.log('Houve um erro', error);
     }
 
 }
