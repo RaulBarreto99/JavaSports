@@ -288,9 +288,9 @@
                                                 <c:forEach items="${carrinho}" var="item">
                                                     <tr id="${item.idItemCarrinho}">
 
-                                                        <td name="codigo${item.idItemCarrinho}"><c:out value="${item.idProduto}"/></td>
+                                                        <td name="codigo${item.idItemCarrinho}"><c:out value="${item.codigo}"/></td>
 
-                                                        <td name="nome${item.idItemCarrinho}"><c:out value="${item.nome}"/></td>
+                                                        <td name="nome${item.idItemCarrinho}"><c:out value="${item.nomeProduto}"/></td>
                                                         <td name="nome${item.idItemCarrinho}"><c:out value="${item.marca}"/></td>
                                                         <td name="preco${item.idItemCarrinho}"><c:out value="R$ ${item.preco}"/></td>
                                                         <td name="quantidade${item.idItemCarrinho}"><c:out value="${item.quantidade}"/></td>

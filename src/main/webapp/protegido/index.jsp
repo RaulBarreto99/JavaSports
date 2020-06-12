@@ -882,7 +882,7 @@
                                 var protocol = window.location.protocol;
                                 var url = '';
 
-                                if (host[host.length - 1] == "/") {
+                                if (host[host.length - 1] === "/") {
                                     url = protocol + "//" + host + "xNexus-java-sports/RelatorioFilialServlet";
 
                                 } else {
